@@ -13,3 +13,5 @@ description: "Collect coins, earn points, and learn scales!"
 author:
   name: "Laura Steiner"
   
+
+theme: jekyll-theme-slate
