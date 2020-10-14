@@ -1,7 +1,8 @@
-package edu.cnm.deepdive.scalescroller;
+package edu.cnm.deepdive.scalescroller.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import edu.cnm.deepdive.scalescroller.R;
 
 public class MainActivity extends AppCompatActivity {
 
