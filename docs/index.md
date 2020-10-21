@@ -4,9 +4,11 @@ ScaleScroller is a game that allows the user to learn or practice their knowledg
 
 Learn mode allows the user to start with the easiest scales and gradually teaches them all of the common musical scales. Challenge mode allows the user to test their knowledge: any scale can appear at any point, and the sidescroller progressively gets faster and faster as they go on.
 
+### Functionality:
+
 * For each level, the app displays a scale name and its notes for several seconds.
 
-* The sidescroller starts, and the user can control their character (represented as an eighth note) to move up and down.
+* The sidescroller starts, and the user can control their character to move up and down.
 
 	* The objective is to collect (run over) the coins labeled with correct notes, and avoid coins labeled with incorrect notes.
 
@@ -16,7 +18,7 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 * Once the level has been beaten, the user is asked whether to play again or to go to the next level, with a new scale. 
 
-* Learn mode is the standard mode. This mode starts with C Major and progresses around the circle of fifths with each level, gradually increasing difficulty. In learn mode, the user must beat the level in order to progress; otherwise, the current level must be repeated. This allows for practicing and learning each scale. 
+* Learn mode is the easiest mode. This mode starts with C Major and progresses around the circle of fifths with each level, gradually increasing difficulty. In learn mode, the user must beat the level in order to progress; otherwise, the current level must be repeated. This allows for practicing and learning each scale. 
 
 * Challenge mode is more difficult, and works best when the user has already progressed through learn mode to learn most or all of their scales. In challenge mode, any scale can appear at any point. The speed of the sidescroller progressively gets faster as the user beats more scale levels. Once the game has ended, the score is added to a high score board, if applicable.
 
@@ -44,7 +46,7 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
     > I'm an adult who has never studied written music before, but I would like to learn. The learn mode of this app gradually teaches me scales in the form of a fun game, so I don't get bored with rote memorization.
 
-	> As a middle-school student taking violin lessons, my teacher talks about key signatures and scales, but I hate that I always get them wrong when she asks me about them. This app helps teach me my scales in learn mode, so we can spend my lesson time playing violin!
+	> As a middle-school student taking violin lessons, my teacher quizzes me about key signatures and scales, but I always get them wrong and we spend a long time talking about them in each lesson. This app helps teach me my scales in learn mode, so we can spend my lesson time playing violin!
 
 * Someone who needs to practice their music theory knowledge
 
@@ -79,4 +81,4 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 	* Sign-in will let the user associate their data with a username and account. This will allow multiple players to use the app on the same device. 
 	
-	* Sign-in should not be required to play the game or to save local data. However, depending on implementation, it is likely that sign-in may end up being required for all users in order to keep consistent representation of user data. If this is the case, it should not promt the user to log-in every time the app opens, only upon first use and after logging out. This should provide for a better user experience, as well as allowing the app to function if Sign-in is unavailable. 
+	* Sign-in should not be required to play the game or to save local data. However, it is likely that sign-in may end up being required for all users in order to keep consistent representation of user data. If this is the case, it should not promt the user to log-in every time the app opens, only upon first use and after logging out. This should provide for a better user experience, as well as allowing the app to function if Sign-in is unavailable. 
