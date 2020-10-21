@@ -23,12 +23,12 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 ## Wireframe Diagram
 
-[SoundScroller Wireframe](wireframe.md)
+[ScaleScroller Wireframe](wireframe.md)
 
 
 ## Entity-Relationship Diagram
 
-[SoundScroller ERD](erd.md)
+[ScaleScroller ERD](erd.md)
 
    
 ## Cloud- or Device-Based Services or Data

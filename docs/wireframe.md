@@ -1,3 +1,3 @@
 ## ScaleScroller Wireframe
 
-[![SoundScroller Wireframe](img/wireframe.png)](pdf/wireframe.pdf)
+[![ScaleScroller Wireframe](img/wireframe.png)](pdf/wireframe.pdf)
