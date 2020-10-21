@@ -42,7 +42,7 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
     > I'm an adult who has never studied written music before, but I would like to learn. The learn mode of this app gradually teaches me scales in the form of a fun game, so I don't get bored with rote memorization.
 
-	> As a middle-school student taking violin lessons, my teacher has talked about key signatures and scales, but I hate that I usually get them wrong when I'm asked. This app helps teach me my scales in learn mode, so we can spend my lesson time playing violin!
+	> As a middle-school student taking violin lessons, my teacher talks about key signatures and scales, but I hate that I always get them wrong when she asks me about them. This app helps teach me my scales in learn mode, so we can spend my lesson time playing violin!
 
 * Someone who needs to practice their music theory knowledge
 
@@ -53,14 +53,14 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 ## Wireframe Diagram
 
-[![SoundScroller Wireframe](img/wireframe.png)](pdf/wireframe.pdf)
+[SoundScroller Wireframe](wireframe.md)
 
 
 ## Entity-Relationship Diagram
 
-[![SoundScroller ERD](img/erd.png)](pdf/erd.pdf)
+[SoundScroller ERD](erd.md)
 
-    
+   
 ## Cloud- or Device-Based Services or Data
 
 * Device audio, accessed through MediaPlayer 
@@ -69,12 +69,12 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 	* Audio played through MediaPlayer enhances the game with music and sound effects. For example, when an incorrect coin is picked up, a sound effect is part of the indication of the mistake. A different sound effect indicates a correct answer. A soundtrack for the game is a stretch goal, but if implemented, will also be played through MediaPlayer.
 
-	* Audio is not critical to the functionality of the app, and can be turned off if desired. There will be visual indications of correct/incorrect coins as well. 
+	* Audio is not critical to the functionality of the app, and can be turned off if desired. For example, there will be visual indications of correct/incorrect coins as well as sound, so those sound effects are not critical. 
 
 * Google Sign-in 
 	
 	* Click for [documentation.](https://developers.google.com/identity/sign-in/android/start-integrating)
 
-	* Sign-in will let the user associate their data with a username and account. This will allow multiple users to use the app on the same device. 
+	* Sign-in will let the user associate their data with a username and account. This will allow multiple players to use the app on the same device. 
 	
-	* Sign-in should not be required to play the game or to save local data. However, depending on implementation, sign-in may end up being required for all users in order to keep the representation of user data consistent.
+	* Sign-in should not be required to play the game or to save local data. However, depending on implementation, sign-in may end up being required for all users in order to keep consistent representation of user data.
