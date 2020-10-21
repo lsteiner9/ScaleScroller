@@ -4,41 +4,7 @@ ScaleScroller is a game that allows the user to learn or practice their knowledg
 
 Learn mode allows the user to start with the easiest scales and gradually teaches them all of the common musical scales. Challenge mode allows the user to test their knowledge: any scale can appear at any point, and the sidescroller progressively gets faster and faster as they go on.
 
-### Functionality:
-
-* For each level, the app displays a scale name and its notes for several seconds.
-
-* The sidescroller starts, and the user can control their character to move up and down.
-
-	* The objective is to collect (run over) the coins labeled with correct notes, and avoid coins labeled with incorrect notes.
-
-	* Correct notes add points, while incorrect notes take away lives. There are three lives total.
-
-	* To beat the level, the user must get a certain amount of points/go for a certain amount of time without losing all three lives.
-
-* Once the level has been beaten, the user is asked whether to play again or to go to the next level, with a new scale. 
-
-* Learn mode is the easiest mode. This mode starts with C Major and progresses around the circle of fifths with each level, gradually increasing difficulty. In learn mode, the user must beat the level in order to progress; otherwise, the current level must be repeated. This allows for practicing and learning each scale. 
-
-* Challenge mode is more difficult, and works best when the user has already progressed through learn mode to learn most or all of their scales. In challenge mode, any scale can appear at any point. The speed of the sidescroller progressively gets faster as the user beats more scale levels. Once the game has ended, the score is added to a high score board, if applicable.
-
-* Settings:
-
-	* Audio settings: volume, sound effects/soundtrack.
-
-	* Change speed of sidescroller (learn mode only).
-	
-	* Change set of allowed scales (challenge mode only).
-	
-	
-* Persistent Data:
-	
-	* Settings
-
-	* Learn mode level reached
-
-	* Challenge mode high score board
-
+[Click here for detailed functionality.](functionality.md)
 
 ## Intended Users 
 
@@ -46,7 +12,7 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
     > I'm an adult who has never studied written music before, but I would like to learn. The learn mode of this app gradually teaches me scales in the form of a fun game, so I don't get bored with rote memorization.
 
-	> As a middle-school student taking violin lessons, my teacher quizzes me about key signatures and scales, but I always get them wrong and we spend a long time talking about them in each lesson. This app helps teach me my scales in learn mode, so we can spend my lesson time playing violin!
+	> As a middle-school student taking violin lessons, my teacher quizzes me about key signatures and scales, but I always get them wrong and we spend a long time talking about them in each lesson. This app helps teach me my scales in learn mode, so we can spend more of my lesson time playing violin!
 
 * Someone who needs to practice their music theory knowledge
 
