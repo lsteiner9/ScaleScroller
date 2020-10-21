@@ -22,7 +22,9 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 * Settings:
 
-	* Switch between learn mode and challenge mode.
+	* Audio settings: volume, sound effects/soundtrack.
+
+	* Change speed of sidescroller (learn mode only).
 	
 	* Change set of allowed scales (challenge mode only).
 	
@@ -77,4 +79,4 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 	* Sign-in will let the user associate their data with a username and account. This will allow multiple players to use the app on the same device. 
 	
-	* Sign-in should not be required to play the game or to save local data. However, depending on implementation, sign-in may end up being required for all users in order to keep consistent representation of user data.
+	* Sign-in should not be required to play the game or to save local data. However, depending on implementation, it is likely that sign-in may end up being required for all users in order to keep consistent representation of user data. If this is the case, it should not promt the user to log-in every time the app opens, only upon first use and after logging out. This should provide for a better user experience, as well as allowing the app to function if Sign-in is unavailable. 
