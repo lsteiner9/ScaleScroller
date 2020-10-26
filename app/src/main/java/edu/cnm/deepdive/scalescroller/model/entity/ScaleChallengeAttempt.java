@@ -32,4 +32,24 @@ public class ScaleChallengeAttempt {
 
   @ColumnInfo(name = "scale_id")
   private Long scaleId;
+
+  public Long getId() {
+    return id;
+  }
+
+  public Long getAttemptId() {
+    return attemptId;
+  }
+
+  public void setAttemptId(Long attemptId) {
+    this.attemptId = attemptId;
+  }
+
+  public Long getScaleId() {
+    return scaleId;
+  }
+
+  public void setScaleId(Long scaleId) {
+    this.scaleId = scaleId;
+  }
 }

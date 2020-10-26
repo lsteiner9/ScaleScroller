@@ -3,9 +3,14 @@ package edu.cnm.deepdive.scalescroller.model.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(
+    indices = {
+        @Index(value = "oauth_key", unique = true)
+    }
+)
 public class Player {
 
   @PrimaryKey(autoGenerate = true)

@@ -44,4 +44,48 @@ public class ChallengeAttempt {
   @ColumnInfo(name = "incorrect_coins")
   private int incorrectCoins;
 
+  public Long getId() {
+    return id;
+  }
+
+  public Long getPlayerId() {
+    return playerId;
+  }
+
+  public void setPlayerId(Long playerId) {
+    this.playerId = playerId;
+  }
+
+  public int getTotalScore() {
+    return totalScore;
+  }
+
+  public void setTotalScore(int totalScore) {
+    this.totalScore = totalScore;
+  }
+
+  @NonNull
+  public Date getTimestamp() {
+    return timestamp;
+  }
+
+  public void setTimestamp(@NonNull Date timestamp) {
+    this.timestamp = timestamp;
+  }
+
+  public int getCorrectCoins() {
+    return correctCoins;
+  }
+
+  public void setCorrectCoins(int correctCoins) {
+    this.correctCoins = correctCoins;
+  }
+
+  public int getIncorrectCoins() {
+    return incorrectCoins;
+  }
+
+  public void setIncorrectCoins(int incorrectCoins) {
+    this.incorrectCoins = incorrectCoins;
+  }
 }
