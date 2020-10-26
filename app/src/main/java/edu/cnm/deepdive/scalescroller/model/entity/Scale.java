@@ -24,7 +24,7 @@ public class Scale {
 
   private int difficulty;
 
-  // this short will represent the scale degrees by bit.
+  // This short will represent the scale degrees by bit.
   private short degrees;
 
   @ColumnInfo(name = "sharp_key")
@@ -32,6 +32,19 @@ public class Scale {
 
   public Long getId() {
     return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  @NonNull
+  public LetterName getScaleName() {
+    return scaleName;
+  }
+
+  public void setScaleName(@NonNull LetterName scaleName) {
+    this.scaleName = scaleName;
   }
 
   public int getDifficulty() {

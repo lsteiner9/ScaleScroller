@@ -37,6 +37,10 @@ public class ScaleChallengeAttempt {
     return id;
   }
 
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public Long getAttemptId() {
     return attemptId;
   }

@@ -48,6 +48,10 @@ public class ChallengeAttempt {
     return id;
   }
 
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public Long getPlayerId() {
     return playerId;
   }

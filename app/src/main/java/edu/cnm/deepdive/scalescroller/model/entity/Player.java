@@ -30,6 +30,10 @@ public class Player {
     return id;
   }
 
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public long getOauthKey() {
     return oauthKey;
   }

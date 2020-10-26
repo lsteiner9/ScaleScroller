@@ -55,6 +55,10 @@ public class LearnLevelAttempt {
     return id;
   }
 
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public Long getPlayerId() {
     return playerId;
   }
@@ -82,6 +86,10 @@ public class LearnLevelAttempt {
   @NonNull
   public Date getTimestamp() {
     return timestamp;
+  }
+
+  public void setTimestamp(@NonNull Date timestamp) {
+    this.timestamp = timestamp;
   }
 
   public int getCorrectCoins() {
