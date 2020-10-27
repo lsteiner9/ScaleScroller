@@ -25,35 +25,35 @@ public class ScaleChallengeAttempt {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "scale_challenge_attempt_id")
-  private Long id;
+  private long id;
 
   @ColumnInfo(name = "challenge_attempt_id")
-  private Long attemptId;
+  private long attemptId;
 
   @ColumnInfo(name = "scale_id")
-  private Long scaleId;
+  private long scaleId;
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
-  public Long getAttemptId() {
+  public long getAttemptId() {
     return attemptId;
   }
 
-  public void setAttemptId(Long attemptId) {
+  public void setAttemptId(long attemptId) {
     this.attemptId = attemptId;
   }
 
-  public Long getScaleId() {
+  public long getScaleId() {
     return scaleId;
   }
 
-  public void setScaleId(Long scaleId) {
+  public void setScaleId(long scaleId) {
     this.scaleId = scaleId;
   }
 }

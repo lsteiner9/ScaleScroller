@@ -32,16 +32,17 @@ public class LearnLevelAttempt {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "learn_level_attempt_id")
-  private Long id;
+  private long id;
 
   @NonNull
   @ColumnInfo(name = "player_id")
-  private Long playerId;
+  private long playerId;
 
   @NonNull
   @ColumnInfo(name = "scale_id")
-  private Long scaleId;
+  private long scaleId;
 
+  @ColumnInfo
   private int difficulty;
 
   @NonNull
@@ -51,27 +52,27 @@ public class LearnLevelAttempt {
 
   private int incorrectCoins;
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
-  public Long getPlayerId() {
+  public long getPlayerId() {
     return playerId;
   }
 
-  public void setPlayerId(Long playerId) {
+  public void setPlayerId(long playerId) {
     this.playerId = playerId;
   }
 
-  public Long getScaleId() {
+  public long getScaleId() {
     return scaleId;
   }
 
-  public void setScaleId(Long scaleId) {
+  public void setScaleId(long scaleId) {
     this.scaleId = scaleId;
   }
 

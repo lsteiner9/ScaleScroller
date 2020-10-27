@@ -15,7 +15,7 @@ public class Player {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "player_id")
-  private Long id;
+  private long id;
 
   @ColumnInfo(name = "oauth_key")
   private long oauthKey;
@@ -26,11 +26,11 @@ public class Player {
   @ColumnInfo(name = "highest_learn_level")
   private int highestLearnLevel;
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 

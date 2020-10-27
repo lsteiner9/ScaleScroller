@@ -30,7 +30,7 @@ public class ChallengeAttempt {
   private Long id;
 
   @ColumnInfo(name = "player_id")
-  private Long playerId;
+  private long playerId;
 
   @ColumnInfo(name = "total_score")
   private int totalScore;
@@ -44,19 +44,19 @@ public class ChallengeAttempt {
   @ColumnInfo(name = "incorrect_coins")
   private int incorrectCoins;
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
-  public Long getPlayerId() {
+  public long getPlayerId() {
     return playerId;
   }
 
-  public void setPlayerId(Long playerId) {
+  public void setPlayerId(long playerId) {
     this.playerId = playerId;
   }
 

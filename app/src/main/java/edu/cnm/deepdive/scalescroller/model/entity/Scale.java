@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 @Entity(
     indices = {
@@ -16,7 +17,7 @@ public class Scale {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "scale_id")
-  private Long id;
+  private long id;
 
   @NonNull
   @ColumnInfo(name = "scale_name")
@@ -30,11 +31,11 @@ public class Scale {
   @ColumnInfo(name = "sharp_key")
   private boolean sharpKey;
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
