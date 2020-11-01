@@ -31,9 +31,10 @@ public interface ScaleChallengeAttemptDao {
   @Delete
   Single<Integer> delete(Collection<ScaleChallengeAttempt> attempts);
 
-  //I think I need a pojo or two here
+  //I think I need to use a pojo or two here to select a list of scales
+  // and a list of challenge attempts
 //  @Query("SELECT")
 //  LiveData<ScaleWithChallengeAttempt> select()
 //  @Query("SELECT")
-//  LiveData<ScaleWithLearnAttempt> select()
+//  LiveData<ChallengeAttemptWith> select()
 }

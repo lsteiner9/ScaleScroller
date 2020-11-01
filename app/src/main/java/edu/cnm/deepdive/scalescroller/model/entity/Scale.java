@@ -88,5 +88,13 @@ public class Scale {
     public int startingNote(LetterName scaleName) {
       return scaleName.ordinal() % 12;
     }
+
+    public static Integer letterNameToInteger(LetterName scale) {
+      return (scale != null)? scale.ordinal() : null;
+    }
+
+    public static LetterName integerToLetterName(Integer value) {
+      return (value != null)? LetterName.values()[value] : null;
+    }
   }
 }
