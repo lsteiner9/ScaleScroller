@@ -1,5 +1,39 @@
 package edu.cnm.deepdive.scalescroller.model.dao;
 
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
+import io.reactivex.Single;
+import java.util.Collection;
+import java.util.List;
+
+@Dao
 public interface ScaleChallengeAttemptDao {
 
+  @Insert
+  Single<ScaleChallengeAttempt> insert(ScaleChallengeAttempt attempt);
+
+  @Insert
+  Single<List<ScaleChallengeAttempt>> insert(ScaleChallengeAttempt...attempts);
+
+  @Insert
+  Single<List<ScaleChallengeAttempt>> insert(Collection<ScaleChallengeAttempt> attempts);
+
+  @Delete
+  Single<Integer> delete(ScaleChallengeAttempt attempt);
+
+  @Delete
+  Single<Integer> delete(ScaleChallengeAttempt... attempts);
+
+  @Delete
+  Single<Integer> delete(Collection<ScaleChallengeAttempt> attempts);
+
+  //I think I need a pojo or two here
+//  @Query("SELECT")
+//  LiveData<ScaleWithChallengeAttempt> select()
+//  @Query("SELECT")
+//  LiveData<ScaleWithLearnAttempt> select()
 }
