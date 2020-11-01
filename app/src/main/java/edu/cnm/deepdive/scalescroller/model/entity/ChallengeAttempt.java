@@ -10,7 +10,6 @@ import java.util.Date;
 
 @Entity(
     indices = {
-        @Index(value = {"total_score"}, unique = false),
         @Index(value = {"timestamp"}, unique = true)
     },
     foreignKeys = {
@@ -25,14 +24,14 @@ import java.util.Date;
 
 public class ChallengeAttempt {
 
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "challenge_attempt_id")
-  private Long id;
+  private long id;
 
   @ColumnInfo(name = "player_id")
   private long playerId;
 
-  @ColumnInfo(name = "total_score")
+  @ColumnInfo(name = "total_score", index = true)
   private int totalScore;
 
   @NonNull

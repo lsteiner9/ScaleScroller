@@ -10,7 +10,6 @@ import java.util.Date;
 
 @Entity(
   indices = {
-    @Index(value = {"difficulty"}, unique = false),
     @Index(value = {"timestamp"}, unique = true)
   },
   foreignKeys = {
@@ -34,22 +33,22 @@ public class LearnLevelAttempt {
   @ColumnInfo(name = "learn_level_attempt_id")
   private long id;
 
-  @NonNull
   @ColumnInfo(name = "player_id")
   private long playerId;
 
-  @NonNull
   @ColumnInfo(name = "scale_id")
   private long scaleId;
 
-  @ColumnInfo
+  @ColumnInfo(index = true)
   private int difficulty;
 
   @NonNull
   private Date timestamp = new Date();
 
+  @ColumnInfo(name = "correct_coins")
   private int correctCoins;
 
+  @ColumnInfo(name = "incorrect_coins")
   private int incorrectCoins;
 
   public long getId() {

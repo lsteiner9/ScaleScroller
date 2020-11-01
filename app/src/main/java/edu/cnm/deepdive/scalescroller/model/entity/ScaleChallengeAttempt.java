@@ -3,9 +3,13 @@ package edu.cnm.deepdive.scalescroller.model.entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(
+    indices = {
+        @Index(value = {"challenge_attempt_id", "scale_id"}, unique = true)
+    },
     foreignKeys = {
         @ForeignKey(
             entity = Scale.class,
