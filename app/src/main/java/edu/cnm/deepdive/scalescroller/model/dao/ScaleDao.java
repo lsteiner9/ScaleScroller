@@ -14,13 +14,13 @@ import java.util.List;
 public interface ScaleDao {
 
   @Insert
-  Single<Scale> insert(Scale scale);
+  Single<Long> insert(Scale scale);
 
   @Insert
-  Single<List<Scale>> insert(Scale...scales);
+  Single<List<Long>> insert(Scale...scales);
 
   @Insert
-  Single<List<Scale>> insert(Collection<Scale> scales);
+  Single<List<Long>> insert(Collection<Scale> scales);
 
   @Delete
   Single<Integer> delete(Scale scale);

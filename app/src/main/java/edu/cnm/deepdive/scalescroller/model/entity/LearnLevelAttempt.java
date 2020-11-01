@@ -33,10 +33,10 @@ public class LearnLevelAttempt {
   @ColumnInfo(name = "learn_level_attempt_id")
   private long id;
 
-  @ColumnInfo(name = "player_id")
+  @ColumnInfo(name = "player_id", index = true)
   private long playerId;
 
-  @ColumnInfo(name = "scale_id")
+  @ColumnInfo(name = "scale_id", index = true)
   private long scaleId;
 
   @ColumnInfo(index = true)

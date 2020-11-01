@@ -14,13 +14,13 @@ import java.util.List;
 public interface ChallengeAttemptDao {
 
   @Insert
-  Single<ChallengeAttempt> insert(ChallengeAttempt attempt);
+  Single<Long> insert(ChallengeAttempt attempt);
 
   @Insert
-  Single<List<ChallengeAttempt>> insert(ChallengeAttempt... attempts);
+  Single<List<Long>> insert(ChallengeAttempt... attempts);
 
   @Insert
-  Single<List<ChallengeAttempt>> insert(Collection<ChallengeAttempt> attempts);
+  Single<List<Long>> insert(Collection<ChallengeAttempt> attempts);
 
   @Delete
   Single<Integer> delete(ChallengeAttempt attempt);

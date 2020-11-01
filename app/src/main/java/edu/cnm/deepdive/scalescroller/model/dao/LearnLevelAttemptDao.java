@@ -14,13 +14,13 @@ import java.util.List;
 public interface LearnLevelAttemptDao {
 
   @Insert
-  Single<LearnLevelAttempt> insert(LearnLevelAttempt attempt);
+  Single<Long> insert(LearnLevelAttempt attempt);
 
   @Insert
-  Single<List<LearnLevelAttempt>> insert(LearnLevelAttempt...attempts);
+  Single<List<Long>> insert(LearnLevelAttempt...attempts);
 
   @Insert
-  Single<List<LearnLevelAttempt>> insert(Collection<LearnLevelAttempt> attempts);
+  Single<List<Long>> insert(Collection<LearnLevelAttempt> attempts);
 
   @Delete
   Single<Integer> delete(LearnLevelAttempt attempt);

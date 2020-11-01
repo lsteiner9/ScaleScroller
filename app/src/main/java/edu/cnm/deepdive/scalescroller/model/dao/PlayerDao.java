@@ -27,19 +27,19 @@ public interface PlayerDao {
   Single<Integer> update(Player player);
 
   @Update
-  Single<List<Integer>> update(Player...players);
+  Single<Integer> update(Player...players);
 
   @Update
-  Single<List<Integer>> update(Collection<Player> players);
+  Single<Integer> update(Collection<Player> players);
 
   @Delete
   Single<Integer> delete(Player player);
 
   @Delete
-  Single<List<Integer>> delete(Player...players);
+  Single<Integer> delete(Player...players);
 
   @Delete
-  Single<List<Integer>> delete(Collection<Player> players);
+  Single<Integer> delete(Collection<Player> players);
 
   @Query("SELECT * FROM Player ORDER BY username DESC")
   LiveData<List<Player>> selectAll();

@@ -34,7 +34,7 @@ public class ScaleChallengeAttempt {
   @ColumnInfo(name = "challenge_attempt_id")
   private long attemptId;
 
-  @ColumnInfo(name = "scale_id")
+  @ColumnInfo(name = "scale_id", index = true)
   private long scaleId;
 
   public long getId() {

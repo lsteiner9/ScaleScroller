@@ -14,13 +14,13 @@ import java.util.List;
 public interface ScaleChallengeAttemptDao {
 
   @Insert
-  Single<ScaleChallengeAttempt> insert(ScaleChallengeAttempt attempt);
+  Single<Long> insert(ScaleChallengeAttempt attempt);
 
   @Insert
-  Single<List<ScaleChallengeAttempt>> insert(ScaleChallengeAttempt...attempts);
+  Single<List<Long>> insert(ScaleChallengeAttempt...attempts);
 
   @Insert
-  Single<List<ScaleChallengeAttempt>> insert(Collection<ScaleChallengeAttempt> attempts);
+  Single<List<Long>> insert(Collection<ScaleChallengeAttempt> attempts);
 
   @Delete
   Single<Integer> delete(ScaleChallengeAttempt attempt);

@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
 
 @Entity(
     indices = {
@@ -89,10 +90,12 @@ public class Scale {
       return scaleName.ordinal() % 12;
     }
 
+    @TypeConverter
     public static Integer letterNameToInteger(LetterName scale) {
       return (scale != null)? scale.ordinal() : null;
     }
 
+    @TypeConverter
     public static LetterName integerToLetterName(Integer value) {
       return (value != null)? LetterName.values()[value] : null;
     }

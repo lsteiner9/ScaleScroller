@@ -1,0 +1,396 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c64a53736b331dd254e2c922af22a23b",
+    "entities": [
+      {
+        "tableName": "Player",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`player_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `oauth_key` INTEGER NOT NULL, `username` TEXT NOT NULL, `highest_learn_level` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "player_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "oauthKey",
+            "columnName": "oauth_key",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "highestLearnLevel",
+            "columnName": "highest_learn_level",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "player_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Player_oauth_key",
+            "unique": true,
+            "columnNames": [
+              "oauth_key"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Player_oauth_key` ON `${TABLE_NAME}` (`oauth_key`)"
+          },
+          {
+            "name": "index_Player_username",
+            "unique": true,
+            "columnNames": [
+              "username"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Player_username` ON `${TABLE_NAME}` (`username`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "LearnLevelAttempt",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`learn_level_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `scale_id` INTEGER NOT NULL, `difficulty` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`scale_id`) REFERENCES `Scale`(`scale_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "learn_level_attempt_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playerId",
+            "columnName": "player_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scaleId",
+            "columnName": "scale_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "difficulty",
+            "columnName": "difficulty",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "correctCoins",
+            "columnName": "correct_coins",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "incorrectCoins",
+            "columnName": "incorrect_coins",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "learn_level_attempt_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_LearnLevelAttempt_timestamp",
+            "unique": true,
+            "columnNames": [
+              "timestamp"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_LearnLevelAttempt_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
+          },
+          {
+            "name": "index_LearnLevelAttempt_player_id",
+            "unique": false,
+            "columnNames": [
+              "player_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_LearnLevelAttempt_player_id` ON `${TABLE_NAME}` (`player_id`)"
+          },
+          {
+            "name": "index_LearnLevelAttempt_scale_id",
+            "unique": false,
+            "columnNames": [
+              "scale_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_LearnLevelAttempt_scale_id` ON `${TABLE_NAME}` (`scale_id`)"
+          },
+          {
+            "name": "index_LearnLevelAttempt_difficulty",
+            "unique": false,
+            "columnNames": [
+              "difficulty"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_LearnLevelAttempt_difficulty` ON `${TABLE_NAME}` (`difficulty`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Player",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "player_id"
+            ],
+            "referencedColumns": [
+              "player_id"
+            ]
+          },
+          {
+            "table": "Scale",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "scale_id"
+            ],
+            "referencedColumns": [
+              "scale_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "ChallengeAttempt",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `total_score` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "challenge_attempt_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playerId",
+            "columnName": "player_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalScore",
+            "columnName": "total_score",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "correctCoins",
+            "columnName": "correct_coins",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "incorrectCoins",
+            "columnName": "incorrect_coins",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "challenge_attempt_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_ChallengeAttempt_timestamp",
+            "unique": true,
+            "columnNames": [
+              "timestamp"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_ChallengeAttempt_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
+          },
+          {
+            "name": "index_ChallengeAttempt_player_id",
+            "unique": false,
+            "columnNames": [
+              "player_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_player_id` ON `${TABLE_NAME}` (`player_id`)"
+          },
+          {
+            "name": "index_ChallengeAttempt_total_score",
+            "unique": false,
+            "columnNames": [
+              "total_score"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_total_score` ON `${TABLE_NAME}` (`total_score`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Player",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "player_id"
+            ],
+            "referencedColumns": [
+              "player_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Scale",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `scale_name` INTEGER NOT NULL, `difficulty` INTEGER NOT NULL, `degrees` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "scale_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scaleName",
+            "columnName": "scale_name",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "difficulty",
+            "columnName": "difficulty",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "degrees",
+            "columnName": "degrees",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "scale_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Scale_scale_name",
+            "unique": true,
+            "columnNames": [
+              "scale_name"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Scale_scale_name` ON `${TABLE_NAME}` (`scale_name`)"
+          },
+          {
+            "name": "index_Scale_difficulty",
+            "unique": true,
+            "columnNames": [
+              "difficulty"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Scale_difficulty` ON `${TABLE_NAME}` (`difficulty`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ScaleChallengeAttempt",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `challenge_attempt_id` INTEGER NOT NULL, `scale_id` INTEGER NOT NULL, FOREIGN KEY(`scale_id`) REFERENCES `Scale`(`scale_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`challenge_attempt_id`) REFERENCES `ChallengeAttempt`(`challenge_attempt_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "scale_challenge_attempt_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attemptId",
+            "columnName": "challenge_attempt_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scaleId",
+            "columnName": "scale_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "scale_challenge_attempt_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_ScaleChallengeAttempt_challenge_attempt_id_scale_id",
+            "unique": true,
+            "columnNames": [
+              "challenge_attempt_id",
+              "scale_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_challenge_attempt_id_scale_id` ON `${TABLE_NAME}` (`challenge_attempt_id`, `scale_id`)"
+          },
+          {
+            "name": "index_ScaleChallengeAttempt_scale_id",
+            "unique": false,
+            "columnNames": [
+              "scale_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_scale_id` ON `${TABLE_NAME}` (`scale_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Scale",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "scale_id"
+            ],
+            "referencedColumns": [
+              "scale_id"
+            ]
+          },
+          {
+            "table": "ChallengeAttempt",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "challenge_attempt_id"
+            ],
+            "referencedColumns": [
+              "challenge_attempt_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c64a53736b331dd254e2c922af22a23b')"
+    ]
+  }
+}

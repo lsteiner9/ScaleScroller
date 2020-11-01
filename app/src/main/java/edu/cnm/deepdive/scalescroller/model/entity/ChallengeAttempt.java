@@ -28,7 +28,7 @@ public class ChallengeAttempt {
   @ColumnInfo(name = "challenge_attempt_id")
   private long id;
 
-  @ColumnInfo(name = "player_id")
+  @ColumnInfo(name = "player_id", index = true)
   private long playerId;
 
   @ColumnInfo(name = "total_score", index = true)
