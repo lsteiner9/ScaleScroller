@@ -1,9 +1,13 @@
 package edu.cnm.deepdive.scalescroller.model.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
 import androidx.room.Update;
+import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
+import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import io.reactivex.Single;
 import java.util.Collection;
@@ -39,10 +43,14 @@ public interface ScaleChallengeAttemptDao {
   @Delete
   Single<Integer> delete(Collection<ScaleChallengeAttempt> attempts);
 
-  //I think I need to use a pojo or two here to select a list of scales
-  // and a list of challenge attempts
-//  @Query("SELECT")
-//  LiveData<ScaleWithChallengeAttempt> select()
-//  @Query("SELECT")
-//  LiveData<ChallengeAttemptWith> select()
+  @Query("SELECT ca.* FROM ChallengeAttempt AS ca "
+      + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.challenge_attempt_id = ca.challenge_attempt_id "
+      + "WHERE sca.scale_id = :scaleId ORDER BY ca.total_score DESC")
+  LiveData<List<ChallengeAttempt>> getChallengeAttempts(long scaleId);
+
+  @Query("SELECT s.* FROM Scale AS s "
+      + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.scale_id = s.scale_id "
+      + "WHERE sca.challenge_attempt_id = :attemptId ORDER BY s.difficulty ASC")
+  LiveData<List<Scale>> getScalesForAttempt(long attemptId);
+
 }

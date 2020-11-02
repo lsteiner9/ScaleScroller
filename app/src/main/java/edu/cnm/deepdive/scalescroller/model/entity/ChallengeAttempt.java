@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import edu.cnm.deepdive.scalescroller.model.entity.Scale.LetterName;
 import java.util.Date;
 
 @Entity(
@@ -42,6 +43,10 @@ public class ChallengeAttempt {
 
   @ColumnInfo(name = "incorrect_coins")
   private int incorrectCoins;
+
+  @NonNull
+  @ColumnInfo(name = "last_level")
+  private LetterName lastLevel;
 
   public long getId() {
     return id;
@@ -90,5 +95,14 @@ public class ChallengeAttempt {
 
   public void setIncorrectCoins(int incorrectCoins) {
     this.incorrectCoins = incorrectCoins;
+  }
+
+  @NonNull
+  public LetterName getLastLevel() {
+    return lastLevel;
+  }
+
+  public void setLastLevel(@NonNull LetterName lastLevel) {
+    this.lastLevel = lastLevel;
   }
 }

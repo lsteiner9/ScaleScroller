@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c64a53736b331dd254e2c922af22a23b",
+    "identityHash": "b03654e840535da0f9cf0b4271b33b06",
     "entities": [
       {
         "tableName": "Player",
@@ -173,7 +173,7 @@
       },
       {
         "tableName": "ChallengeAttempt",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `total_score` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `total_score` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, `last_level` INTEGER NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -208,6 +208,12 @@
           {
             "fieldPath": "incorrectCoins",
             "columnName": "incorrect_coins",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastLevel",
+            "columnName": "last_level",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -390,7 +396,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c64a53736b331dd254e2c922af22a23b')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b03654e840535da0f9cf0b4271b33b06')"
     ]
   }
 }

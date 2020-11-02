@@ -27,12 +27,16 @@ public class Scale {
   private int difficulty;
 
   /*This int will represent the scale degrees by bit:
-    32 bits:
       7 for white key note names: CDEFGAB
       + 7 for sharp notes C#D#E#F#G#A#B#
       + 7 for flat notes CbDbEbFbGbAbBb
       + 3 bits for unusual note names: FxCxGx
       + 8 empty (unused) bits
+    So, for example, the int -33554432 (0b1111111_0000000_0000000_000_00000000)
+    signifies C Major; the int 64488448 (0b0000001_1110110_0000000_100_00000000)
+    signifies g# harmonic minor; the int -805062656 (0b1101000_0000000_1110111_000_00000000)
+    signifies eb melodic minor.
+    It might be better to have the empty bits at the beginning for smaller more manageable numbers?
    */
   private int degrees;
 

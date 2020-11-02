@@ -19,8 +19,11 @@ import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.service.ScaleScrollerDatabase.Converters;
 import java.util.Date;
 
-@Database(entities = {Player.class, LearnLevelAttempt.class, ChallengeAttempt.class, Scale.class,
-    ScaleChallengeAttempt.class}, version = 1, exportSchema = true)
+@Database(
+    entities = {Player.class, LearnLevelAttempt.class, ChallengeAttempt.class,
+        Scale.class, ScaleChallengeAttempt.class},
+    version = 1,
+    exportSchema = true)
 @TypeConverters(value = {Converters.class, Scale.LetterName.class})
 public abstract class ScaleScrollerDatabase extends RoomDatabase {
 
