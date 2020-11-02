@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import io.reactivex.Single;
 import java.util.Collection;
@@ -21,6 +22,15 @@ public interface ScaleDao {
 
   @Insert
   Single<List<Long>> insert(Collection<Scale> scales);
+
+  @Update
+  Single<Integer> update(Scale scale);
+
+  @Update
+  Single<Integer> update(Scale...scales);
+
+  @Update
+  Single<Integer> update(Collection<Scale> scales);
 
   @Delete
   Single<Integer> delete(Scale scale);

@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import io.reactivex.Single;
 import java.util.Collection;
@@ -21,6 +22,15 @@ public interface ChallengeAttemptDao {
 
   @Insert
   Single<List<Long>> insert(Collection<ChallengeAttempt> attempts);
+
+  @Update
+  Single<Integer> update(ChallengeAttempt attempt);
+
+  @Update
+  Single<Integer> update(ChallengeAttempt...attempts);
+
+  @Update
+  Single<Integer> update(Collection<ChallengeAttempt> attempts);
 
   @Delete
   Single<Integer> delete(ChallengeAttempt attempt);

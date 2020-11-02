@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 import edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt;
 import io.reactivex.Single;
 import java.util.Collection;
@@ -21,6 +22,15 @@ public interface LearnLevelAttemptDao {
 
   @Insert
   Single<List<Long>> insert(Collection<LearnLevelAttempt> attempts);
+
+  @Update
+  Single<Integer> update(LearnLevelAttempt attempt);
+
+  @Update
+  Single<Integer> update(LearnLevelAttempt...attempts);
+
+  @Update
+  Single<Integer> update(Collection<LearnLevelAttempt> attempts);
 
   @Delete
   Single<Integer> delete(LearnLevelAttempt attempt);
