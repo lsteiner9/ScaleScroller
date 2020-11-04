@@ -32,3 +32,5 @@
 	* Learn mode level reached
 
 	* Challenge mode high score board
+	
+> [Return to previous page](index.md#project-description)

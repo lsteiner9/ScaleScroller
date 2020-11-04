@@ -10,7 +10,7 @@
 
 * Technology: Phone: Samsung Galaxy J3 (with Kids Mode enabled)
 
-* Attitude: Confident, competitive, curious, daddy's girl
+* Personality: Confident, competitive, curious, daddy's girl
 
 * Needs/Goals/Features: 
 
@@ -61,3 +61,5 @@ As a 9-year-old taking piano lessons, my teacher quizzes me about key signatures
    * Camilla takes her phone to her dad and shows him her results before closing the app.
    
 **Frequency of Use:** Every day
+
+> [Return to previous page](index.md#intended-users)

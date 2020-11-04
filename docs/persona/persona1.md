@@ -10,7 +10,7 @@
 
 * Technology: Phone: Motorola Moto G7
 
-* Attitude: Optimistic and outgoing, always up for a new challenge or for ways to improve. 
+* Personality: Optimistic and outgoing, always up for a new challenge or for ways to improve. 
 
 * Needs/Goals/Features: 
 
@@ -61,3 +61,5 @@ I'm an adult who has never studied written music before, but I would like to lea
    * Frank closes the app for now. Time to practice.
    
 **Frequency of Use:** Every other day, if time
+
+> [Return to previous page](index.md#intended-users)
