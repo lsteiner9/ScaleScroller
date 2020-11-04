@@ -36,7 +36,7 @@ public class Scale {
     signifies C Major; the int 64488448 (0b0000001_1110110_0000000_100_00000000)
     signifies g# harmonic minor; the int -805062656 (0b1101000_0000000_1110111_000_00000000)
     signifies eb melodic minor.
-    It might be better to have the empty bits at the beginning for smaller more manageable numbers?
+    It might be better to have the empty bits at the beginning for smaller, more manageable numbers?
    */
   private int degrees;
 
