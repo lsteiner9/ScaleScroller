@@ -26,6 +26,8 @@ public class Scale {
 
   private int difficulty;
 
+  //actually do I even need this? difficulty and degrees can be gotten from the lettername enum, right?
+  // so maybe just getters are needed?
   /*This int will represent the scale degrees by bit:
       7 for white key note names: CDEFGAB
       + 7 for sharp notes C#D#E#F#G#A#B#
@@ -74,24 +76,92 @@ public class Scale {
   }
 
   public enum LetterName {
-    C_MAJOR, C_SHARP_MAJOR, D_MAJOR, E_FLAT_MAJOR, E_MAJOR, F_MAJOR,
-    F_SHARP_MAJOR, G_MAJOR, A_FLAT_MAJOR, A_MAJOR, B_FLAT_MAJOR, B_MAJOR,
+    C_FLAT_MAJOR (5, 14), //placeholder scaleDegrees numbers, but correct difficulties
+    C_MAJOR (5, 0),
+    C_SHARP_MAJOR (5, 13),
+    D_FLAT_MAJOR (5, 10),
+    D_MAJOR (5, 3),
+    E_FLAT_MAJOR (5, 6),
+    E_MAJOR (5, 7),
+    F_MAJOR (5, 2),
+    F_SHARP_MAJOR (5, 11),
+    G_FLAT_MAJOR (5, 12),
+    G_MAJOR (5, 1),
+    A_FLAT_MAJOR (5, 8),
+    A_MAJOR (5, 5),
+    B_FLAT_MAJOR (5, 4),
+    B_MAJOR (5, 9),
+    // 0-14
 
-    C_MINOR, C_SHARP_MINOR, D_MINOR, E_FLAT_MINOR, E_MINOR, F_MINOR,
-    F_SHARP_MINOR, G_MINOR, A_FLAT_MINOR, A_MINOR, B_FLAT_MINOR, B_MINOR,
+    C_NATURAL_MINOR (5, 21),
+    C_SHARP_NATURAL_MINOR (5, 22),
+    D_NATURAL_MINOR (5, 17),
+    D_SHARP_NATURAL_MINOR (5, 27),
+    E_FLAT_NATURAL_MINOR (5, 26),
+    E_NATURAL_MINOR (5, 16),
+    F_NATURAL_MINOR (5, 23),
+    F_SHARP_NATURAL_MINOR (5, 20),
+    G_NATURAL_MINOR (5, 19),
+    G_SHARP_NATURAL_MINOR (5, 24),
+    A_FLAT_NATURAL_MINOR (5, 29),
+    A_NATURAL_MINOR (5, 15),
+    A_SHARP_NATURAL_MINOR (5, 28),
+    B_FLAT_NATURAL_MINOR (5, 25),
+    B_NATURAL_MINOR (5, 18),
+    // 15-29
 
-    C_MINOR_HAR, C_SHARP_MINOR_HAR, D_MINOR_HAR, E_FLAT_MINOR_HAR,
-    E_MINOR_HAR, F_MINOR_HAR, F_SHARP_MINOR_HAR, G_MINOR_HAR,
-    A_FLAT_MINOR_HAR, A_MINOR_HAR, B_FLAT_MINOR_HAR, B_MINOR_HAR,
+    C_HARMONIC_MINOR (5, 36),
+    C_SHARP_HARMONIC_MINOR (5, 37),
+    D_HARMONIC_MINOR (5, 32),
+    D_SHARP_HARMONIC_MINOR (5, 42),
+    E_FLAT_HARMONIC_MINOR (5, 41),
+    E_HARMONIC_MINOR (5, 31),
+    F_HARMONIC_MINOR (5, 38),
+    F_SHARP_HARMONIC_MINOR (5, 35),
+    G_HARMONIC_MINOR (5, 34),
+    G_SHARP_HARMONIC_MINOR (5, 39),
+    A_FLAT_HARMONIC_MINOR (5, 44),
+    A_HARMONIC_MINOR (5, 30),
+    A_SHARP_HARMONIC_MINOR (5, 43),
+    B_FLAT_HARMONIC_MINOR (5, 40),
+    B_HARMONIC_MINOR (5, 33),
+    // 30-44
 
-    C_MINOR_MEL, C_SHARP_MINOR_MEL, D_MINOR_MEL, E_FLAT_MINOR_MEL,
-    E_MINOR_MEL, F_MINOR_MEL, F_SHARP_MINOR_MEL, G_MINOR_MEL,
-    A_FLAT_MINOR_MEL, A_MINOR_MEL, B_FLAT_MINOR_MEL, B_MINOR_MEL,
+    C_MELODIC_MINOR (5, 51),
+    C_SHARP_MELODIC_MINOR (5, 52),
+    D_MELODIC_MINOR (5, 47),
+    D_SHARP_MELODIC_MINOR (5, 56),
+    E_FLAT_MELODIC_MINOR (5, 57),
+    E_MELODIC_MINOR (5, 46),
+    F_MELODIC_MINOR (5, 53),
+    F_SHARP_MELODIC_MINOR (5, 50),
+    G_MELODIC_MINOR (5, 49),
+    G_SHARP_MELODIC_MINOR (5, 54),
+    A_FLAT_MELODIC_MINOR (5, 59),
+    A_MELODIC_MINOR (5, 45),
+    A_SHARP_MELODIC_MINOR (5, 58),
+    B_FLAT_MELODIC_MINOR (5, 55),
+    B_MELODIC_MINOR (5, 48);
+    // 45-59
 
-    USER_SUBMITTED;
+    private final int scaleDegrees;
+    private final int difficulty;
+
+    LetterName(int scaleDegrees, int difficulty) {
+      this.scaleDegrees = scaleDegrees;
+      this.difficulty = difficulty;
+    }
 
     public int startingNote(LetterName scaleName) {
       return scaleName.ordinal() % 12;
+    }
+
+    public int getScaleDegrees() {
+      return scaleDegrees;
+    }
+
+    public int getDifficulty() {
+      return difficulty;
     }
 
     @TypeConverter
@@ -102,6 +172,16 @@ public class Scale {
     @TypeConverter
     public static LetterName integerToLetterName(Integer value) {
       return (value != null)? LetterName.values()[value] : null;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+      return super.toString()
+          .toLowerCase()
+          .replace('_', ' ')
+          .replace("sharp", "#")
+          .replace("flat", "b");
     }
   }
 }

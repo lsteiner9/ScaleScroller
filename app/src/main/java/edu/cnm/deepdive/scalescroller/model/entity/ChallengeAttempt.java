@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale.LetterName;
 import java.util.Date;
 
+@SuppressWarnings("NotNullFieldNotInitialized")
 @Entity(
     indices = {
         @Index(value = {"timestamp"}, unique = true)
