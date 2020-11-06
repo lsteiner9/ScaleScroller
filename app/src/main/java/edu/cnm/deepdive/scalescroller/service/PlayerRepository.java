@@ -2,6 +2,7 @@ package edu.cnm.deepdive.scalescroller.service;
 
 import android.content.Context;
 import edu.cnm.deepdive.scalescroller.model.dao.PlayerDao;
+import io.reactivex.Completable;
 
 public class PlayerRepository {
 

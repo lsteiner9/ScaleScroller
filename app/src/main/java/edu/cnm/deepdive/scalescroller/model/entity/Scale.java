@@ -19,6 +19,10 @@ public class Scale {
   @ColumnInfo(name = "scale_id")
   private long id;
 
+  private Note tonic;
+
+  private Mode mode;
+
   @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
   @ColumnInfo(name = "scale_name")
@@ -26,21 +30,7 @@ public class Scale {
 
   private int difficulty;
 
-  //actually do I even need this? difficulty and degrees can be gotten from the lettername enum, right?
-  // so maybe just getters are needed?
-  // Maybe a better thing would be to use another enum for note names and use an EnumSet for each of these?
-  /*This int will represent the scale degrees by bit:
-      7 for white key note names: CDEFGAB
-      + 7 for sharp notes C#D#E#F#G#A#B#
-      + 7 for flat notes CbDbEbFbGbAbBb
-      + 3 bits for unusual note names: FxCxGx
-      + 8 empty (unused) bits
-    So, for example, the int -33554432 (0b1111111_0000000_0000000_000_00000000)
-    signifies C Major; the int 64488448 (0b0000001_1110110_0000000_100_00000000)
-    signifies g# harmonic minor; the int -805062656 (0b1101000_0000000_1110111_000_00000000)
-    signifies eb melodic minor.
-    It might be better to have the empty bits at the beginning for smaller, more manageable numbers?
-   */
+
   private int degrees;
 
   public long getId() {
@@ -147,7 +137,7 @@ public class Scale {
 
     private final int scaleDegrees;
     private final int difficulty;
-    // Trying code from effective java, but toMap doesn't work?
+    // Trying code from effective java, but toMap doesn't work???
 //    private static final Map<String, LetterName> stringToEnum = Stream.of(values()).collect(toMap(Object::toString, e -> e));
 
     LetterName(int scaleDegrees, int difficulty) {
