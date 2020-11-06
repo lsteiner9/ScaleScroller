@@ -50,7 +50,7 @@ public interface ScaleChallengeAttemptDao {
 
   @Query("SELECT s.* FROM Scale AS s "
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.scale_id = s.scale_id "
-      + "WHERE sca.challenge_attempt_id = :attemptId ORDER BY s.difficulty ASC")
+      + "WHERE sca.challenge_attempt_id = :attemptId ORDER BY s.mode AND s.tonic ASC")
   LiveData<List<Scale>> getScalesForAttempt(long attemptId);
 
 }

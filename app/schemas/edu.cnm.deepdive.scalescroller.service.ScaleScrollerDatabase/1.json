@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b03654e840535da0f9cf0b4271b33b06",
+    "identityHash": "1e068b8f4106425cb1c5627f17ca7027",
     "entities": [
       {
         "tableName": "Player",
@@ -173,7 +173,7 @@
       },
       {
         "tableName": "ChallengeAttempt",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `total_score` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, `last_level` INTEGER NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `total_score` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, `last_scale` BLOB NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -212,9 +212,9 @@
             "notNull": true
           },
           {
-            "fieldPath": "lastLevel",
-            "columnName": "last_level",
-            "affinity": "INTEGER",
+            "fieldPath": "lastScale",
+            "columnName": "last_scale",
+            "affinity": "BLOB",
             "notNull": true
           }
         ],
@@ -248,6 +248,14 @@
               "total_score"
             ],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_total_score` ON `${TABLE_NAME}` (`total_score`)"
+          },
+          {
+            "name": "index_ChallengeAttempt_last_scale",
+            "unique": false,
+            "columnNames": [
+              "last_scale"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_last_scale` ON `${TABLE_NAME}` (`last_scale`)"
           }
         ],
         "foreignKeys": [
@@ -266,7 +274,7 @@
       },
       {
         "tableName": "Scale",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `scale_name` INTEGER NOT NULL, `difficulty` INTEGER NOT NULL, `degrees` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tonic` INTEGER NOT NULL, `mode` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -275,20 +283,14 @@
             "notNull": true
           },
           {
-            "fieldPath": "scaleName",
-            "columnName": "scale_name",
+            "fieldPath": "tonic",
+            "columnName": "tonic",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "difficulty",
-            "columnName": "difficulty",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "degrees",
-            "columnName": "degrees",
+            "fieldPath": "mode",
+            "columnName": "mode",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -301,20 +303,13 @@
         },
         "indices": [
           {
-            "name": "index_Scale_scale_name",
+            "name": "index_Scale_tonic_mode",
             "unique": true,
             "columnNames": [
-              "scale_name"
+              "tonic",
+              "mode"
             ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Scale_scale_name` ON `${TABLE_NAME}` (`scale_name`)"
-          },
-          {
-            "name": "index_Scale_difficulty",
-            "unique": true,
-            "columnNames": [
-              "difficulty"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Scale_difficulty` ON `${TABLE_NAME}` (`difficulty`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Scale_tonic_mode` ON `${TABLE_NAME}` (`tonic`, `mode`)"
           }
         ],
         "foreignKeys": []
@@ -396,7 +391,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b03654e840535da0f9cf0b4271b33b06')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1e068b8f4106425cb1c5627f17ca7027')"
     ]
   }
 }

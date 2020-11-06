@@ -6,7 +6,6 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import edu.cnm.deepdive.scalescroller.model.entity.Scale.LetterName;
 import java.util.Date;
 
 @SuppressWarnings("NotNullFieldNotInitialized")
@@ -46,8 +45,8 @@ public class ChallengeAttempt {
   private int incorrectCoins;
 
   @NonNull
-  @ColumnInfo(name = "last_level")
-  private LetterName lastLevel;
+  @ColumnInfo(name = "last_scale", typeAffinity = ColumnInfo.BLOB, index = true)
+  private Scale lastScale;
 
   public long getId() {
     return id;
@@ -99,11 +98,11 @@ public class ChallengeAttempt {
   }
 
   @NonNull
-  public LetterName getLastLevel() {
-    return lastLevel;
+  public Scale getLastScale() {
+    return lastScale;
   }
 
-  public void setLastLevel(@NonNull LetterName lastLevel) {
-    this.lastLevel = lastLevel;
+  public void setLastScale(@NonNull Scale lastScale) {
+    this.lastScale = lastScale;
   }
 }

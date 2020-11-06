@@ -6,6 +6,8 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+import edu.cnm.deepdive.scalescroller.model.entity.Mode;
+import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import io.reactivex.Single;
 import java.util.Collection;
@@ -44,6 +46,6 @@ public interface ScaleDao {
   @Query("SELECT * FROM Scale WHERE scale_id = :id")
   LiveData<Scale> select(long id);
 
-  @Query("SELECT * FROM Scale WHERE difficulty = :difficulty")
-  LiveData<Scale> select(int difficulty);
+  @Query("SELECT * FROM Scale WHERE mode = :mode AND tonic = :note")
+  LiveData<Scale> select(Mode mode, Note note);
 }

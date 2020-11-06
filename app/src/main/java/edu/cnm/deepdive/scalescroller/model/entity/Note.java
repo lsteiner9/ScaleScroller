@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.scalescroller.model.entity;
 
+import androidx.annotation.NonNull;
 import java.util.Arrays;
 
 public enum Note {
@@ -45,5 +46,15 @@ public enum Note {
 
   public boolean isTonic() {
     return tonic;
+  }
+
+  @NonNull
+  @Override
+  public String toString() {
+    return super.toString()
+        .toLowerCase()
+        .replace('_', ' ')
+        .replace("sharp", "#")
+        .replace("flat", "b");
   }
 }
