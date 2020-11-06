@@ -28,6 +28,7 @@ public class Scale {
 
   //actually do I even need this? difficulty and degrees can be gotten from the lettername enum, right?
   // so maybe just getters are needed?
+  // Maybe a better thing would be to use another enum for note names and use an EnumSet for each of these?
   /*This int will represent the scale degrees by bit:
       7 for white key note names: CDEFGAB
       + 7 for sharp notes C#D#E#F#G#A#B#
@@ -146,6 +147,8 @@ public class Scale {
 
     private final int scaleDegrees;
     private final int difficulty;
+    // Trying code from effective java, but toMap doesn't work?
+//    private static final Map<String, LetterName> stringToEnum = Stream.of(values()).collect(toMap(Object::toString, e -> e));
 
     LetterName(int scaleDegrees, int difficulty) {
       this.scaleDegrees = scaleDegrees;
@@ -183,5 +186,10 @@ public class Scale {
           .replace("sharp", "#")
           .replace("flat", "b");
     }
+
+//    public static Optional<LetterName> fromString(String str) {
+//      return Optional.ofNullable(stringToEnum.get(str));
+//    }
+
   }
 }

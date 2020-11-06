@@ -52,4 +52,4 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 	* Sign-in will let the user associate their data with a username and account. This will allow multiple players to use the app on the same device. 
 	
-	* Sign-in is required for all users in order to keep consistent representation of user data. If SignIn is unavailable (for example, temporary lack of internet access), the app will still work, but will not be able to change users from the currently signed-in user.
+	* Sign-in is not required. If SignIn is unavailable, the app will still work, and user data will still be recorded for one player per device.
