@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Mode {
+
   MAJOR(new byte[]{2, 4, 5, 7, 9, 11}) {
     @Override
     protected Map<Note, Integer> getDifficulty() {

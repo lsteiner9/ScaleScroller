@@ -46,7 +46,12 @@ public interface ScaleChallengeAttemptDao {
   @Query("SELECT ca.* FROM ChallengeAttempt AS ca "
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.challenge_attempt_id = ca.challenge_attempt_id "
       + "WHERE sca.scale_id = :scaleId ORDER BY ca.total_score DESC")
-  LiveData<List<ChallengeAttempt>> getChallengeAttempts(long scaleId);
+  LiveData<List<ChallengeAttempt>> getChallengeAttemptsByScore(long scaleId);
+
+  @Query("SELECT ca.* FROM ChallengeAttempt AS ca "
+      + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.challenge_attempt_id = ca.challenge_attempt_id "
+      + "WHERE sca.scale_id = :scaleId ORDER BY ca.timestamp DESC")
+  LiveData<List<ChallengeAttempt>> getChallengeAttemptsByDate(long scaleId);
 
   @Query("SELECT s.* FROM Scale AS s "
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.scale_id = s.scale_id "

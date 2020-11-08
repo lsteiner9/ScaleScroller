@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+@SuppressWarnings("NotNullFieldNotInitialized")
 @Entity(
     indices = {
         @Index(value = {"tonic", "mode"}, unique = true)

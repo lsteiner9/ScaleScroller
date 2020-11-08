@@ -15,13 +15,13 @@ import java.util.List;
 public interface PlayerDao {
 
   @Insert
-  Single<Long> select(Player player);
+  Single<Long> insert(Player player);
 
   @Insert
-  Single<List<Long>> select(Player...players);
+  Single<List<Long>> insert(Player...players);
 
   @Insert
-  Single<List<Long>> select(Collection<Player> players);
+  Single<List<Long>> insert(Collection<Player> players);
 
   @Update
   Single<Integer> update(Player player);
@@ -41,7 +41,7 @@ public interface PlayerDao {
   @Delete
   Single<Integer> delete(Collection<Player> players);
 
-  @Query("SELECT * FROM Player ORDER BY username DESC")
+  @Query("SELECT * FROM Player ORDER BY username ASC")
   LiveData<List<Player>> selectAll();
 
   @Query("SELECT * FROM Player WHERE player_id = :id")

@@ -42,11 +42,11 @@ public interface ChallengeAttemptDao {
   Single<Integer> delete(Collection<ChallengeAttempt> attempts);
 
   @Query("SELECT * FROM ChallengeAttempt WHERE player_id = :id ORDER BY timestamp DESC")
-  LiveData<ChallengeAttempt> select(long id);
+  LiveData<ChallengeAttempt> selectAll(long id);
 
-  @Query("SELECT * FROM ChallengeAttempt WHERE player_id = :id ORDER BY total_score DESC LIMIT 10")
-  LiveData<ChallengeAttempt> selectPlayerHighScores(long id);
+  @Query("SELECT * FROM ChallengeAttempt WHERE player_id = :id ORDER BY total_score DESC LIMIT :numScores")
+  LiveData<ChallengeAttempt> selectPlayerHighScores(long id, int numScores);
 
-  @Query("SELECT * FROM ChallengeAttempt ORDER BY total_score DESC LIMIT 10")
-  LiveData<ChallengeAttempt> selectHighScores();
+  @Query("SELECT * FROM ChallengeAttempt ORDER BY total_score DESC LIMIT :numScores")
+  LiveData<ChallengeAttempt> selectHighScores(int numScores);
 }

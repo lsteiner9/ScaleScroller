@@ -2,6 +2,8 @@ package edu.cnm.deepdive.scalescroller;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
+import edu.cnm.deepdive.scalescroller.service.ScaleScrollerDatabase;
+import io.reactivex.schedulers.Schedulers;
 
 public class ScaleScrollerApplication extends Application {
 
@@ -9,5 +11,8 @@ public class ScaleScrollerApplication extends Application {
   public void onCreate() {
     super.onCreate();
     Stetho.initializeWithDefaults(this);
+    ScaleScrollerDatabase.getInstance().getChallengeAttemptDao().delete()
+        .subscribeOn(Schedulers.io())
+        .subscribe();
   }
 }

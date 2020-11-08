@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import java.util.Arrays;
 
 public enum Note {
+
   C_FLAT(true, 11),
   C(true, 0),
   C_SHARP(true, 1),

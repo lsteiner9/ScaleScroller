@@ -1,8 +1,11 @@
 package edu.cnm.deepdive.scalescroller.service;
 
 import android.content.Context;
+import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.scalescroller.model.dao.PlayerDao;
+import edu.cnm.deepdive.scalescroller.model.entity.Player;
 import io.reactivex.Completable;
+import java.util.List;
 
 public class PlayerRepository {
 
@@ -14,4 +17,33 @@ public class PlayerRepository {
     ScaleScrollerDatabase database = ScaleScrollerDatabase.getInstance();
     playerDao = database.getPlayerDao();
   }
+
+  public Completable save(Player player) {
+    return (player.getId() == 0)
+        ? playerDao.insert(player)
+            .doAfterSuccess(player::setId)
+            .ignoreElement()
+        : playerDao.update(player)
+            .ignoreElement();
+  }
+
+  public Completable delete(Player player) {
+    return (player.getId() == 0)
+        ? Completable.complete()
+        : playerDao.delete(player)
+            .ignoreElement();
+  }
+
+  LiveData<List<Player>> getAllPlayers() {
+    return playerDao.selectAll();
+  }
+
+  LiveData<Player> getPlayer(long id) {
+    return playerDao.select(id);
+  }
+
+  LiveData<Player> getPlayerByOauth(long oauth) {
+    return playerDao.selectWithOauth(oauth);
+  }
+
 }

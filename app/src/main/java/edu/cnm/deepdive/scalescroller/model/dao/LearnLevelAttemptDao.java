@@ -42,8 +42,8 @@ public interface LearnLevelAttemptDao {
   Single<Integer> delete(Collection<LearnLevelAttempt> attempts);
 
   @Query("SELECT * FROM LearnLevelAttempt WHERE player_id = :id")
-  LiveData<LearnLevelAttempt> select(long id);
+  LiveData<LearnLevelAttempt> selectAll(long id);
 
-  @Query("SELECT * FROM LearnLevelAttempt ORDER BY difficulty DESC LIMIT 1")
-  LiveData<LearnLevelAttempt> selectHighestDifficulty();
+  @Query("SELECT * FROM LearnLevelAttempt WHERE player_id = :id ORDER BY difficulty DESC LIMIT 1")
+  LiveData<LearnLevelAttempt> selectHighestDifficulty(long id);
 }
