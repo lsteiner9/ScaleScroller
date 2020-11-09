@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.scalescroller.model.entity.Player;
@@ -14,13 +15,13 @@ import java.util.List;
 @Dao
 public interface PlayerDao {
 
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
   Single<Long> insert(Player player);
 
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
   Single<List<Long>> insert(Player...players);
 
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
   Single<List<Long>> insert(Collection<Player> players);
 
   @Update
@@ -41,11 +42,11 @@ public interface PlayerDao {
   @Delete
   Single<Integer> delete(Collection<Player> players);
 
-  @Query("SELECT * FROM Player ORDER BY username ASC")
-  LiveData<List<Player>> selectAll();
-
   @Query("SELECT * FROM Player WHERE player_id = :id")
   LiveData<Player> select(long id);
+
+  @Query("SELECT * FROM Player ORDER BY username ASC")
+  LiveData<List<Player>> selectAll();
 
   @Query("SELECT * FROM Player WHERE oauth_key = :oauth")
   LiveData<Player> selectWithOauth(long oauth);

@@ -44,16 +44,17 @@ public interface ChallengeAttemptDao {
   @Query("SELECT * FROM ChallengeAttempt WHERE challenge_attempt_id = :id")
   LiveData<ChallengeAttempt> select(long id);
 
-  @Query("SELECT * FROM CHALLENGEATTEMPT ORDER BY timestamp")
+  @Query("SELECT * FROM CHALLENGEATTEMPT ORDER BY timestamp DESC")
   LiveData<List<ChallengeAttempt>> selectAll();
 
   @Query("SELECT * FROM ChallengeAttempt WHERE player_id = :id ORDER BY timestamp DESC")
-  LiveData<List<ChallengeAttempt>> selectAllFromPlayer(long id);
-
-  @Query("SELECT * FROM ChallengeAttempt WHERE player_id = :id ORDER BY total_score DESC LIMIT :numScores")
-  LiveData<List<ChallengeAttempt>> selectPlayerHighScores(long id, int numScores);
+  LiveData<List<ChallengeAttempt>> selectAllWithPlayer(long id);
 
   @Query("SELECT * FROM ChallengeAttempt ORDER BY total_score DESC LIMIT :numScores")
   LiveData<List<ChallengeAttempt>> selectHighScores(int numScores);
+
+  @Query("SELECT * FROM ChallengeAttempt WHERE player_id = :id "
+      + "ORDER BY total_score DESC LIMIT :numScores")
+  LiveData<List<ChallengeAttempt>> selectPlayerHighScores(long id, int numScores);
 
 }

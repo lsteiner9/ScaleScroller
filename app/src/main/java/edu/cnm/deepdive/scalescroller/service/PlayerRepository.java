@@ -34,15 +34,15 @@ public class PlayerRepository {
             .ignoreElement();
   }
 
-  public LiveData<List<Player>> getAllPlayers() {
-    return playerDao.selectAll();
-  }
-
-  public LiveData<Player> getPlayer(long id) {
+  public LiveData<Player> get(long id) {
     return playerDao.select(id);
   }
 
-  public LiveData<Player> getPlayerByOauth(long oauth) {
+  public LiveData<List<Player>> getAll() {
+    return playerDao.selectAll();
+  }
+
+  public LiveData<Player> getByOauth(long oauth) {
     return playerDao.selectWithOauth(oauth);
   }
 

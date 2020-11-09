@@ -38,23 +38,23 @@ public class ScaleChallengeAttemptRepository {
   }
 
   public LiveData<ScaleChallengeAttempt> getScaleChallengeAttempt(long id) {
-    return scaleChallengeAttemptDao.selectScaleChallengeAttempt(id);
+    return scaleChallengeAttemptDao.select(id);
   }
 
   public LiveData<List<ScaleChallengeAttempt>> getAllScaleChallengeAttempts() {
-    return scaleChallengeAttemptDao.selectAllScaleChallengeAttempts();
+    return scaleChallengeAttemptDao.selectAll();
   }
 
-  public LiveData<List<Scale>> getScalesForChallengeAttempt(long attemptId) {
-    return scaleChallengeAttemptDao.selectScalesForAttempt(attemptId);
+  public LiveData<List<ChallengeAttempt>> getChallengeAttemptsForScaleByScore(long scaleId) {
+    return scaleChallengeAttemptDao.selectChallengeAttemptsByScore(scaleId);
   }
 
   public LiveData<List<ChallengeAttempt>> getChallengeAttemptsForScaleByDate(long scaleId) {
     return scaleChallengeAttemptDao.selectChallengeAttemptsByDate(scaleId);
   }
 
-  public LiveData<List<ChallengeAttempt>> getChallengeAttemptsForScaleByScore(long scaleId) {
-    return scaleChallengeAttemptDao.selectChallengeAttemptsByScore(scaleId);
+  public LiveData<List<Scale>> getScalesForChallengeAttempt(long attemptId) {
+    return scaleChallengeAttemptDao.selectScales(attemptId);
   }
 
 }

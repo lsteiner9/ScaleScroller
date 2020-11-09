@@ -18,39 +18,40 @@ public class ChallengeAttemptRepository {
     challengeAttemptDao = database.getChallengeAttemptDao();
   }
 
-  public Completable save(ChallengeAttempt challengeAttempt) {
-    return (challengeAttempt.getId() == 0)
-        ? challengeAttemptDao.insert(challengeAttempt)
-        .doAfterSuccess(challengeAttempt::setId)
+  public Completable save(ChallengeAttempt attempt) {
+    return (attempt.getId() == 0)
+        ? challengeAttemptDao.insert(attempt)
+        .doAfterSuccess(attempt::setId)
         .ignoreElement()
-        : challengeAttemptDao.update(challengeAttempt)
+        : challengeAttemptDao.update(attempt)
             .ignoreElement();
   }
 
-  public Completable delete(ChallengeAttempt challengeAttempt) {
-    return (challengeAttempt.getId() == 0)
+  public Completable delete(ChallengeAttempt attempt) {
+    return (attempt.getId() == 0)
         ? Completable.complete()
-        : challengeAttemptDao.delete(challengeAttempt)
+        : challengeAttemptDao.delete(attempt)
             .ignoreElement();
   }
 
-  public LiveData<ChallengeAttempt> getChallengeAttempt(long id) {
+  public LiveData<ChallengeAttempt> get(long id) {
     return challengeAttemptDao.select(id);
   }
 
-  public LiveData<List<ChallengeAttempt>> getAllChallengeAttempts() {
+  public LiveData<List<ChallengeAttempt>> getAll() {
     return challengeAttemptDao.selectAll();
   }
 
-  public LiveData<List<ChallengeAttempt>> getChallengeAttemptsByPlayer(long id) {
-    return challengeAttemptDao.selectAllFromPlayer(id);
+  public LiveData<List<ChallengeAttempt>> getByPlayer(long id) {
+    return challengeAttemptDao.selectAllWithPlayer(id);
+  }
+
+  public LiveData<List<ChallengeAttempt>> getAllHighScores(int numScores) {
+    return challengeAttemptDao.selectHighScores(numScores);
   }
 
   public LiveData<List<ChallengeAttempt>> getHighScoresByPlayer(long id, int numScores) {
     return challengeAttemptDao.selectPlayerHighScores(id, numScores);
   }
 
-  public LiveData<List<ChallengeAttempt>> getAllHighScores(int numScores) {
-    return challengeAttemptDao.selectHighScores(numScores);
-  }
 }

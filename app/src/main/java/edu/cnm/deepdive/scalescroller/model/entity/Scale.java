@@ -18,10 +18,13 @@ public class Scale {
   @ColumnInfo(name = "scale_id")
   private long id;
 
+  // TODO uncomment and add type converters
   @NonNull
+//  @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
   private Note tonic;
 
   @NonNull
+//  @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
   private Mode mode;
 
   public long getId() {
@@ -49,4 +52,5 @@ public class Scale {
   public void setMode(@NonNull Mode mode) {
     this.mode = mode;
   }
+
 }

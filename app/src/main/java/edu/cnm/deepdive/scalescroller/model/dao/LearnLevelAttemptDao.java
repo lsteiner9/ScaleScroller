@@ -44,9 +44,13 @@ public interface LearnLevelAttemptDao {
   @Query("SELECT * FROM LearnLevelAttempt WHERE learn_level_attempt_id = :id")
   LiveData<LearnLevelAttempt> select(long id);
 
-  @Query("SELECT * FROM LearnLevelAttempt WHERE player_id = :id")
-  LiveData<List<LearnLevelAttempt>> selectAllFromPlayer(long id);
+  @Query("SELECT * FROM LearnLevelAttempt")
+  LiveData<List<LearnLevelAttempt>> selectAll();
 
-  @Query("SELECT * FROM LearnLevelAttempt WHERE player_id = :id ORDER BY difficulty DESC LIMIT 1")
-  LiveData<LearnLevelAttempt> selectHighestDifficulty(long id);
+  @Query("SELECT * FROM LearnLevelAttempt WHERE player_id = :id")
+  LiveData<List<LearnLevelAttempt>> selectAllWithPlayer(long id);
+
+  @Query("SELECT * FROM LearnLevelAttempt WHERE player_id = :id "
+      + "ORDER BY difficulty DESC LIMIT 1")
+  LiveData<LearnLevelAttempt> selectHighestDifficultyWithPlayer(long id);
 }

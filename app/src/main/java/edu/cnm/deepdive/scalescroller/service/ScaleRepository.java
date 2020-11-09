@@ -36,16 +36,16 @@ public class ScaleRepository {
             .ignoreElement();
   }
 
-  public LiveData<Scale> getScale(long id) {
+  public LiveData<Scale> get(long id) {
     return scaleDao.select(id);
   }
 
-  public LiveData<List<Scale>> getAllScales() {
+  public LiveData<List<Scale>> getAll() {
     return scaleDao.selectAll();
   }
 
-  public LiveData<Scale> getScaleByName(Mode mode, Note note) {
-    return scaleDao.selectWithName(mode, note);
+  public LiveData<Scale> getByScaleName(Mode mode, Note note) {
+    return scaleDao.selectWithScaleName(mode, note);
   }
 
 
