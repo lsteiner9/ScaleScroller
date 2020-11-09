@@ -8,10 +8,10 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 ## [Intended users](intended-users.md) 
 
+## [Cloud- or device-based services or data](cloud-device-services.md)
+
 ## [Wireframe diagram](wireframe.md)
 
 ## [Entity-relationship diagram](erd.md)
 
 ## [Data model implementation](data-model-implementation.md)
-   
-## [Cloud- or device-based services or data](cloud-device-services.md)

@@ -81,6 +81,6 @@ CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_scale_id` ON `ScaleChall
 
 ```
 
-[Download `ddl.sql`](sql/ddl.sql)
+[`ddl.sql` on GitHub](https://github.com/lsteiner9/scale-scroller/blob/master/docs/sql/ddl.sql)
 
 [*Return to previous page*](index.md)
