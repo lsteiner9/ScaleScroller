@@ -14,4 +14,6 @@
 
 	* Sign-in will let the user associate their data with a username and account. This will allow multiple players to use the app on the same device. 
 	
-	* Sign-in is not required. If SignIn is unavailable, the app will still work, and user data will still be recorded for one player per device.
+	* Sign-in is not required. If SignIn is unavailable or the user wishes to play as a guest, the app will still work. User data will still be recorded, with one player per device.
+
+[*Return to previous page*](index.md)

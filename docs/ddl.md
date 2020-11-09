@@ -81,4 +81,6 @@ CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_scale_id` ON `ScaleChall
 
 ```
 
-[`ddl.sql`](sql/ddl.sql)
+[Download `ddl.sql`](sql/ddl.sql)
+
+[*Return to previous page*](index.md)

@@ -12,6 +12,6 @@ Learn mode allows the user to start with the easiest scales and gradually teache
 
 ## [Entity-relationship diagram](erd.md)
 
-## [Data Model Implementation](data-model-implementation.md)
+## [Data model implementation](data-model-implementation.md)
    
 ## [Cloud- or device-based services or data](cloud-device-services.md)

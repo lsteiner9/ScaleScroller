@@ -1,6 +1,6 @@
 ## Data model implementation
 
-Links redirect to the associated class within the ScaleScroller GitHub repository.
+Links for classes and interfaces redirect to the associated class within the ScaleScroller GitHub repository.
 
 ### Entity classes
 
@@ -30,7 +30,7 @@ Links redirect to the associated class within the ScaleScroller GitHub repositor
 
 * [ScaleScrollerDatabase](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/ScaleScrollerDatabase.java)
 
-### Repository Classes
+### Repository classes
 
 * [PlayerRepository](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/PlayerRepository.java)
 
@@ -40,8 +40,10 @@ Links redirect to the associated class within the ScaleScroller GitHub repositor
 
 * [ScaleRepository](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/ScaleRepository.java)
 
-* [ScaleChallengeAttemptRepository](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/LearnLevelAttemptRepository.java)
+* [ScaleChallengeAttemptRepository](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/ScaleChallengeAttemptRepository.java)
 
 ### Data definition language
 
 * [DDL](ddl.md)
+
+[*Return to previous page*](index.md)
