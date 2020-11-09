@@ -46,6 +46,9 @@ public interface ScaleDao {
   @Query("SELECT * FROM Scale WHERE scale_id = :id")
   LiveData<Scale> select(long id);
 
+  @Query("SELECT * FROM Scale")
+  LiveData<List<Scale>> selectAll();
+
   @Query("SELECT * FROM Scale WHERE mode = :mode AND tonic = :note")
-  LiveData<Scale> select(Mode mode, Note note);
+  LiveData<Scale> selectWithName(Mode mode, Note note);
 }

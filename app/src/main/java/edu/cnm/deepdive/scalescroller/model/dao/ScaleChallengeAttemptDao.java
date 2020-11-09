@@ -43,19 +43,25 @@ public interface ScaleChallengeAttemptDao {
   @Delete
   Single<Integer> delete(Collection<ScaleChallengeAttempt> attempts);
 
+  @Query("SELECT * FROM ScaleChallengeAttempt WHERE scale_challenge_attempt_id = :id")
+  LiveData<ScaleChallengeAttempt> selectScaleChallengeAttempt(long id);
+
+  @Query("SELECT * FROM ScaleChallengeAttempt")
+  LiveData<List<ScaleChallengeAttempt>> selectAllScaleChallengeAttempts();
+
   @Query("SELECT ca.* FROM ChallengeAttempt AS ca "
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.challenge_attempt_id = ca.challenge_attempt_id "
       + "WHERE sca.scale_id = :scaleId ORDER BY ca.total_score DESC")
-  LiveData<List<ChallengeAttempt>> getChallengeAttemptsByScore(long scaleId);
+  LiveData<List<ChallengeAttempt>> selectChallengeAttemptsByScore(long scaleId);
 
   @Query("SELECT ca.* FROM ChallengeAttempt AS ca "
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.challenge_attempt_id = ca.challenge_attempt_id "
       + "WHERE sca.scale_id = :scaleId ORDER BY ca.timestamp DESC")
-  LiveData<List<ChallengeAttempt>> getChallengeAttemptsByDate(long scaleId);
+  LiveData<List<ChallengeAttempt>> selectChallengeAttemptsByDate(long scaleId);
 
   @Query("SELECT s.* FROM Scale AS s "
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.scale_id = s.scale_id "
       + "WHERE sca.challenge_attempt_id = :attemptId ORDER BY s.mode AND s.tonic ASC")
-  LiveData<List<Scale>> getScalesForAttempt(long attemptId);
+  LiveData<List<Scale>> selectScalesForAttempt(long attemptId);
 
 }
