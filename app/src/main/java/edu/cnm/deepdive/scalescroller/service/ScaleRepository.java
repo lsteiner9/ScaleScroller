@@ -48,11 +48,11 @@ public class ScaleRepository {
     return scaleDao.selectWithScaleName(mode, tonic);
   }
 
-  public LiveData<Scale> getByTonic(Note tonic) {
+  public LiveData<List<Scale>> getByTonic(Note tonic) {
     return scaleDao.selectWithTonic(tonic);
   }
 
-  public LiveData<Scale> getByMode(Mode mode) {
+  public LiveData<List<Scale>> getByMode(Mode mode) {
     return scaleDao.selectWithMode(mode);
   }
 

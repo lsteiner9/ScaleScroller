@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `ChallengeAttempt`
     `timestamp`            INTEGER                           NOT NULL,
     `correct_coins`        INTEGER                           NOT NULL,
     `incorrect_coins`      INTEGER                           NOT NULL,
-    `last_scale`           BLOB                              NOT NULL,
+    `last_scale_id`        INTEGER                           NOT NULL,
     FOREIGN KEY (`player_id`) REFERENCES `Player` (`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE
 );
 
@@ -52,7 +52,7 @@ CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_player_id` ON `ChallengeAttem
 
 CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_total_score` ON `ChallengeAttempt` (`total_score`);
 
-CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_last_scale` ON `ChallengeAttempt` (`last_scale`);
+CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_last_scale_id` ON `ChallengeAttempt` (`last_scale_id`);
 
 CREATE TABLE IF NOT EXISTS `Scale`
 (
@@ -78,6 +78,8 @@ CREATE UNIQUE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_challenge_attempt
 CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_challenge_attempt_id` ON `ScaleChallengeAttempt` (`challenge_attempt_id`);
 
 CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_scale_id` ON `ScaleChallengeAttempt` (`scale_id`);
+
+CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_timestamp` ON `ScaleChallengeAttempt` (`timestamp`);
 
 ```
 

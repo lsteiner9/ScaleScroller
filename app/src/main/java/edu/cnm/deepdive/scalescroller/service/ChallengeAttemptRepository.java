@@ -46,7 +46,7 @@ public class ChallengeAttemptRepository {
     return challengeAttemptDao.selectAllWithPlayer(id);
   }
 
-  public LiveData<List<ChallengeAttempt>> getAllHighScores(int numScores) {
+  public LiveData<List<ChallengeAttempt>> getHighScores(int numScores) {
     return challengeAttemptDao.selectHighScores(numScores);
   }
 

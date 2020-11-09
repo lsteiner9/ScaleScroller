@@ -20,19 +20,19 @@ public class ScaleChallengeAttemptRepository {
     scaleChallengeAttemptDao = database.getScaleChallengeAttemptDao();
   }
 
-  public Completable save(ScaleChallengeAttempt scaleChallengeAttempt) {
-    return (scaleChallengeAttempt.getId() == 0)
-        ? scaleChallengeAttemptDao.insert(scaleChallengeAttempt)
-        .doAfterSuccess(scaleChallengeAttempt::setId)
+  public Completable save(ScaleChallengeAttempt attempt) {
+    return (attempt.getId() == 0)
+        ? scaleChallengeAttemptDao.insert(attempt)
+        .doAfterSuccess(attempt::setId)
         .ignoreElement()
-        : scaleChallengeAttemptDao.update(scaleChallengeAttempt)
+        : scaleChallengeAttemptDao.update(attempt)
             .ignoreElement();
   }
 
-  public Completable delete(ScaleChallengeAttempt scaleChallengeAttempt) {
-    return (scaleChallengeAttempt.getId() == 0)
+  public Completable delete(ScaleChallengeAttempt attempt) {
+    return (attempt.getId() == 0)
         ? Completable.complete()
-        : scaleChallengeAttemptDao.delete(scaleChallengeAttempt)
+        : scaleChallengeAttemptDao.delete(attempt)
             .ignoreElement();
   }
 
