@@ -1,6 +1,6 @@
 ## Intended users
 
-* Someone who wants to learn the basics of music theory
+* **Someone who wants to learn the basics of music theory**
 
     > I'm an adult who has never studied written music before, but I would like to learn. The learn mode of this app gradually teaches me scales in the form of a fun game, so I don't get bored with rote memorization.
 
@@ -10,7 +10,7 @@
 
     * [Camilla Bower](persona/persona2.md)
 
-* Someone who needs to practice their music theory knowledge
+* **Someone who needs to practice their music theory knowledge**
 
 	> I'm a high-school student who knows most of my scales, but there are some that take me a long time to figure out. The challenge mode of this app helps me to make sure my knowledge of all scales is up to speed.
 

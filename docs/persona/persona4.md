@@ -34,9 +34,9 @@ As a Theory 1 student at UND, my professor expects me to be able to write out sc
 
 **Title:** Scale practice
 
-**Description:** Trying to get a good enough score to get another score on the personal top 10 leaderboard.
+**Description:** Trying to get a good enough score to get on the personal top 10 leaderboard again.
 
-**Name of user & their role:** David, a music ed major at UND who has struggled with scales
+**Name of user & their role:** David, a music ed major at UND who has struggled with scales.
 
 **Usage Preconditions:** David has the app installed on his phone, and has already logged in. He has played challenge mode before, and has already filled up the leaderboard with high scores.
 
