@@ -12,9 +12,9 @@
 
 * Once the level has been beaten, the user can play again or go to the next level, with a new scale. 
 
-* Learn mode is the easiest mode. This mode starts with C Major and progresses around the circle of fifths with each level, gradually increasing difficulty (C Major, G Major, F Major, D Major, Bb Major, and so on). In learn mode, the user must beat the level in order to progress; otherwise, the current level must be repeated. This allows for practicing and learning each scale. 
+* Learn mode is the easier mode. This mode starts with C Major and progresses around the circle of fifths with each level, gradually increasing difficulty (C Major, G Major, F Major, D Major, Bb Major, and so on). In learn mode, the user must beat the level in order to progress; otherwise, the current level must be repeated. This allows for practicing and learning each scale. 
 
-* Challenge mode is more difficult: attempting challenge mode is not recommended until the user has already progressed through learn mode to learn most or all of their scales. In challenge mode, any scale can appear at any point. The speed of the sidescroller progressively gets faster as the user beats more scale levels. Once the game has ended, the score is recorded and added to a high score board, if applicable.
+* Challenge mode is harder: getting a high score is very difficult unless the user already knows their scales, either from progressing through learn mode or through external instruction. In challenge mode, any scale can appear at any point. The speed of the sidescroller progressively gets faster as the user beats more scale levels. Once the game has ended, the score is recorded and added to a high score board, if applicable.
 
 * Settings:
 
@@ -22,15 +22,4 @@
 
 	* Change speed of sidescroller (applies to learn mode only).
 	
-	* Change set of allowed scales (applies to challenge mode only).
-	
-	
-* Persistent Data:
-	
-	* Settings
-
-	* Learn mode level reached
-
-	* Challenge mode high score board
-	
-[Return to previous page](index.md#project-description)
+[*Return to previous page*](index.md)

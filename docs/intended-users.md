@@ -16,8 +16,8 @@
 
     * [Catey Rose Henderson](persona/persona3.md)
 
-	> As a Theory 1 student at UNM, my professor expects me to be able to write out scales very quickly, with complete accuracy. The challenge mode of this app lets me practice multiple different scales and gives me immediate feedback on the wrong notes - and my grade has already started going up!
+	> As a Theory 1 student at UND, my professor expects me to be able to write out scales very quickly, with complete accuracy. The challenge mode of this app lets me practice multiple different scales and gives me immediate feedback on the wrong notes - and my grade has already started going up!
 
     * [David Trujillo](persona/persona4.md)
     
-[Return to previous page](index.md#project-description)
+[*Return to previous page*](index.md)

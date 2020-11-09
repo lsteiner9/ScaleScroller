@@ -2,13 +2,13 @@
 
 ![Name](../img/persona2.jpg)
 
-* Name: Camilla Bower
+### Camilla Bower
 
 * Age: 9
 
 * Occupation: student   
 
-* Technology: Phone: Samsung Galaxy J3 (with Kids Mode enabled)
+* Phone: Samsung Galaxy J3 (with Kids Mode enabled)
 
 * Personality: Confident, competitive, curious, daddy's girl
 
@@ -18,7 +18,7 @@
         
     * Wants to spend all of the lesson time playing instead of talking so much.
     
-    * Wants to do everything her father does
+    * Wants to do everything her father does.
     
 * Frustrations:
 
@@ -34,13 +34,13 @@ As a 9-year-old taking piano lessons, my teacher quizzes me about key signatures
 
 **Title:** The Ab Major scale
 
-**Description:** Learning the notes that make up the Ab Major scale and practicing that knowledge
+**Description:** Learning the notes that make up the Ab Major scale and practicing that knowledge.
 
-**Name of user & their role:** Camilla, a young student who wants to get better at her scales 
+**Name of user & their role:** Camilla, a young student who wants to get better at her scales.
 
 **Usage Preconditions:** Camilla has the app installed on her phone, and her parents have logged her in previously with GoogleSignIn. 
 
-**Usage post conditions:** Camilla passed the level without losing any lives, and flaunts it over her father (who lost a life to pass an easier level).
+**Usage post conditions:** Camilla passed the level without losing any lives, and flaunts it over her father (who lost a life trying to pass an easier level).
 
 **Interaction Flow:**
 
@@ -62,4 +62,4 @@ As a 9-year-old taking piano lessons, my teacher quizzes me about key signatures
    
 **Frequency of Use:** Every day
 
-> [Return to previous page](index.md#intended-users)
+[*Return to previous page*](../intended-users.md)

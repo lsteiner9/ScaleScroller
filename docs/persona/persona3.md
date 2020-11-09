@@ -2,19 +2,19 @@
 
 ![Catey Rose](../img/persona3.jpg)
 
-* Name: Catey Rose Henderson
+### Catey Rose Henderson
 
 * Age: 17
 
 * Occupation: high-school student and flautist   
 
-* Technology: Phone: Samsung Galaxy S20 Plus
+* Phone: Samsung Galaxy S20 Plus
 
 * Personality: Creative, independent, curious, high-achiever 
 
 * Needs/Goals/Features: 
 
-    * Wants to be really proficient with her scales
+    * Wants to be really proficient with her scales.
     
     * A typical teenager, she is basically addicted to her phone - but she is self-aware, and tries to pack her phone with apps that help her learn/improve herself.  
     
@@ -34,9 +34,9 @@ I'm a high-school student who knows most of my scales, but there are some that t
 
 **Description:** Fitting in some scale practice as a break from math homework.
 
-**Name of user & their role:**  Catey Rose, a high-school flautist. 
+**Name of user & their role:**  Catey Rose, a high-school student and flautist. 
 
-**Usage Preconditions:** Catey Rose has the app installed on her phone and has logged in.
+**Usage Preconditions:** Catey Rose has the app installed on her phone and has previously logged in.
 
 **Usage post conditions:** Catey Rose has gotten some practice on random scales, and has had an enjoyable homework break.
 
@@ -46,7 +46,7 @@ I'm a high-school student who knows most of my scales, but there are some that t
    
    * The first random level is Gb major, and the name and notes of the scale appear on-screen for a few seconds.
    
-   * The level starts, and Catey Rose only loses one life before beating the level. 
+   * The level starts, and Catey Rose beats the level without losing any lives. 
    
    * The next random level is A harmonic minor, and again the scale information appears on-screen before the level starts. 
    
@@ -54,10 +54,10 @@ I'm a high-school student who knows most of my scales, but there are some that t
    
    * By the eighth scale level, the speed has gotten too fast, and Catey Rose has lost all three lives.
    
-   * The screen shows her total score, which wasn't enough to get her on her top-10 high-score ranking this time.
+   * The screen shows her total score, which wasn't enough to get her on her top 10 high-score ranking this time.
    
    * Catey Rose closes the app and goes back to math homework. 
    
 **Frequency of Use:** Every day
 
-> [Return to previous page](index.md#intended-users)
+[*Return to previous page*](../intended-users.md)
