@@ -1,10 +1,12 @@
 package edu.cnm.deepdive.scalescroller.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import java.util.Date;
 
 @Entity(
     indices = {
@@ -37,6 +39,10 @@ public class ScaleChallengeAttempt {
   @ColumnInfo(name = "scale_id", index = true)
   private long scaleId;
 
+  @NonNull
+  @ColumnInfo(index = true)
+  private Date timestamp = new Date();
+
   public long getId() {
     return id;
   }
@@ -59,5 +65,14 @@ public class ScaleChallengeAttempt {
 
   public void setScaleId(long scaleId) {
     this.scaleId = scaleId;
+  }
+
+  @NonNull
+  public Date getTimestamp() {
+    return timestamp;
+  }
+
+  public void setTimestamp(@NonNull Date timestamp) {
+    this.timestamp = timestamp;
   }
 }

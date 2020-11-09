@@ -24,9 +24,13 @@ public interface ScaleChallengeAttemptDao {
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.challenge_attempt_id = ca.challenge_attempt_id "
       + "WHERE sca.scale_id = :scaleId ORDER BY ca.timestamp DESC";
 
-  String SELECT_SCALES_QUERY = "SELECT s.* FROM Scale AS s "
+  String SELECT_SCALES_BY_NAME_QUERY = "SELECT s.* FROM Scale AS s "
       + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.scale_id = s.scale_id "
       + "WHERE sca.challenge_attempt_id = :attemptId ORDER BY s.mode AND s.tonic ASC";
+
+  String SELECT_SCALES_BY_DATE_QUERY = "SELECT s.* FROM Scale AS s "
+      + "INNER JOIN ScaleChallengeAttempt AS sca ON sca.scale_id = s.scale_id "
+      + "WHERE sca.challenge_attempt_id = :attemptId ORDER BY sca.timestamp ASC";
 
   @Insert
   Single<Long> insert(ScaleChallengeAttempt attempt);
@@ -67,7 +71,10 @@ public interface ScaleChallengeAttemptDao {
   @Query(SELECT_CHALLENGE_ATTEMPTS_BY_DATE_QUERY)
   LiveData<List<ChallengeAttempt>> selectChallengeAttemptsByDate(long scaleId);
 
-  @Query(SELECT_SCALES_QUERY)
-  LiveData<List<Scale>> selectScales(long attemptId);
+  @Query(SELECT_SCALES_BY_NAME_QUERY)
+  LiveData<List<Scale>> selectScalesByName(long attemptId);
+
+  @Query(SELECT_SCALES_BY_DATE_QUERY)
+  LiveData<List<Scale>> selectScalesByDate(long attemptId);
 
 }

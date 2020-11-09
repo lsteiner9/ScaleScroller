@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9b7bde699e173b9480fa86d71eed9fa7",
+    "identityHash": "0cbacb8c42dcf64ac88dfb6588b154c5",
     "entities": [
       {
         "tableName": "Player",
@@ -316,7 +316,7 @@
       },
       {
         "tableName": "ScaleChallengeAttempt",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `challenge_attempt_id` INTEGER NOT NULL, `scale_id` INTEGER NOT NULL, FOREIGN KEY(`scale_id`) REFERENCES `Scale`(`scale_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`challenge_attempt_id`) REFERENCES `ChallengeAttempt`(`challenge_attempt_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `challenge_attempt_id` INTEGER NOT NULL, `scale_id` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, FOREIGN KEY(`scale_id`) REFERENCES `Scale`(`scale_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`challenge_attempt_id`) REFERENCES `ChallengeAttempt`(`challenge_attempt_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -333,6 +333,12 @@
           {
             "fieldPath": "scaleId",
             "columnName": "scale_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -399,7 +405,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9b7bde699e173b9480fa86d71eed9fa7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0cbacb8c42dcf64ac88dfb6588b154c5')"
     ]
   }
 }

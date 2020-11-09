@@ -53,8 +53,12 @@ public class ScaleChallengeAttemptRepository {
     return scaleChallengeAttemptDao.selectChallengeAttemptsByDate(scaleId);
   }
 
-  public LiveData<List<Scale>> getScalesForChallengeAttempt(long attemptId) {
-    return scaleChallengeAttemptDao.selectScales(attemptId);
+  public LiveData<List<Scale>> getScalesForChallengeAttemptByName(long attemptId) {
+    return scaleChallengeAttemptDao.selectScalesByName(attemptId);
+  }
+
+  public LiveData<List<Scale>> getScalesForChallengeAttemptByDate(long attemptId) {
+    return scaleChallengeAttemptDao.selectScalesByDate(attemptId);
   }
 
 }
