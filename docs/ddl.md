@@ -1,3 +1,6 @@
+## Data model data definition language (DDL)
+
+```sqlite
 CREATE TABLE IF NOT EXISTS `Player`
 (
     `player_id`           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -75,3 +78,7 @@ CREATE UNIQUE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_challenge_attempt
 CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_challenge_attempt_id` ON `ScaleChallengeAttempt` (`challenge_attempt_id`);
 
 CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_scale_id` ON `ScaleChallengeAttempt` (`scale_id`);
+
+```
+
+[`ddl.sql`](sql/ddl.sql)

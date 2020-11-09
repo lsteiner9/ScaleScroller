@@ -1,4 +1,4 @@
-## Detailed Functionality
+## Detailed functionality
 
 * For each level, the app displays a scale name and its notes for several seconds.
 
@@ -33,4 +33,4 @@
 
 	* Challenge mode high score board
 	
-> [Return to previous page](index.md#project-description)
+[Return to previous page](index.md#project-description)
