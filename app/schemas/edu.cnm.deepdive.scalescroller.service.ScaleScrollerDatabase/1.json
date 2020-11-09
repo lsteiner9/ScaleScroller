@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0cbacb8c42dcf64ac88dfb6588b154c5",
+    "identityHash": "01aa453c4327661c3cfe94d66650a842",
     "entities": [
       {
         "tableName": "Player",
@@ -173,7 +173,7 @@
       },
       {
         "tableName": "ChallengeAttempt",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `total_score` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, `last_scale` BLOB NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`challenge_attempt_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `player_id` INTEGER NOT NULL, `total_score` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `correct_coins` INTEGER NOT NULL, `incorrect_coins` INTEGER NOT NULL, `last_scale_id` INTEGER NOT NULL, FOREIGN KEY(`player_id`) REFERENCES `Player`(`player_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -212,9 +212,9 @@
             "notNull": true
           },
           {
-            "fieldPath": "lastScale",
-            "columnName": "last_scale",
-            "affinity": "BLOB",
+            "fieldPath": "lastScaleId",
+            "columnName": "last_scale_id",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -250,12 +250,12 @@
             "createSql": "CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_total_score` ON `${TABLE_NAME}` (`total_score`)"
           },
           {
-            "name": "index_ChallengeAttempt_last_scale",
+            "name": "index_ChallengeAttempt_last_scale_id",
             "unique": false,
             "columnNames": [
-              "last_scale"
+              "last_scale_id"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_last_scale` ON `${TABLE_NAME}` (`last_scale`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_last_scale_id` ON `${TABLE_NAME}` (`last_scale_id`)"
           }
         ],
         "foreignKeys": [
@@ -374,6 +374,14 @@
               "scale_id"
             ],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_scale_id` ON `${TABLE_NAME}` (`scale_id`)"
+          },
+          {
+            "name": "index_ScaleChallengeAttempt_timestamp",
+            "unique": false,
+            "columnNames": [
+              "timestamp"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
           }
         ],
         "foreignKeys": [
@@ -405,7 +413,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0cbacb8c42dcf64ac88dfb6588b154c5')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '01aa453c4327661c3cfe94d66650a842')"
     ]
   }
 }

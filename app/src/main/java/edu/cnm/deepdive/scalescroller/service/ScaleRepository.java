@@ -44,9 +44,16 @@ public class ScaleRepository {
     return scaleDao.selectAll();
   }
 
-  public LiveData<Scale> getByScaleName(Mode mode, Note note) {
-    return scaleDao.selectWithScaleName(mode, note);
+  public LiveData<Scale> getByScaleName(Mode mode, Note tonic) {
+    return scaleDao.selectWithScaleName(mode, tonic);
   }
 
+  public LiveData<Scale> getByTonic(Note tonic) {
+    return scaleDao.selectWithTonic(tonic);
+  }
+
+  public LiveData<Scale> getByMode(Mode mode) {
+    return scaleDao.selectWithMode(mode);
+  }
 
 }

@@ -44,9 +44,8 @@ public class ChallengeAttempt {
   @ColumnInfo(name = "incorrect_coins")
   private int incorrectCoins;
 
-  @NonNull
-  @ColumnInfo(name = "last_scale", typeAffinity = ColumnInfo.BLOB, index = true)
-  private Scale lastScale;
+  @ColumnInfo(name = "last_scale_id", index = true)
+  private long lastScaleId;
 
   public long getId() {
     return id;
@@ -97,12 +96,11 @@ public class ChallengeAttempt {
     this.incorrectCoins = incorrectCoins;
   }
 
-  @NonNull
-  public Scale getLastScale() {
-    return lastScale;
+  public long getLastScaleId() {
+    return lastScaleId;
   }
 
-  public void setLastScale(@NonNull Scale lastScale) {
-    this.lastScale = lastScale;
+  public void setLastScaleId(long lastScaleId) {
+    this.lastScaleId = lastScaleId;
   }
 }

@@ -11,6 +11,7 @@ public class ScaleScrollerApplication extends Application {
   public void onCreate() {
     super.onCreate();
     Stetho.initializeWithDefaults(this);
+    ScaleScrollerDatabase.setContext(this);
     ScaleScrollerDatabase.getInstance().getChallengeAttemptDao().delete()
         .subscribeOn(Schedulers.io())
         .subscribe();

@@ -2,7 +2,6 @@ package edu.cnm.deepdive.scalescroller.service;
 
 import android.content.Context;
 import androidx.lifecycle.LiveData;
-import edu.cnm.deepdive.scalescroller.model.dao.ChallengeAttemptDao;
 import edu.cnm.deepdive.scalescroller.model.dao.ScaleChallengeAttemptDao;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
@@ -45,20 +44,20 @@ public class ScaleChallengeAttemptRepository {
     return scaleChallengeAttemptDao.selectAll();
   }
 
-  public LiveData<List<ChallengeAttempt>> getChallengeAttemptsForScaleByScore(long scaleId) {
-    return scaleChallengeAttemptDao.selectChallengeAttemptsByScore(scaleId);
+  public LiveData<List<ChallengeAttempt>> getChallengeAttemptsForScaleOrderByScore(long scaleId) {
+    return scaleChallengeAttemptDao.selectChallengeAttemptsOrderByScore(scaleId);
   }
 
-  public LiveData<List<ChallengeAttempt>> getChallengeAttemptsForScaleByDate(long scaleId) {
-    return scaleChallengeAttemptDao.selectChallengeAttemptsByDate(scaleId);
+  public LiveData<List<ChallengeAttempt>> getChallengeAttemptsForScaleOrderByDate(long scaleId) {
+    return scaleChallengeAttemptDao.selectChallengeAttemptsOrderByDate(scaleId);
   }
 
-  public LiveData<List<Scale>> getScalesForChallengeAttemptByName(long attemptId) {
-    return scaleChallengeAttemptDao.selectScalesByName(attemptId);
+  public LiveData<List<Scale>> getScalesForChallengeAttemptOrderByName(long attemptId) {
+    return scaleChallengeAttemptDao.selectScalesOrderByName(attemptId);
   }
 
-  public LiveData<List<Scale>> getScalesForChallengeAttemptByDate(long attemptId) {
-    return scaleChallengeAttemptDao.selectScalesByDate(attemptId);
+  public LiveData<List<Scale>> getScalesForChallengeAttemptOrderByDate(long attemptId) {
+    return scaleChallengeAttemptDao.selectScalesOrderByDate(attemptId);
   }
 
 }

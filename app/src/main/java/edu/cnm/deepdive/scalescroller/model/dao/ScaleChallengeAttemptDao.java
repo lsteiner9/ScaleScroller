@@ -66,15 +66,15 @@ public interface ScaleChallengeAttemptDao {
   LiveData<List<ScaleChallengeAttempt>> selectAll();
 
   @Query(SELECT_CHALLENGE_ATTEMPTS_BY_SCORE_QUERY)
-  LiveData<List<ChallengeAttempt>> selectChallengeAttemptsByScore(long scaleId);
+  LiveData<List<ChallengeAttempt>> selectChallengeAttemptsOrderByScore(long scaleId);
 
   @Query(SELECT_CHALLENGE_ATTEMPTS_BY_DATE_QUERY)
-  LiveData<List<ChallengeAttempt>> selectChallengeAttemptsByDate(long scaleId);
+  LiveData<List<ChallengeAttempt>> selectChallengeAttemptsOrderByDate(long scaleId);
 
   @Query(SELECT_SCALES_BY_NAME_QUERY)
-  LiveData<List<Scale>> selectScalesByName(long attemptId);
+  LiveData<List<Scale>> selectScalesOrderByName(long attemptId);
 
   @Query(SELECT_SCALES_BY_DATE_QUERY)
-  LiveData<List<Scale>> selectScalesByDate(long attemptId);
+  LiveData<List<Scale>> selectScalesOrderByDate(long attemptId);
 
 }
