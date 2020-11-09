@@ -21,7 +21,6 @@ import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.service.ScaleScrollerDatabase.Converters;
 import java.nio.ByteBuffer;
 import java.util.Date;
-import java.util.UUID;
 
 @Database(
     entities = {Player.class, LearnLevelAttempt.class, ChallengeAttempt.class,
@@ -62,6 +61,7 @@ public abstract class ScaleScrollerDatabase extends RoomDatabase {
   }
 
   public static class Converters {
+
     @TypeConverter
     public static Long dateToLong(Date value) {
       return (value != null) ? value.getTime() : null;
