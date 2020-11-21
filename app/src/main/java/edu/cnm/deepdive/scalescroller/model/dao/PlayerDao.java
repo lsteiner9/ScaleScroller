@@ -49,6 +49,6 @@ public interface PlayerDao {
   LiveData<List<Player>> selectAll();
 
   @Query("SELECT * FROM Player WHERE oauth_key = :oauth")
-  LiveData<Player> selectWithOauth(long oauth);
+  LiveData<Player> selectWithOauth(String oauth);
 
 }

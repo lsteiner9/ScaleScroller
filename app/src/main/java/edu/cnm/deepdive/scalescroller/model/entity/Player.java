@@ -20,7 +20,7 @@ public class Player {
   private long id;
 
   @ColumnInfo(name = "oauth_key")
-  private long oauthKey;
+  private String oauthKey;
 
   @NonNull
   private String username;
@@ -36,11 +36,11 @@ public class Player {
     this.id = id;
   }
 
-  public long getOauthKey() {
+  public String getOauthKey() {
     return oauthKey;
   }
 
-  public void setOauthKey(long oauthKey) {
+  public void setOauthKey(String oauthKey) {
     this.oauthKey = oauthKey;
   }
 

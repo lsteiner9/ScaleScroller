@@ -3,6 +3,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="edu.cnm.deepdive.scalescroller">
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+
   <application
     android:allowBackup="false"
     android:icon="@mipmap/ic_launcher"
@@ -17,16 +19,16 @@
       android:label="@string/title_activity_fullscreen"
       android:name=".controller.FullscreenActivity"
       android:theme="@style/FullscreenTheme">
-    </activity>
-    <activity
-      android:name=".controller.MainActivity"
-      android:screenOrientation="landscape"
-      android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+    </activity>
+    <activity
+      android:name=".controller.LoginActivity"
+      android:screenOrientation="landscape"
+      android:theme="@style/AppTheme.NoActionBar">
     </activity>
   </application>
 
