@@ -2,7 +2,11 @@
   <string name="app_name">ScaleScroller</string>
   <string name="title_activity_fullscreen">FullscreenActivity</string>
   <string name="scalescroller_with_notes">♪ ScaleScroller ♪</string>
-  <string name="dummy_button">Dummy Button</string>
-  <string name="dummy_content">DUMMY\nCONTENT</string>
+  <string name="continue_as_guest">Continue as Guest</string>
+  <string name="playing_as">playing as:</string>
+  <string name="guest">guest</string>
+  <string name="learn_mode">Learn Mode</string>
+  <string name="challenge_mode">Challenge Mode</string>
+  <string name="settings_high_scores">Settings/High Scores</string>
 
 </resources>

@@ -7,17 +7,94 @@
   android:background="@color/colorPrimary"
   tools:context=".controller.FullscreenActivity">
 
+  <androidx.appcompat.widget.LinearLayoutCompat
+    android:id="@+id/current_player"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
     <TextView
-      android:id="@+id/fullscreen_content"
-      android:textStyle="bold"
+      android:id="@+id/playing_as"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      android:text="@string/playing_as"
+      android:padding="8dp"/>
+
+<!--I'd like to (instead of a button) use underlined text that the user can click here, but don't
+know how yet-->
+    <Button
+      android:id="@+id/username_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/guest"
       android:padding="8dp"
-      android:keepScreenOn="true"
-      android:text="@string/scalescroller_with_notes"
-      android:textSize="30sp"/>
+      android:textColor="@color/colorPrimary"
+      android:textAllCaps="false"/>
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+
+  <TextView
+    android:id="@+id/scalescroller_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/button_layout"
+    android:padding="8dp"
+    android:keepScreenOn="true"
+    android:text="@string/scalescroller_with_notes"
+    android:textSize="50sp"
+    />
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+    android:id="@+id/button_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintTop_toBottomOf="@id/scalescroller_title"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <Button
+      android:id="@+id/learn_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/learn_mode"
+      android:textSize="24sp"
+      android:textAllCaps="false"
+      android:textColor="@color/colorPrimary"
+      android:padding="16dp"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginVertical="8dp"/>
+
+    <Button
+      android:id="@+id/challenge_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/challenge_mode"
+      android:textSize="24sp"
+      android:textAllCaps="false"
+      android:textColor="@color/colorPrimary"
+      android:padding="16dp"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginVertical="8dp"/>
+
+    <Button
+      android:id="@+id/settings_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/settings_high_scores"
+      android:textSize="24sp"
+      android:textAllCaps="false"
+      android:textColor="@color/colorPrimary"
+      android:padding="16dp"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginVertical="8dp"/>
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
