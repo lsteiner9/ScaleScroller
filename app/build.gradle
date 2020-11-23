@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: "androidx.navigation.safeargs"
 
 static def getProperty(String filename, String property) {
     Properties properties = new Properties()
@@ -22,10 +23,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        def connection_properties = "$projectDir/../../../services/scalescroller.properties"
-        buildConfigField "String", "CLIENT_ID",
-                quoted(getProperty(connection_properties,"client_id"))
 
         javaCompileOptions {
             annotationProcessorOptions {

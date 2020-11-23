@@ -2,6 +2,7 @@ package edu.cnm.deepdive.scalescroller;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
+import edu.cnm.deepdive.scalescroller.service.GoogleSignInService;
 import edu.cnm.deepdive.scalescroller.service.ScaleScrollerDatabase;
 import io.reactivex.schedulers.Schedulers;
 
@@ -15,5 +16,6 @@ public class ScaleScrollerApplication extends Application {
     ScaleScrollerDatabase.getInstance().getChallengeAttemptDao().delete()
         .subscribeOn(Schedulers.io())
         .subscribe();
+    GoogleSignInService.setContext(this);
   }
 }

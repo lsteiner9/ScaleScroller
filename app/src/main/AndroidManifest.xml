@@ -7,28 +7,29 @@
 
   <application
     android:allowBackup="false"
-    android:icon="@mipmap/ic_launcher"
+    android:icon="@mipmap/ic_scalescroller_launcher"
     android:label="@string/app_name"
     android:name=".ScaleScrollerApplication"
-    android:roundIcon="@mipmap/ic_launcher_round"
+    android:roundIcon="@mipmap/ic_scalescroller_launcher_round"
     android:supportsRtl="true"
-    android:theme="@style/AppTheme"
+    android:theme="@style/AppTheme.NoActionBar"
     tools:ignore="AllowBackup">
     <activity
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:label="@string/title_activity_fullscreen"
       android:name=".controller.FullscreenActivity"
+      android:screenOrientation="landscape"
       android:theme="@style/FullscreenTheme">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
     </activity>
     <activity
       android:name=".controller.LoginActivity"
       android:screenOrientation="landscape"
       android:theme="@style/AppTheme.NoActionBar">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
     </activity>
   </application>
 

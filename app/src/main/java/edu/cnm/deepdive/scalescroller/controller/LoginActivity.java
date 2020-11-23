@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.ActivityLoginBinding;
 import edu.cnm.deepdive.scalescroller.service.GoogleSignInService;
 import edu.cnm.deepdive.scalescroller.service.PlayerRepository;
@@ -15,7 +16,6 @@ import edu.cnm.deepdive.scalescroller.service.PlayerRepository;
 public class LoginActivity extends AppCompatActivity {
 
   private static final int LOGIN_REQUEST_CODE = 1000;
-  private static final String LOGIN_FAILURE_MESSAGE = "Unable to sign in with the provided credentials";
 
   private GoogleSignInService service;
   private ActivityLoginBinding binding;
@@ -46,8 +46,9 @@ public class LoginActivity extends AppCompatActivity {
       service.completeSignIn(data)
           .addOnSuccessListener(this::updateAndSwitch)
           .addOnFailureListener((throwable) ->
-              Toast.makeText(this, LOGIN_FAILURE_MESSAGE, Toast.LENGTH_LONG)
+              Toast.makeText(this, R.string.login_failure_message, Toast.LENGTH_LONG)
                   .show());
+
     } else {
       super.onActivityResult(requestCode, resultCode, data);
     }
@@ -57,13 +58,13 @@ public class LoginActivity extends AppCompatActivity {
     //noinspection ResultOfMethodCallIgnored
     playerRepository.createPlayer(account)
         .subscribe(
-            (player) -> {
+            (user) -> {
               Intent intent = new Intent(this, FullscreenActivity.class);
               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
               startActivity(intent);
             },
             (throwable) -> {
-              // TODO Remove this after development is complete
+              // TODO Remove this after development complete
               Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
               throw new RuntimeException(throwable);
             }

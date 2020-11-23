@@ -8,5 +8,6 @@
   <string name="learn_mode">Learn Mode</string>
   <string name="challenge_mode">Challenge Mode</string>
   <string name="settings_high_scores">Settings/High Scores</string>
+  <string name="login_failure_message">Unable to sign in with the provided credentials</string>
 
 </resources>

@@ -9,7 +9,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import edu.cnm.deepdive.scalescroller.BuildConfig;
 import io.reactivex.Single;
 
 public class GoogleSignInService {
@@ -25,7 +24,7 @@ public class GoogleSignInService {
         .requestEmail()
         .requestId()
         .requestProfile()
-        .requestIdToken(BuildConfig.CLIENT_ID)
+//        .requestIdToken(BuildConfig.CLIENT_ID)
         .build();
     client = GoogleSignIn.getClient(context, options);
   }
@@ -86,4 +85,5 @@ public class GoogleSignInService {
 
     private static final GoogleSignInService INSTANCE = new GoogleSignInService();
   }
+
 }
