@@ -15,13 +15,6 @@
     android:theme="@style/AppTheme.NoActionBar"
     tools:ignore="AllowBackup">
     <activity
-      android:configChanges="orientation|keyboardHidden|screenSize"
-      android:label="@string/title_activity_fullscreen"
-      android:name=".controller.FullscreenActivity"
-      android:screenOrientation="landscape"
-      android:theme="@style/FullscreenTheme">
-    </activity>
-    <activity
       android:name=".controller.LoginActivity"
       android:screenOrientation="landscape"
       android:theme="@style/AppTheme.NoActionBar">
@@ -30,6 +23,13 @@
 
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+    </activity>
+    <activity
+      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:label="@string/title_activity_fullscreen"
+      android:name=".controller.FullscreenActivity"
+      android:screenOrientation="landscape"
+      android:theme="@style/FullscreenTheme">
     </activity>
   </application>
 
