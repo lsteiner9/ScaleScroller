@@ -14,6 +14,7 @@
     android:layout_height="wrap_content"
     android:text="@string/playing_as_guest"
     android:padding="@dimen/standard_padding"
+    android:textSize="@dimen/small_text_size"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"/>
 
@@ -25,6 +26,7 @@
     android:text="@string/logout"
     android:padding="@dimen/standard_padding"
     android:textColor="@color/colorPrimary"
+    android:textSize="@dimen/small_text_size"
     android:backgroundTint="@color/textColor"
     android:textAllCaps="false"
     android:layout_margin="@dimen/standard_margin"
