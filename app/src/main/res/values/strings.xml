@@ -3,15 +3,15 @@
   <string name="title_activity_fullscreen">FullscreenActivity</string>
   <string name="scalescroller_with_notes">♪ ScaleScroller ♪</string>
   <string name="continue_as_guest">Continue as Guest</string>
-  <string name="playing_as">playing as:</string>
-  <string name="guest">guest</string>
+  <string name="playing_as_guest">playing as: guest</string>
   <string name="learn_mode">Learn Mode</string>
   <string name="challenge_mode">Challenge Mode</string>
   <string name="settings_high_scores">Settings/High Scores</string>
   <string name="login_failure_message">Unable to sign in with the provided credentials</string>
-  <string name="audio_settings">Audio Settings</string>
+  <string name="audio_settings">Volume Settings and Audio Settings</string>
   <string name="change_speed">Change Speed of Sidescroller (Learn Mode)</string>
   <string name="high_scores">High Scores (Challenge Mode)</string>
   <string name="select_a_scale">♪ Select a Scale ♪</string>
+  <string name="logout">logout</string>
 
 </resources>

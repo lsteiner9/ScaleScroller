@@ -16,34 +16,36 @@
     app:layout_constraintBottom_toTopOf="@id/sign_in"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    android:padding="8dp"
+    android:padding="@dimen/standard_padding"
     android:keepScreenOn="true"
     android:text="@string/scalescroller_with_notes"
-    android:textSize="50sp"/>
+    android:textSize="@dimen/title_text_size"/>
 
-
+<!--TODO make buttons closer together and bigger-->
   <com.google.android.gms.common.SignInButton
     android:id="@+id/sign_in"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="@dimen/standard_padding"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
 
-  <Button
+  <com.google.android.material.button.MaterialButton
     android:id="@+id/guest_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="@dimen/standard_padding"
+    android:text="@string/continue_as_guest"
+    android:textAllCaps="false"
+    android:textColor="@color/colorPrimary"
+    android:backgroundTint="@color/textColor"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/sign_in"
     app:layout_constraintBottom_toBottomOf="parent"
-    android:text="@string/continue_as_guest"
-    android:textAllCaps="false"
-    android:textColor="@color/colorPrimary"/>
+    app:cornerRadius="@dimen/standard_corner_radius"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

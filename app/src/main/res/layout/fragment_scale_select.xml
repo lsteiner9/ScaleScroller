@@ -5,32 +5,36 @@
   android:background="@color/colorPrimary"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/scale_select_back_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:icon="@drawable/ic_back_arrow_24"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
+
   <TextView
     android:id="@+id/select_scale"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/select_a_scale"
-    android:textSize="50sp"
+    android:textSize="@dimen/title_text_size"
+    android:padding="@dimen/standard_padding"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
 
-<!--  work on recycler view-->
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/scale_recycler"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:orientation="vertical"
-    android:padding="4dp"
+    android:padding="@dimen/standard_padding"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     app:layout_constraintTop_toBottomOf="@id/select_scale"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
-
-
-
-  </androidx.recyclerview.widget.RecyclerView>
+    app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

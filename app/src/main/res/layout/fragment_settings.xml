@@ -5,12 +5,21 @@
   android:background="@color/colorPrimary"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/settings_back_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:icon="@drawable/ic_back_arrow_24"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
+
   <TextView
     android:id="@+id/settings_title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/settings_high_scores"
-    android:textSize="50sp"
+    android:textSize="@dimen/title_text_size"
+    android:padding="@dimen/standard_padding"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
@@ -25,32 +34,44 @@
     app:layout_constraintEnd_toEndOf="parent">
 
     <!--  work to make buttons the right size-->
-    <Button
+    <com.google.android.material.button.MaterialButton
       android:id="@+id/audio_settings_button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
       android:text="@string/audio_settings"
-      android:padding="8dp"
+      android:textSize="@dimen/button_text_size"
+      android:padding="@dimen/standard_padding"
+      android:backgroundTint="@color/textColor"
       android:textColor="@color/colorPrimary"
-      android:textAllCaps="false"/>
+      android:textAllCaps="false"
+      android:layout_marginHorizontal="@dimen/standard_margin"
+      app:cornerRadius="@dimen/standard_corner_radius"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
       android:id="@+id/change_speed_button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
       android:text="@string/change_speed"
-      android:padding="8dp"
+      android:textSize="@dimen/button_text_size"
+      android:padding="@dimen/standard_padding"
+      android:backgroundTint="@color/textColor"
       android:textColor="@color/colorPrimary"
-      android:textAllCaps="false"/>
+      android:textAllCaps="false"
+      android:layout_marginHorizontal="@dimen/standard_margin"
+      app:cornerRadius="@dimen/standard_corner_radius"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
       android:id="@+id/high_scores_button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
       android:text="@string/high_scores"
-      android:padding="8dp"
+      android:textSize="@dimen/button_text_size"
+      android:padding="@dimen/standard_padding"
+      android:backgroundTint="@color/textColor"
       android:textColor="@color/colorPrimary"
-      android:textAllCaps="false"/>
+      android:textAllCaps="false"
+      android:layout_marginHorizontal="@dimen/standard_margin"
+      app:cornerRadius="@dimen/standard_corner_radius"/>
 
   </LinearLayout>
 
