@@ -32,18 +32,18 @@
       tools:text="G Major"
       android:layout_weight="3"/>
 
-<!--TODO figure out the best way to do the hearts-->
-
     <TextView
-      android:id="@+id/score"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_weight="2"
-      android:padding="@dimen/standard_padding"
-      android:textSize="@dimen/small_text_size"
-      tools:text="000375"/>
+    android:id="@+id/score"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="2"
+    android:padding="@dimen/standard_padding"
+    android:textSize="@dimen/medium_text_size"
+    tools:text="000375"/>
+
+    <!--TODO figure out the best way to do the hearts-->
 
   </LinearLayout>
-<!--  TODO insert surface view-->
+  <!--  TODO insert surface view or something-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
