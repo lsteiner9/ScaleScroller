@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.scalescroller.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,11 @@ public class SettingsFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentSettingsBinding.inflate(inflater);
+    binding.settingsBackButton.setOnClickListener((v) -> {
+      Intent intent = new Intent(getActivity(), TitleActivity.class)
+          .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(intent);
+    });
     return binding.getRoot();
   }
 

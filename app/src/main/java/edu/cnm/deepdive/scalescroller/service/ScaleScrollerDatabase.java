@@ -1,11 +1,13 @@
 package edu.cnm.deepdive.scalescroller.service;
 
 import android.app.Application;
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 import edu.cnm.deepdive.scalescroller.model.dao.ChallengeAttemptDao;
 import edu.cnm.deepdive.scalescroller.model.dao.LearnLevelAttemptDao;
 import edu.cnm.deepdive.scalescroller.model.dao.PlayerDao;
@@ -19,7 +21,11 @@ import edu.cnm.deepdive.scalescroller.model.entity.Player;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.service.ScaleScrollerDatabase.Converters;
+import io.reactivex.schedulers.Schedulers;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.PriorityQueue;
 
 @Database(
     entities = {Player.class, LearnLevelAttempt.class, ChallengeAttempt.class,
@@ -56,7 +62,30 @@ public abstract class ScaleScrollerDatabase extends RoomDatabase {
 
     private static final ScaleScrollerDatabase INSTANCE =
         Room.databaseBuilder(context, ScaleScrollerDatabase.class, DB_NAME)
+            .addCallback(new Callback())
             .build();
+  }
+
+  public static class Callback extends RoomDatabase.Callback {
+
+    @Override
+    public void onCreate(@NonNull SupportSQLiteDatabase db) {
+      super.onCreate(db);
+      ScaleDao scaleDao = ScaleScrollerDatabase.getInstance().getScaleDao();
+      Collection<Scale> scales = new PriorityQueue<>(Comparator
+          .comparingInt((scale) -> scale.getMode().getDifficulty().get(scale.getTonic())));
+      for (Mode mode : Mode.values()) {
+        for (Note note : mode.getDifficulty().keySet()) {
+          Scale scale = new Scale();
+          scale.setMode(mode);
+          scale.setTonic(note);
+          scales.add(scale);
+        }
+      }
+      scaleDao.insert(scales)
+          .subscribeOn(Schedulers.io())
+          .subscribe();
+    }
   }
 
   public static class Converters {
@@ -73,22 +102,22 @@ public abstract class ScaleScrollerDatabase extends RoomDatabase {
 
     @TypeConverter
     public static Integer noteToInteger(Note note) {
-      return (note != null)? note.ordinal() : null;
+      return (note != null) ? note.ordinal() : null;
     }
 
     @TypeConverter
     public static Note integerToNote(Integer value) {
-      return (value != null)? Note.values()[value] : null;
+      return (value != null) ? Note.values()[value] : null;
     }
 
     @TypeConverter
     public static Integer modeToInteger(Mode mode) {
-      return (mode != null)? mode.ordinal() : null;
+      return (mode != null) ? mode.ordinal() : null;
     }
 
     @TypeConverter
     public static Mode integerToMode(Integer value) {
-      return (value != null)? Mode.values()[value] : null;
+      return (value != null) ? Mode.values()[value] : null;
     }
 
   }

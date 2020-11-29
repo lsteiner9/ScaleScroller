@@ -45,6 +45,10 @@ public enum Note {
         .toArray(Note[]::new);
   }
 
+  public int getNumber() {
+    return number;
+  }
+
   public boolean isTonic() {
     return tonic;
   }

@@ -8,7 +8,7 @@ public enum Mode {
 
   MAJOR(new byte[]{2, 4, 5, 7, 9, 11}) {
     @Override
-    protected Map<Note, Integer> getDifficulty() {
+    public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
       map.put(Note.C, 0);
       map.put(Note.G, 1);
@@ -30,7 +30,7 @@ public enum Mode {
   },
   NATURAL_MINOR(new byte[]{2, 3, 5, 7, 8, 10}) {
     @Override
-    protected Map<Note, Integer> getDifficulty() {
+    public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
       map.put(Note.A, 15);
       map.put(Note.E, 16);
@@ -52,7 +52,7 @@ public enum Mode {
   },
   HARMONIC_MINOR(new byte[]{2, 3, 5, 7, 8, 11}) {
     @Override
-    protected Map<Note, Integer> getDifficulty() {
+    public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
       map.put(Note.A, 30);
       map.put(Note.E, 31);
@@ -74,7 +74,7 @@ public enum Mode {
   },
   MELODIC_MINOR(new byte[]{2, 3, 5, 7, 8, 9, 10, 11}) {
     @Override
-    protected Map<Note, Integer> getDifficulty() {
+    public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
       map.put(Note.A, 45);
       map.put(Note.E, 46);
@@ -103,7 +103,7 @@ public enum Mode {
     difficultyMap = getDifficulty();
   }
 
-  protected abstract Map<Note, Integer> getDifficulty();
+  public abstract Map<Note, Integer> getDifficulty();
 
   public byte[] getSteps() {
     return steps;

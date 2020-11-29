@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.scalescroller.controller;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,12 @@ public class GameFragment extends Fragment {
       Mode mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
       GameMode gameMode = GameFragmentArgs.fromBundle(getArguments()).getGameMode();
     }
+    binding.pauseButton.setOnClickListener((v) -> {
+      // TODO popup a dialog with volume toggle, resume, return to title screen buttons
+      Intent intent = new Intent(getActivity(), TitleActivity.class)
+          .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(intent);
+    });
     return binding.getRoot();
   }
 

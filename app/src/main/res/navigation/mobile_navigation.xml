@@ -3,19 +3,25 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/mobile_navigation"
-  app:startDestination="@layout/activity_title">
+  app:startDestination="@id/navigation_scale_select">
 
-  <action
-    android:id="@+id/open_settings"
-    app:destination="@id/navigation_settings"/>
 
   <action
     android:id="@+id/open_scale_select"
     app:destination="@id/navigation_scale_select"/>
 
   <action
-    android:id="@+id/open_game"
-    app:destination="@id/navigation_game"/>
+    android:id="@+id/open_challenge_mode_game"
+    app:destination="@+id/navigation_game">
+    <argument
+      android:name="game_mode"
+      app:argType="edu.cnm.deepdive.scalescroller.controller.GameFragment$GameMode"
+      android:defaultValue="CHALLENGE"/>
+  </action>
+
+  <action
+    android:id="@+id/open_settings"
+    app:destination="@id/navigation_settings"/>
 
   <fragment
     android:id="@+id/navigation_settings"
@@ -27,7 +33,23 @@
     android:id="@+id/navigation_scale_select"
     android:label="@string/select_a_scale"
     android:name="edu.cnm.deepdive.scalescroller.controller.ScaleSelectFragment"
-    tools:layout="@layout/fragment_scale_select"/>
+    tools:layout="@layout/fragment_scale_select">
+
+    <action
+      android:id="@+id/open_learn_mode_game"
+      app:destination="@id/navigation_game">
+
+      <argument
+        android:name="tonic"
+        app:argType="edu.cnm.deepdive.scalescroller.model.entity.Note"/>
+
+      <argument
+        android:name="mode"
+        app:argType="edu.cnm.deepdive.scalescroller.model.entity.Mode"/>
+
+    </action>
+
+  </fragment>
 
   <fragment
     android:id="@+id/navigation_game"
