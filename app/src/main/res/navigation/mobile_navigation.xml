@@ -3,25 +3,32 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/mobile_navigation"
-  app:startDestination="@id/navigation_scale_select">
+  app:startDestination="@id/navigation_title">
 
+  <fragment
+    android:id="@+id/navigation_title"
+    android:label="@string/scalescroller_with_notes"
+    android:name="edu.cnm.deepdive.scalescroller.controller.TitleFragment"
+    tools:layout="@layout/fragment_title">
 
-  <action
-    android:id="@+id/open_scale_select"
-    app:destination="@id/navigation_scale_select"/>
+    <action
+      android:id="@+id/open_scale_select"
+      app:destination="@id/navigation_scale_select"/>
 
-  <action
-    android:id="@+id/open_challenge_mode_game"
-    app:destination="@+id/navigation_game">
-    <argument
-      android:name="game_mode"
-      app:argType="edu.cnm.deepdive.scalescroller.controller.GameFragment$GameMode"
-      android:defaultValue="CHALLENGE"/>
-  </action>
+    <action
+      android:id="@+id/open_challenge_mode_game"
+      app:destination="@+id/navigation_game">
+      <argument
+        android:name="game_mode"
+        app:argType="edu.cnm.deepdive.scalescroller.controller.GameFragment$GameMode"
+        android:defaultValue="CHALLENGE"/>
+    </action>
 
-  <action
-    android:id="@+id/open_settings"
-    app:destination="@id/navigation_settings"/>
+    <action
+      android:id="@+id/open_settings"
+      app:destination="@id/navigation_settings"/>
+
+  </fragment>
 
   <fragment
     android:id="@+id/navigation_settings"
@@ -57,7 +64,7 @@
     android:name="edu.cnm.deepdive.scalescroller.controller.GameFragment"
     tools:layout="@layout/fragment_game">
 
-<!--    TODO figure out how to pass in these arguments correctly in the java classes-->
+    <!--    TODO figure out how to pass in these arguments correctly in the java classes-->
     <argument
       android:name="game_mode"
       app:argType="edu.cnm.deepdive.scalescroller.controller.GameFragment$GameMode"
