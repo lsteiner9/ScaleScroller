@@ -10,32 +10,22 @@
 
   <TextView
     android:id="@+id/playing_as"
-    android:layout_width="@dimen/small_text_view_width"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:text="@string/playing_as"
     android:padding="@dimen/standard_padding"
     android:textSize="@dimen/small_text_size"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"/>
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/first_note"
+    android:lines="2"/>
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/logout_button"
+    android:id="@+id/first_note"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/logout"
-    android:padding="@dimen/standard_padding"
-    android:textColor="@color/colorPrimary"
-    android:textSize="@dimen/small_text_size"
-    android:backgroundTint="@color/textColor"
-    android:textAllCaps="false"
-    android:layout_margin="@dimen/standard_margin"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:cornerRadius="@dimen/standard_corner_radius"/>
-
-  <com.google.android.material.button.MaterialButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:focusable="false"
+    android:clickable="false"
     app:icon="@drawable/ic_music_note_24"
     app:iconSize="@dimen/standard_icon_dimen"
     app:layout_constraintTop_toTopOf="parent"
@@ -59,11 +49,28 @@
   <com.google.android.material.button.MaterialButton
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:focusable="false"
+    android:clickable="false"
     app:icon="@drawable/ic_music_note_24"
     app:iconSize="@dimen/standard_icon_dimen"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@id/button_layout"
     app:layout_constraintStart_toEndOf="@id/main_screen_title"/>
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/logout_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/logout"
+    android:padding="@dimen/standard_padding"
+    android:textColor="@color/colorPrimary"
+    android:textSize="@dimen/small_text_size"
+    android:backgroundTint="@color/textColor"
+    android:textAllCaps="false"
+    android:layout_margin="@dimen/standard_margin"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:cornerRadius="@dimen/standard_corner_radius"/>
 
   <androidx.appcompat.widget.LinearLayoutCompat
     android:id="@+id/button_layout"

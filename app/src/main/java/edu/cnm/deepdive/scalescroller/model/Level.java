@@ -3,6 +3,7 @@ package edu.cnm.deepdive.scalescroller.model;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
+import java.util.Random;
 
 public class Level {
 
@@ -40,6 +41,15 @@ public class Level {
   }
 
   // TODO Put logic here for each level in the game
+  public boolean play() {
+    //this is just a placeholder
+    int startingScore = score;
+    while (hearts > 0 || score - startingScore > 100) {
+      score += new Random().nextInt(200);
+      hearts--;
+    }
+    return (hearts > 0);
+  }
 
   public int getScore() {
     return score;
