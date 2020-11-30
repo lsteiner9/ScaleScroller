@@ -45,7 +45,18 @@
     app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
     app:layout_constraintEnd_toEndOf="parent"/>
 
-  <!--TODO figure out the best way to do the hearts-->
+  <!--TODO figure out the best way to do the hearts - below is just a placeholder-->
+
+  <TextView
+    android:id="@+id/hearts"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/standard_padding"
+    android:textSize="@dimen/medium_text_size"
+    android:text="@string/placeholder_for_hearts"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+    app:layout_constraintEnd_toStartOf="@id/score"/>
 
   <!--TODO insert surface view or something-->
 

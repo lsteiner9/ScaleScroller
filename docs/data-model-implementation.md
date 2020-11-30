@@ -42,8 +42,4 @@ Links for classes and interfaces redirect to the associated class within the Sca
 
 * [ScaleChallengeAttemptRepository](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/ScaleChallengeAttemptRepository.java)
 
-### Data definition language
-
-* [DDL](ddl.md)
-
 [*Return to previous page*](index.md)
