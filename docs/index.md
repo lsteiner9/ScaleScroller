@@ -22,11 +22,10 @@ My motivation for creating this app was to bring together my enjoyment of video 
 
 ## Copyrights and licenses
 
-## Build instructions
+## [Build instructions](build-instructions.md)
 
-## Basic user instructions
+## [Basic user instructions](basic-user-instructions.md)
 
 ## [Data model implementation](data-model-implementation.md)
 
 ## [Cloud- or device-based services or data](cloud-device-services.md)
-
