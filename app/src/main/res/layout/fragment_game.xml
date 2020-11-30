@@ -6,44 +6,47 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:background="@color/colorPrimary">
 
-<!--  TODO how to make them vertically aligned?-->
-  <LinearLayout
-    android:id="@+id/scale_info_bar"
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/horizontal_guideline"
     android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintGuide_percent=".2"
+    android:orientation="horizontal"/>
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/pause_button"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    app:icon="@drawable/ic_pause_24"
     app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+    app:layout_constraintStart_toStartOf="parent"/>
+
+  <TextView
+    android:id="@+id/scale_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/title_text_size"
+    android:padding="@dimen/standard_padding"
+    tools:text="G Major"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
+    app:layout_constraintEnd_toEndOf="parent"/>
 
-    <com.google.android.material.button.MaterialButton
-      android:id="@+id/pause_button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:icon="@drawable/ic_pause_24"
-      android:layout_weight="3"/>
-
-    <TextView
-      android:id="@+id/scale_title"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/title_text_size"
-      android:padding="@dimen/standard_padding"
-      tools:text="G Major"
-      android:layout_weight="3"/>
-
-    <TextView
+  <TextView
     android:id="@+id/score"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_weight="2"
     android:padding="@dimen/standard_padding"
     android:textSize="@dimen/medium_text_size"
-    tools:text="000375"/>
+    tools:text="000375"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+    app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!--TODO figure out the best way to do the hearts-->
+  <!--TODO figure out the best way to do the hearts-->
 
-  </LinearLayout>
   <!--  TODO insert surface view or something-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,12 +8,10 @@
   <string name="challenge_mode">Challenge Mode</string>
   <string name="settings_high_scores">Settings/High Scores</string>
   <string name="login_failure_message">Unable to sign in with the provided credentials</string>
-  <string name="audio_settings">Volume Settings and Audio Settings</string>
-  <string name="change_speed">Change Speed of Sidescroller (Learn Mode)</string>
+  <string name="audio_settings">Audio Settings</string>
+  <string name="change_speed">Change Speed (Learn Mode)</string>
   <string name="high_scores">High Scores (Challenge Mode)</string>
-  <string name="select_a_scale">♪ Select a Scale ♪</string>
+  <string name="select_a_scale">Select a Scale</string>
   <string name="logout">logout</string>
-  <string name="dummy_button">Dummy Button</string>
-  <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
