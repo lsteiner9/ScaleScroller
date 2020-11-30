@@ -5,6 +5,7 @@ import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import java.util.Random;
 
+// TODO javadoc
 public class Level {
 
   private int score;

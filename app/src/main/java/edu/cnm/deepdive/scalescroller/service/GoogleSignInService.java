@@ -11,12 +11,14 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import io.reactivex.Single;
 
+/**
+ * The GoogleSignInService class provides methods that allow the app to use Google Sign In to get user
+ * information and to associate users with players in the database.
+ */
 public class GoogleSignInService {
 
   private static Application context;
-
   private final GoogleSignInClient client;
-
   private GoogleSignInAccount account;
 
   private GoogleSignInService() {
@@ -24,23 +26,38 @@ public class GoogleSignInService {
         .requestEmail()
         .requestId()
         .requestProfile()
-//        .requestIdToken(BuildConfig.CLIENT_ID)
         .build();
     client = GoogleSignIn.getClient(context, options);
   }
 
+  /**
+   * Sets the application context for the class.
+   * @param context The application context.
+   */
   public static void setContext(Application context) {
     GoogleSignInService.context = context;
   }
 
+  /**
+   * Returns an instance of the singleton GoogleSignInService.
+   * @return An instance of GoogleSignInService.
+   */
   public static GoogleSignInService getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
+  /**
+   * Returns the current Google Sign In account.
+   * @return The current account.
+   */
   public GoogleSignInAccount getAccount() {
     return account;
   }
 
+  /**
+   * Refreshes the signin with Google.
+   * @return A {@code Single} of a GoogleSignInAccount.
+   */
   public Single<GoogleSignInAccount> refresh() {
     return Single.create((emitter) -> {
           client.silentSignIn()
@@ -51,12 +68,23 @@ public class GoogleSignInService {
     );
   }
 
+  /**
+   * Allows the activity to start a signin request.
+   * @param activity The LoginActivity.
+   * @param requestCode A code that indicates a signin request.
+   */
   public void startSignIn(Activity activity, int requestCode) {
     account = null;
     Intent intent = client.getSignInIntent();
     activity.startActivityForResult(intent, requestCode);
   }
 
+  /**
+   * Completes the signin process and sets the account.
+   *
+   * @param data An intent.
+   * @return A {@code Task} containing a {@code GoogleSignInAccount}.
+   */
   public Task<GoogleSignInAccount> completeSignIn(Intent data) {
     Task<GoogleSignInAccount> task = null;
     try {
@@ -68,6 +96,10 @@ public class GoogleSignInService {
     return task;
   }
 
+  /**
+   * Signs the user out. If the signout is unsucessful, the account is still set to null.
+   * @return A {@code Task} containing {@code Void}.
+   */
   public Task<Void> signOut() {
     return client.signOut()
         .addOnCompleteListener((ignored) -> setAccount(null));
@@ -75,10 +107,6 @@ public class GoogleSignInService {
 
   private void setAccount(GoogleSignInAccount account) {
     this.account = account;
-//    if (account != null) {
-//      //noinspection ConstantConditions
-//      Log.d(getClass().getSimpleName(), account.getIdToken());
-//    }
   }
 
   private static class InstanceHolder {
