@@ -21,8 +21,8 @@ public class LearnLevelAttemptRepository {
   public Completable save(LearnLevelAttempt attempt) {
     return (attempt.getId() == 0)
         ? learnLevelAttemptDao.insert(attempt)
-            .doAfterSuccess(attempt::setId)
-            .ignoreElement()
+        .doAfterSuccess(attempt::setId)
+        .ignoreElement()
         : learnLevelAttemptDao.update(attempt)
             .ignoreElement();
   }

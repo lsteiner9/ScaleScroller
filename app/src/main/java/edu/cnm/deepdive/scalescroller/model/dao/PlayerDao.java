@@ -19,7 +19,7 @@ public interface PlayerDao {
   Single<Long> insert(Player player);
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
-  Single<List<Long>> insert(Player...players);
+  Single<List<Long>> insert(Player... players);
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   Single<List<Long>> insert(Collection<Player> players);
@@ -28,7 +28,7 @@ public interface PlayerDao {
   Single<Integer> update(Player player);
 
   @Update
-  Single<Integer> update(Player...players);
+  Single<Integer> update(Player... players);
 
   @Update
   Single<Integer> update(Collection<Player> players);
@@ -37,7 +37,7 @@ public interface PlayerDao {
   Single<Integer> delete(Player player);
 
   @Delete
-  Single<Integer> delete(Player...players);
+  Single<Integer> delete(Player... players);
 
   @Delete
   Single<Integer> delete(Collection<Player> players);

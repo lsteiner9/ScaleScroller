@@ -18,7 +18,7 @@ public interface LearnLevelAttemptDao {
   Single<Long> insert(LearnLevelAttempt attempt);
 
   @Insert
-  Single<List<Long>> insert(LearnLevelAttempt...attempts);
+  Single<List<Long>> insert(LearnLevelAttempt... attempts);
 
   @Insert
   Single<List<Long>> insert(Collection<LearnLevelAttempt> attempts);
@@ -27,7 +27,7 @@ public interface LearnLevelAttemptDao {
   Single<Integer> update(LearnLevelAttempt attempt);
 
   @Update
-  Single<Integer> update(LearnLevelAttempt...attempts);
+  Single<Integer> update(LearnLevelAttempt... attempts);
 
   @Update
   Single<Integer> update(Collection<LearnLevelAttempt> attempts);

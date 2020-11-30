@@ -64,7 +64,6 @@
     android:name="edu.cnm.deepdive.scalescroller.controller.GameFragment"
     tools:layout="@layout/fragment_game">
 
-    <!--    TODO figure out how to pass in these arguments correctly in the java classes-->
     <argument
       android:name="game_mode"
       app:argType="edu.cnm.deepdive.scalescroller.controller.GameFragment$GameMode"

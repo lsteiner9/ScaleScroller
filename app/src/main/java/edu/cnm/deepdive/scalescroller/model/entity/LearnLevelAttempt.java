@@ -9,23 +9,23 @@ import androidx.room.PrimaryKey;
 import java.util.Date;
 
 @Entity(
-  indices = {
-    @Index(value = {"timestamp"}, unique = true)
-  },
-  foreignKeys = {
-      @ForeignKey(
-          entity = Player.class,
-          childColumns = "player_id",
-          parentColumns = "player_id",
-          onDelete = ForeignKey.CASCADE
-      ),
-      @ForeignKey(
-          entity = Scale.class,
-          childColumns = "scale_id",
-          parentColumns = "scale_id",
-          onDelete = ForeignKey.CASCADE
-      )
-  }
+    indices = {
+        @Index(value = {"timestamp"}, unique = true)
+    },
+    foreignKeys = {
+        @ForeignKey(
+            entity = Player.class,
+            childColumns = "player_id",
+            parentColumns = "player_id",
+            onDelete = ForeignKey.CASCADE
+        ),
+        @ForeignKey(
+            entity = Scale.class,
+            childColumns = "scale_id",
+            parentColumns = "scale_id",
+            onDelete = ForeignKey.CASCADE
+        )
+    }
 )
 public class LearnLevelAttempt {
 

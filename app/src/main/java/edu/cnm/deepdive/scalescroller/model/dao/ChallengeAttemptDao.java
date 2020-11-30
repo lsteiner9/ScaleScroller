@@ -27,7 +27,7 @@ public interface ChallengeAttemptDao {
   Single<Integer> update(ChallengeAttempt attempt);
 
   @Update
-  Single<Integer> update(ChallengeAttempt...attempts);
+  Single<Integer> update(ChallengeAttempt... attempts);
 
   @Update
   Single<Integer> update(Collection<ChallengeAttempt> attempts);
@@ -36,7 +36,7 @@ public interface ChallengeAttemptDao {
   Single<Integer> delete(ChallengeAttempt attempt);
 
   @Delete
-  Single<Integer> delete(ChallengeAttempt...attempts);
+  Single<Integer> delete(ChallengeAttempt... attempts);
 
   @Delete
   Single<Integer> delete(Collection<ChallengeAttempt> attempts);

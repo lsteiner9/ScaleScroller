@@ -36,7 +36,7 @@ public interface ScaleChallengeAttemptDao {
   Single<Long> insert(ScaleChallengeAttempt attempt);
 
   @Insert
-  Single<List<Long>> insert(ScaleChallengeAttempt...attempts);
+  Single<List<Long>> insert(ScaleChallengeAttempt... attempts);
 
   @Insert
   Single<List<Long>> insert(Collection<ScaleChallengeAttempt> attempts);
@@ -45,7 +45,7 @@ public interface ScaleChallengeAttemptDao {
   Single<Integer> update(ScaleChallengeAttempt attempt);
 
   @Update
-  Single<Integer> update(ScaleChallengeAttempt...attempts);
+  Single<Integer> update(ScaleChallengeAttempt... attempts);
 
   @Update
   Single<Integer> update(Collection<ScaleChallengeAttempt> attempts);

@@ -20,7 +20,7 @@ public interface ScaleDao {
   Single<Long> insert(Scale scale);
 
   @Insert
-  Single<List<Long>> insert(Scale...scales);
+  Single<List<Long>> insert(Scale... scales);
 
   @Insert
   Single<List<Long>> insert(Collection<Scale> scales);
@@ -29,7 +29,7 @@ public interface ScaleDao {
   Single<Integer> update(Scale scale);
 
   @Update
-  Single<Integer> update(Scale...scales);
+  Single<Integer> update(Scale... scales);
 
   @Update
   Single<Integer> update(Collection<Scale> scales);
@@ -38,7 +38,7 @@ public interface ScaleDao {
   Single<Integer> delete(Scale scale);
 
   @Delete
-  Single<Integer> delete(Scale...scales);
+  Single<Integer> delete(Scale... scales);
 
   @Delete
   Single<Integer> delete(Collection<Scale> scales);

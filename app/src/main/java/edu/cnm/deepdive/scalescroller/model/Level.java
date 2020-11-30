@@ -22,7 +22,7 @@ public class Level {
     Note tonic = scale.getTonic();
     int tonicNumber = tonic.getNumber();
     byte[] steps = mode.getSteps();
-    int[] noteNumbers = new int[(mode == Mode.MELODIC_MINOR)? 9 : 7];
+    int[] noteNumbers = new int[(mode == Mode.MELODIC_MINOR) ? 9 : 7];
     Note[] notes = new Note[noteNumbers.length];
     notes[0] = tonic;
     for (int i = 1; i < noteNumbers.length; i++) {
@@ -35,7 +35,6 @@ public class Level {
     for (int i = 0; i < noteNumbers.length; i++) {
       // ???
     }
-
 
     return notes;
   }
