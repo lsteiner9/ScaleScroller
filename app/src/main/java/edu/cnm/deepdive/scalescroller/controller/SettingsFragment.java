@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
 
-  FragmentSettingsBinding binding;
+  private FragmentSettingsBinding binding;
+  private NavController navController;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,10 +27,9 @@ public class SettingsFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentSettingsBinding.inflate(inflater);
+    navController = NavHostFragment.findNavController(this);
     binding.settingsBackButton.setOnClickListener((v) -> {
-      Intent intent = new Intent(getActivity(), MainActivity.class)
-          .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-      startActivity(intent);
+      navController.navigate(SettingsFragmentDirections.openTitle());
     });
     return binding.getRoot();
   }

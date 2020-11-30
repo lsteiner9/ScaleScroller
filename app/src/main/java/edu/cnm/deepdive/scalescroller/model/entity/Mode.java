@@ -4,6 +4,11 @@ import androidx.annotation.NonNull;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Enumerates the different modes available for use in ScaleScroller. Each enumerated type includes
+ * the notes, measured in half-steps from the tonic, and a difficulty rating to help structure
+ * gameplay.
+ */
 public enum Mode {
 
   MAJOR(new byte[]{2, 4, 5, 7, 9, 11}) {
@@ -98,17 +103,38 @@ public enum Mode {
   private final byte[] steps;
   private final Map<Note, Integer> difficultyMap;
 
+  /**
+   * Constructor for the enum. Initializes the notes in the scale (in terms of half-steps above
+   * tonic) and the difficulty map.
+   *
+   * @param steps The notes in the scale.
+   */
   Mode(byte[] steps) {
     this.steps = steps;
     difficultyMap = getDifficulty();
   }
 
+  /**
+   * Returns a map of tonic notes to integer difficulties.
+   *
+   * @return
+   */
   public abstract Map<Note, Integer> getDifficulty();
 
+  /**
+   * Returns the notes in the scale (in terms of half-steps above tonic).
+   *
+   * @return
+   */
   public byte[] getSteps() {
     return steps;
   }
 
+  /**
+   * Overrides the toString method for a more user-readable scale mode representation.
+   *
+   * @return
+   */
   @NonNull
   @Override
   public String toString() {

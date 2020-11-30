@@ -34,7 +34,13 @@
     android:id="@+id/navigation_settings"
     android:label="@string/settings_high_scores"
     android:name="edu.cnm.deepdive.scalescroller.controller.SettingsFragment"
-    tools:layout="@layout/fragment_settings"/>
+    tools:layout="@layout/fragment_settings">
+
+    <action
+      android:id="@+id/open_title"
+      app:destination="@id/navigation_title"/>
+
+  </fragment>
 
   <fragment
     android:id="@+id/navigation_scale_select"
@@ -53,8 +59,11 @@
       <argument
         android:name="mode"
         app:argType="edu.cnm.deepdive.scalescroller.model.entity.Mode"/>
-
     </action>
+
+    <action
+      android:id="@+id/open_title"
+      app:destination="@id/navigation_title"/>
 
   </fragment>
 
@@ -80,6 +89,10 @@
       app:argType="edu.cnm.deepdive.scalescroller.model.entity.Mode"
       android:defaultValue="MAJOR"
       />
+
+    <action
+      android:id="@id/open_title"
+      app:destination="@id/navigation_title"/>
 
 
   </fragment>

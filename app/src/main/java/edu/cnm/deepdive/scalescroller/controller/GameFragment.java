@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentGameBinding;
 import edu.cnm.deepdive.scalescroller.model.Level;
@@ -23,6 +25,8 @@ public class GameFragment extends Fragment {
   private LearnLevelAttemptRepository learnLevelAttemptRepository;
   private ChallengeAttemptRepository challengeAttemptRepository;
   private FragmentGameBinding binding;
+  private NavController navController;
+  // TODO this kind of stuff should be in the viewmodel
   private int hearts = 3;
   private int score = 0;
   private int speed = 5; // placeholder
@@ -53,11 +57,10 @@ public class GameFragment extends Fragment {
     tonic = GameFragmentArgs.fromBundle(getArguments()).getTonic();
     mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
     gameMode = GameFragmentArgs.fromBundle(getArguments()).getGameMode();
+    navController = NavHostFragment.findNavController(this);
     binding.pauseButton.setOnClickListener((v) -> {
       // TODO popup a dialog with volume toggle, resume, return to title screen buttons
-      Intent intent = new Intent(getActivity(), MainActivity.class)
-          .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-      startActivity(intent);
+      navController.navigate(GameFragmentDirections.openTitle());
     });
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
     binding.score.setText(getString(R.string.score_format, score));

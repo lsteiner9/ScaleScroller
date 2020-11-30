@@ -11,12 +11,14 @@
 
   <!--  TODO figure out why the color doesn't work-->
   <TextView
+    android:id="@+id/scale_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="@dimen/standard_padding"
     android:focusable="true"
     android:clickable="true"
     android:textColor="@color/textColor"
+    android:background="?attr/selectableItemBackground"
     tools:text="G Major"/>
 
 </com.google.android.material.card.MaterialCardView>

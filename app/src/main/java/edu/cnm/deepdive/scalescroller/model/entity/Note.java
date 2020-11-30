@@ -3,6 +3,11 @@ package edu.cnm.deepdive.scalescroller.model.entity;
 import androidx.annotation.NonNull;
 import java.util.Arrays;
 
+/**
+ * Enumerates the different notes available for use in ScaleScroller. Each enumerated type includes
+ * a boolean which indicates whether the note can be a tonic or not, and a integer that indicates
+ * how many half-steps the note is from C, mod 12.
+ */
 public enum Note {
 
   C_FLAT(true, 11),
@@ -28,31 +33,58 @@ public enum Note {
   A_SHARP(true, 10),
   B_FLAT(true, 10),
   B(true, 11),
-  B_SHARP(false, 12);
+  B_SHARP(false, 0);
 
   private final boolean tonic;
   private final int number;
 
 
+  /**
+   * Constructor for the enum. Initializes the note's distance from C and whether the note can be a
+   * tonic.
+   *
+   * @param tonic  Boolean indicating whether the note can be a tonic.
+   * @param number The distance away from C, mod 12.
+   */
   Note(boolean tonic, int number) {
     this.tonic = tonic;
     this.number = number;
   }
 
+  /**
+   * Returns all of the possible tonic notes.
+   *
+   * @return
+   */
   public static Note[] tonics() {
     return Arrays.stream(Note.values())
         .filter(Note::isTonic)
         .toArray(Note[]::new);
   }
 
+  /**
+   * Returns the number of half-steps away from C, mod 12.
+   *
+   * @return
+   */
   public int getNumber() {
     return number;
   }
 
+  /**
+   * Returns true if the note is a possible tonic.
+   *
+   * @return
+   */
   public boolean isTonic() {
     return tonic;
   }
 
+  /**
+   * Overrides the toString method for a more user-readable note representation.
+   *
+   * @return
+   */
   @NonNull
   @Override
   public String toString() {
