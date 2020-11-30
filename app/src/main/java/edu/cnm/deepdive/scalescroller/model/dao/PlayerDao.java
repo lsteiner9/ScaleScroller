@@ -13,7 +13,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Provides an interface with methods that perform actions on the {@link Player} table of the database.
+ * Provides an interface with methods that perform actions on the {@link Player} table of the
+ * database.
  */
 @Dao
 public interface PlayerDao {
