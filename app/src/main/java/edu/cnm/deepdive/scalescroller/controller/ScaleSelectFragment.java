@@ -25,7 +25,7 @@ public class ScaleSelectFragment extends Fragment {
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentScaleSelectBinding.inflate(inflater);
     binding.scaleSelectBackButton.setOnClickListener((v) -> {
-      Intent intent = new Intent(getActivity(), TitleActivity.class)
+      Intent intent = new Intent(getActivity(), MainActivity.class)
           .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
     });

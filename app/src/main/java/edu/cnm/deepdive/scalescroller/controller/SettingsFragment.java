@@ -25,7 +25,7 @@ public class SettingsFragment extends Fragment {
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentSettingsBinding.inflate(inflater);
     binding.settingsBackButton.setOnClickListener((v) -> {
-      Intent intent = new Intent(getActivity(), TitleActivity.class)
+      Intent intent = new Intent(getActivity(), MainActivity.class)
           .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
     });

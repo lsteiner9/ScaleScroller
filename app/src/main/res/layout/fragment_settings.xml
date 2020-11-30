@@ -5,6 +5,13 @@
   android:background="@color/colorPrimary"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/horizontal_guideline"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintGuide_percent=".3"
+    android:orientation="horizontal"/>
+
   <com.google.android.material.button.MaterialButton
     android:id="@+id/settings_back_button"
     android:layout_width="wrap_content"
@@ -24,16 +31,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
 
-  <LinearLayout
-    android:id="@+id/settings_buttons"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/settings_title"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
-
-    <com.google.android.material.button.MaterialButton
+     <com.google.android.material.button.MaterialButton
       android:id="@+id/audio_settings_button"
       android:layout_width="200dp"
       android:layout_height="200dp"
@@ -44,7 +42,11 @@
       android:textColor="@color/colorPrimary"
       android:textAllCaps="false"
       android:layout_marginHorizontal="@dimen/standard_margin"
-      app:cornerRadius="@dimen/standard_corner_radius"/>
+      app:cornerRadius="@dimen/standard_corner_radius"
+       app:layout_constraintTop_toBottomOf="@id/horizontal_guideline"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toStartOf="@id/change_speed_button"/>
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/change_speed_button"
@@ -57,7 +59,11 @@
       android:textColor="@color/colorPrimary"
       android:textAllCaps="false"
       android:layout_marginHorizontal="@dimen/standard_margin"
-      app:cornerRadius="@dimen/standard_corner_radius"/>
+      app:cornerRadius="@dimen/standard_corner_radius"
+      app:layout_constraintTop_toBottomOf="@id/horizontal_guideline"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@id/audio_settings_button"
+      app:layout_constraintEnd_toStartOf="@id/high_scores_button"/>
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/high_scores_button"
@@ -70,8 +76,10 @@
       android:textColor="@color/colorPrimary"
       android:textAllCaps="false"
       android:layout_marginHorizontal="@dimen/standard_margin"
-      app:cornerRadius="@dimen/standard_corner_radius"/>
-
-  </LinearLayout>
+      app:cornerRadius="@dimen/standard_corner_radius"
+      app:layout_constraintTop_toBottomOf="@id/horizontal_guideline"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@id/change_speed_button"
+      app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

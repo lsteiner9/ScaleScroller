@@ -44,7 +44,7 @@ public class GameFragment extends Fragment {
     }
     binding.pauseButton.setOnClickListener((v) -> {
       // TODO popup a dialog with volume toggle, resume, return to title screen buttons
-      Intent intent = new Intent(getActivity(), TitleActivity.class)
+      Intent intent = new Intent(getActivity(), MainActivity.class)
           .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
     });

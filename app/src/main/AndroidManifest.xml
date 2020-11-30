@@ -27,7 +27,7 @@
     <activity
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:label="@string/title_activity_fullscreen"
-      android:name=".controller.TitleActivity"
+      android:name=".controller.MainActivity"
       android:screenOrientation="landscape"
       android:theme="@style/FullscreenTheme">
     </activity>
