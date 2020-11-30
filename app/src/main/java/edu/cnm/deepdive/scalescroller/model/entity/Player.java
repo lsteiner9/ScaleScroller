@@ -19,6 +19,7 @@ public class Player {
   @ColumnInfo(name = "player_id")
   private long id;
 
+  @NonNull
   @ColumnInfo(name = "oauth_key")
   private String oauthKey;
 

@@ -31,8 +31,8 @@
     tools:text="G Major"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"/>
+    app:layout_constraintStart_toEndOf="@id/pause_button"
+    app:layout_constraintEnd_toStartOf="@id/hearts"/>
 
   <TextView
     android:id="@+id/score"
@@ -40,7 +40,8 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/standard_padding"
     android:textSize="@dimen/medium_text_size"
-    tools:text="000375"
+    android:layout_margin="@dimen/standard_margin"
+    tools:text="@string/score_format"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
     app:layout_constraintEnd_toEndOf="parent"/>
@@ -53,6 +54,7 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/standard_padding"
     android:textSize="@dimen/medium_text_size"
+    android:layout_margin="@dimen/standard_margin"
     android:text="@string/placeholder_for_hearts"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"

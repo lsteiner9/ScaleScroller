@@ -4,7 +4,7 @@
 CREATE TABLE IF NOT EXISTS `Player`
 (
     `player_id`           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `oauth_key`           INTEGER                           NOT NULL,
+    `oauth_key`           TEXT,
     `username`            TEXT                              NOT NULL,
     `highest_learn_level` INTEGER                           NOT NULL
 );
@@ -80,7 +80,6 @@ CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_challenge_attempt_id` ON
 CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_scale_id` ON `ScaleChallengeAttempt` (`scale_id`);
 
 CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_timestamp` ON `ScaleChallengeAttempt` (`timestamp`);
-
 ```
 
 [`ddl.sql` on GitHub](https://github.com/lsteiner9/scale-scroller/blob/master/docs/sql/ddl.sql)

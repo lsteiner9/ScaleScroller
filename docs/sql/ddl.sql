@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `Player`
 (
     `player_id`           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `oauth_key`           INTEGER                           NOT NULL,
+    `oauth_key`           TEXT,
     `username`            TEXT                              NOT NULL,
     `highest_learn_level` INTEGER                           NOT NULL
 );

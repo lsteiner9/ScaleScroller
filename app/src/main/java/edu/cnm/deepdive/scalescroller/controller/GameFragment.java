@@ -26,6 +26,9 @@ public class GameFragment extends Fragment {
   private int hearts = 3;
   private int score = 0;
   private int speed = 5; // placeholder
+  private Note tonic;
+  private Mode mode;
+  private GameMode gameMode;
 
   public static GameFragment createInstance() {
     GameFragment fragment = new GameFragment();
@@ -47,11 +50,9 @@ public class GameFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentGameBinding.inflate(inflater);
-    if (savedInstanceState != null) {
-      Note tonic = GameFragmentArgs.fromBundle(getArguments()).getTonic();
-      Mode mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
-      GameMode gameMode = GameFragmentArgs.fromBundle(getArguments()).getGameMode();
-    }
+    tonic = GameFragmentArgs.fromBundle(getArguments()).getTonic();
+    mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
+    gameMode = GameFragmentArgs.fromBundle(getArguments()).getGameMode();
     binding.pauseButton.setOnClickListener((v) -> {
       // TODO popup a dialog with volume toggle, resume, return to title screen buttons
       Intent intent = new Intent(getActivity(), MainActivity.class)
@@ -59,6 +60,10 @@ public class GameFragment extends Fragment {
       startActivity(intent);
     });
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
+    binding.score.setText(getString(R.string.score_format, score));
+    binding.scaleTitle.setText(
+        getString(R.string.scale_title_format, tonic.toString().toUpperCase(),
+            mode.toString().toLowerCase()));
     return binding.getRoot();
   }
 

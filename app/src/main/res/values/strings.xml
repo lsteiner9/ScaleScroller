@@ -14,5 +14,7 @@
   <string name="select_a_scale">Select a Scale</string>
   <string name="logout">logout</string>
   <string name="placeholder_for_hearts">%s lives left!</string>
+  <string name="score_format">%06d</string>
+  <string name="scale_title_format">%s %s</string>
 
 </resources>
