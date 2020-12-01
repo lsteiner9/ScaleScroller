@@ -3,7 +3,10 @@ package edu.cnm.deepdive.scalescroller.model;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 // TODO javadoc
 public class Level {
@@ -19,26 +22,34 @@ public class Level {
     correctNotes = getNotes(scale);
   }
 
+  //THIS IS A MESSSSSS (and probably still doesn't work quite right)
   private Note[] getNotes(Scale scale) {
+    Map<Integer, Note[]> letterNameMap = Note.getNoteMap();
     Mode mode = scale.getMode();
     Note tonic = scale.getTonic();
     int tonicNumber = tonic.getNumber();
     byte[] steps = mode.getSteps();
-    int[] noteNumbers = new int[(mode == Mode.MELODIC_MINOR) ? 9 : 7];
-    Note[] notes = new Note[noteNumbers.length];
-    notes[0] = tonic;
-    for (int i = 1; i < noteNumbers.length; i++) {
-      noteNumbers[i] = tonicNumber + steps[i - 1];
+    Set<Integer> noteNumbers = new HashSet<>();
+    int length = (mode == Mode.MELODIC_MINOR) ? 9 : 7;
+    Set<Note> notes = new HashSet<>();
+    notes.add(tonic);
+    for (int i = 1; i < length; i++) {
+      noteNumbers.add(tonicNumber + steps[i - 1]);
     }
-    // TODO get the corresponding note for each noteNumber
-    // This requires getting all possible notes, then figuring out which one
-    // makes more sense given the tonic...
-    // maybe having the sharpkey boolean actually makes sense here?
-    for (int i = 0; i < noteNumbers.length; i++) {
-      // ???
+    for (Note note : Note.values()) {
+      int number = note.getNumber();
+      if (noteNumbers.contains(number)) {
+        Note[] possibilities = letterNameMap.get(number);
+        if (tonic.toString().contains("#") && possibilities[0].toString().contains("b")) {
+          notes.add(possibilities[1]);
+        } else if (tonic.toString().contains("b") && possibilities[0].toString().contains("#")) {
+          notes.add(possibilities[1]);
+        } else {
+          notes.add(possibilities[0]);
+        }
+      }
     }
-
-    return notes;
+    return notes.toArray(new Note[notes.size()]);
   }
 
   // TODO Put logic here for each level in the game

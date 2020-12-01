@@ -139,9 +139,8 @@ public enum Mode {
   @Override
   public String toString() {
     return super.toString()
-        .toLowerCase()
         .replace('_', ' ')
-        .replace("sharp", "#")
-        .replace("flat", "b");
+        .replace("SHARP", "#")
+        .replace("FLAT", "b");
   }
 }

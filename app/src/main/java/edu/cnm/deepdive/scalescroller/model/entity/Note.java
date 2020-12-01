@@ -2,6 +2,8 @@ package edu.cnm.deepdive.scalescroller.model.entity;
 
 import androidx.annotation.NonNull;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Enumerates the different notes available for use in ScaleScroller. Each enumerated type includes
@@ -37,6 +39,22 @@ public enum Note {
 
   private final boolean tonic;
   private final int number;
+  private static final Map<Integer, Note[]> noteMap = new HashMap<>();
+
+  static {
+    noteMap.put(0, new Note[]{C, B_SHARP});
+    noteMap.put(1, new Note[]{C_SHARP, D_FLAT});
+    noteMap.put(2, new Note[]{D, C_DOUBLE_SHARP});
+    noteMap.put(3, new Note[]{E_FLAT, D_SHARP});
+    noteMap.put(4, new Note[]{E, F_FLAT});
+    noteMap.put(5, new Note[]{F, E_SHARP});
+    noteMap.put(6, new Note[]{F_SHARP, G_FLAT});
+    noteMap.put(7, new Note[]{G, F_DOUBLE_SHARP});
+    noteMap.put(8, new Note[]{G_SHARP, A_FLAT});
+    noteMap.put(9, new Note[]{A, G_DOUBLE_SHARP});
+    noteMap.put(10, new Note[]{B_FLAT, A_SHARP});
+    noteMap.put(11, new Note[]{B, C_FLAT});
+  }
 
 
   /**
@@ -81,6 +99,16 @@ public enum Note {
   }
 
   /**
+   * Returns a map of Integers to notes. Each Integer is associated with an array of notes that have
+   * that note number.
+   *
+   * @return A map of Integers to notes.
+   */
+  public static Map<Integer, Note[]> getNoteMap() {
+    return noteMap;
+  }
+
+  /**
    * Overrides the toString method for a more user-readable note representation.
    *
    * @return
@@ -89,9 +117,8 @@ public enum Note {
   @Override
   public String toString() {
     return super.toString()
-        .toLowerCase()
         .replace('_', ' ')
-        .replace("sharp", "#")
-        .replace("flat", "b");
+        .replace("SHARP", "#")
+        .replace("FLAT", "b");
   }
 }
