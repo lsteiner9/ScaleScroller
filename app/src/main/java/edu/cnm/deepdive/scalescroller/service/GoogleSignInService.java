@@ -12,8 +12,8 @@ import com.google.android.gms.tasks.Task;
 import io.reactivex.Single;
 
 /**
- * The GoogleSignInService class provides methods that allow the app to use Google Sign In to get user
- * information and to associate users with players in the database.
+ * The GoogleSignInService class provides methods that allow the app to use Google Sign In to get
+ * user information and to associate users with players in the database.
  */
 public class GoogleSignInService {
 
@@ -32,6 +32,7 @@ public class GoogleSignInService {
 
   /**
    * Sets the application context for the class.
+   *
    * @param context The application context.
    */
   public static void setContext(Application context) {
@@ -40,6 +41,7 @@ public class GoogleSignInService {
 
   /**
    * Returns an instance of the singleton GoogleSignInService.
+   *
    * @return An instance of GoogleSignInService.
    */
   public static GoogleSignInService getInstance() {
@@ -48,6 +50,7 @@ public class GoogleSignInService {
 
   /**
    * Returns the current Google Sign In account.
+   *
    * @return The current account.
    */
   public GoogleSignInAccount getAccount() {
@@ -56,6 +59,7 @@ public class GoogleSignInService {
 
   /**
    * Refreshes the signin with Google.
+   *
    * @return A {@code Single} of a GoogleSignInAccount.
    */
   public Single<GoogleSignInAccount> refresh() {
@@ -70,8 +74,9 @@ public class GoogleSignInService {
 
   /**
    * Allows the activity to start a signin request.
-   * @param activity The LoginActivity.
-   * @param requestCode A code that indicates a signin request.
+   *
+   * @param activity    The LoginActivity.
+   * @param requestCode A code that indicates a type of request.
    */
   public void startSignIn(Activity activity, int requestCode) {
     account = null;
@@ -98,6 +103,7 @@ public class GoogleSignInService {
 
   /**
    * Signs the user out. If the signout is unsucessful, the account is still set to null.
+   *
    * @return A {@code Task} containing {@code Void}.
    */
   public Task<Void> signOut() {

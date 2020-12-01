@@ -12,12 +12,23 @@ import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.scalescroller.adapter.ScaleRecyclerAdapter;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentScaleSelectBinding;
 
+/**
+ * Allows the user to select a scale from a RecyclerView for Learn mode.
+ */
 public class ScaleSelectFragment extends Fragment {
 
   private FragmentScaleSelectBinding binding;
   private ScaleRecyclerAdapter adapter;
   private NavController navController;
 
+  /**
+   * Sets up navigation and the RecyclerView adapter.
+   *
+   * @param inflater           A {@code LayoutInflater}.
+   * @param container          A {@code ViewGroup}.
+   * @param savedInstanceState A {@code Bundle}.
+   * @return A {@code View}.
+   */
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater,
@@ -28,10 +39,10 @@ public class ScaleSelectFragment extends Fragment {
       navController.navigate(ScaleSelectFragmentDirections.openTitle());
     });
     // TODO Set listener for the elements in the recycler view
+    adapter = new ScaleRecyclerAdapter(getActivity());
     binding.scaleRecycler.setAdapter(adapter);
     return binding.getRoot();
   }
-
 
 
 }

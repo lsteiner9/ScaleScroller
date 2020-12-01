@@ -14,13 +14,25 @@ import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentTitleBinding;
 import edu.cnm.deepdive.scalescroller.service.GoogleSignInService;
 
+/**
+ * The title fragment is the main navigational hub, and allows the user to select different game
+ * modes, go to settings, or logout.
+ */
 public class TitleFragment extends Fragment {
 
-  FragmentTitleBinding binding;
+  private FragmentTitleBinding binding;
   private GoogleSignInService signInService;
   private NavController navController;
 
 
+  /**
+   * Initializes display text and navigation.
+   *
+   * @param inflater           A {@code LayoutInflater}.
+   * @param container          A {@code ViewGroup}.
+   * @param savedInstanceState A {@code Bundle}.
+   * @return A {@code View}.
+   */
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -38,11 +50,6 @@ public class TitleFragment extends Fragment {
     binding.settingsButton.setOnClickListener(
         (v) -> navController.navigate(TitleFragmentDirections.openSettings()));
     return binding.getRoot();
-  }
-
-  @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
   }
 
   private void logout() {

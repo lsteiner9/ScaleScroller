@@ -13,6 +13,9 @@ import edu.cnm.deepdive.scalescroller.databinding.ActivityLoginBinding;
 import edu.cnm.deepdive.scalescroller.service.GoogleSignInService;
 import edu.cnm.deepdive.scalescroller.service.PlayerRepository;
 
+/**
+ * The launcher activity that allows the user to sign in with Google Sign In.
+ */
 public class LoginActivity extends AppCompatActivity {
 
   private static final int LOGIN_REQUEST_CODE = 1000;
@@ -21,6 +24,11 @@ public class LoginActivity extends AppCompatActivity {
   private ActivityLoginBinding binding;
   private PlayerRepository playerRepository;
 
+  /**
+   * Initializes variables and sets an OnClickListener to Google Sign In.
+   *
+   * @param savedInstanceState A {@code Bundle}.
+   */
   @SuppressLint("CheckResult")
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,13 @@ public class LoginActivity extends AppCompatActivity {
         );
   }
 
+  /**
+   * Completes signin, if possible.
+   *
+   * @param requestCode A code that indicates a type of request.
+   * @param resultCode  A code that indicates a type of result.
+   * @param data        An intent.
+   */
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     if (requestCode == LOGIN_REQUEST_CODE) {

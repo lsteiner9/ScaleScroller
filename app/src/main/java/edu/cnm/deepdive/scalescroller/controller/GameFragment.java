@@ -1,7 +1,5 @@
 package edu.cnm.deepdive.scalescroller.controller;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +18,7 @@ import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
 import edu.cnm.deepdive.scalescroller.service.LearnLevelAttemptRepository;
 
+// TODO javadoc
 public class GameFragment extends Fragment {
 
   private LearnLevelAttemptRepository learnLevelAttemptRepository;

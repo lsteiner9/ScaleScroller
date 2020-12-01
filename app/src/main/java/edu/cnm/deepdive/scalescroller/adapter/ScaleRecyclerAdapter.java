@@ -11,6 +11,9 @@ import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.service.ScaleRepository;
 import java.util.List;
 
+/**
+ * Allows for the scales in the database to be listed in a RecyclerView.
+ */
 public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
   private static final String SCALE_FORMAT = "%s %s";
@@ -20,6 +23,10 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
   private final LayoutInflater inflater;
   private final ScaleRepository scaleRepository;
 
+  /**
+   * The constructor initializes the context, the list of scales and
+   * @param context
+   */
   public ScaleRecyclerAdapter(@NonNull Context context) {
     this.context = context;
     scaleRepository = new ScaleRepository(context);
@@ -61,7 +68,6 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
       Scale scale = scales.get(position);
       binding.scaleName.setText(String.format(SCALE_FORMAT, scale.getTonic().toString().toUpperCase(), scale.getMode().toString().toLowerCase()));
     }
-
-
   }
+
 }
