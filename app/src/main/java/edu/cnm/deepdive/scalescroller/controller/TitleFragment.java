@@ -24,7 +24,6 @@ public class TitleFragment extends Fragment {
   private GoogleSignInService signInService;
   private NavController navController;
 
-
   /**
    * Initializes display text and navigation.
    *

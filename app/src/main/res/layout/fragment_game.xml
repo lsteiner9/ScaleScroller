@@ -7,10 +7,17 @@
   android:background="@color/colorPrimary">
 
   <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/horizontal_guideline"
+    android:id="@+id/horizontal_guideline1"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     app:layout_constraintGuide_percent=".2"
+    android:orientation="horizontal"/>
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/horizontal_guideline2"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintGuide_percent=".56"
     android:orientation="horizontal"/>
 
   <com.google.android.material.button.MaterialButton
@@ -19,7 +26,7 @@
     android:layout_height="wrap_content"
     app:icon="@drawable/ic_pause_24"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline1"
     app:layout_constraintStart_toStartOf="parent"/>
 
   <TextView
@@ -30,7 +37,7 @@
     android:padding="@dimen/standard_padding"
     tools:text="G Major"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline1"
     app:layout_constraintStart_toEndOf="@id/pause_button"
     app:layout_constraintEnd_toStartOf="@id/hearts"/>
 
@@ -43,7 +50,7 @@
     android:layout_margin="@dimen/standard_margin"
     tools:text="@string/score_format"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline1"
     app:layout_constraintEnd_toEndOf="parent"/>
 
   <!--TODO figure out the best way to do the hearts - below is just a placeholder-->
@@ -57,9 +64,87 @@
     android:layout_margin="@dimen/standard_margin"
     android:text="@string/placeholder_for_hearts"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline1"
     app:layout_constraintEnd_toStartOf="@id/score"/>
 
   <!--TODO insert surface view or something-->
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/move_up"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/pause_button"
+    app:layout_constraintBottom_toTopOf="@id/move_down"
+    app:layout_constraintStart_toStartOf="parent"
+    app:icon="@drawable/ic_arrow_upward_24"
+    app:iconSize="@dimen/large_icon_dimen"/>
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/move_down"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/move_up"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:icon="@drawable/ic_arrow_downward_24"
+    app:iconSize="80dp"/>
+
+<!--  TODO link up these two buttons in some sort of layout so they can be moved together-->
+<!--  also, is there a way to not use a button? Because it's a pain that the background overlaps-->
+  <com.google.android.material.button.MaterialButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/standard_padding"
+    app:layout_constraintTop_toTopOf="@id/move_up"
+    app:layout_constraintBottom_toBottomOf="@id/move_down"
+    app:layout_constraintStart_toEndOf="@id/move_down"
+    app:icon="@drawable/ic_run_24"
+    app:iconSize="@dimen/large_icon_dimen"/>
+
+  <com.google.android.material.button.MaterialButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_guideline2"
+    app:layout_constraintStart_toEndOf="@id/move_up"
+    app:icon="@drawable/ic_music_note_24"
+    app:iconSize="@dimen/large_icon_dimen"/>
+
+<!--  TODO make these actually work, this is a dummy layout-->
+  <com.google.android.material.textview.MaterialTextView
+    android:layout_width="@dimen/standard_icon_dimen"
+    android:layout_height="@dimen/standard_icon_dimen"
+    android:background="@drawable/ic_coin_24"
+    android:textSize="@dimen/large_text_size"
+    android:textColor="@color/colorPrimary"
+    android:textAlignment="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline2"
+    tools:text="F#"/>
+
+  <com.google.android.material.textview.MaterialTextView
+    android:layout_width="@dimen/standard_icon_dimen"
+    android:layout_height="@dimen/standard_icon_dimen"
+    android:background="@drawable/ic_coin_24"
+    android:textSize="@dimen/large_text_size"
+    android:textColor="@color/colorPrimary"
+    android:textAlignment="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/move_down"
+    app:layout_constraintTop_toTopOf="@id/horizontal_guideline1"
+    app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline2"
+    tools:text="C"/>
+
+  <com.google.android.material.textview.MaterialTextView
+    android:layout_width="@dimen/standard_icon_dimen"
+    android:layout_height="@dimen/standard_icon_dimen"
+    android:background="@drawable/ic_coin_24"
+    android:textSize="@dimen/large_text_size"
+    android:textColor="@color/colorPrimary"
+    android:textAlignment="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/scale_title"
+    app:layout_constraintTop_toTopOf="@id/horizontal_guideline2"
+    app:layout_constraintBottom_toBottomOf="parent"
+    tools:text="D"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
