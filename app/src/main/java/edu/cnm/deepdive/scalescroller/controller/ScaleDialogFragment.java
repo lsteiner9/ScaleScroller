@@ -27,7 +27,7 @@ public class ScaleDialogFragment extends DialogFragment {
     level = viewModel.getLevel().getValue();
     scale = level.getScale();
     dialog = new AlertDialog.Builder(getActivity())
-        .setMessage(getString(R.string.scale_format,
+        .setMessage(getString(R.string.scale_dialog_format,
             scale.getTonic().toString().toUpperCase(),
             scale.getMode().toString().toLowerCase(),
             level.getNotesString()))

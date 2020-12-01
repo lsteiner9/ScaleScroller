@@ -5,6 +5,7 @@
   <color name="colorAccent">#FFF100</color>
   <color name="textColor">#FFFFFF</color>
   <color name="heartColor">#980F0F</color>
+  <color name="inactiveColor">#888888</color>
 
   <color name="black_overlay">#66000000</color>
 </resources>

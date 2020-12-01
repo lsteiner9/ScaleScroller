@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.adapter.ScaleRecyclerAdapter.Holder;
 import edu.cnm.deepdive.scalescroller.databinding.ItemScaleBinding;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
@@ -21,6 +23,7 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
   private final Context context;
   private final List<Scale> scales;
   private final LayoutInflater inflater;
+  private final int highestDifficulty;
 
   /**
    * The constructor initializes the context, the list of scales and
@@ -28,11 +31,12 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
    * @param context
    */
   public ScaleRecyclerAdapter(@NonNull Context context, List<Scale> scales,
-      OnScaleClickListener listener) {
+      OnScaleClickListener listener, int highestDifficulty) {
     this.context = context;
     inflater = LayoutInflater.from(context);
     this.scales = scales;
     this.listener = listener;
+    this.highestDifficulty = highestDifficulty;
   }
 
   @NonNull
@@ -66,6 +70,9 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
       binding.scaleName.setText(String.format(SCALE_FORMAT,
           scale.getTonic().toString().toUpperCase(),
           scale.getMode().toString().toLowerCase()));
+      if (position <= highestDifficulty) {
+        binding.scaleName.setTextColor(ContextCompat.getColor(context, R.color.textColor));
+      }
       itemView.setOnClickListener((v) -> listener.onClick(scale));
     }
   }
