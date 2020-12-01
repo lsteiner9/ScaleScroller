@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<TextView
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/scale_name"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_margin="@dimen/standard_margin"
-  app:cardCornerRadius="@dimen/standard_corner_radius"
-  android:background="@color/colorPrimary">
-
-  <!--  TODO figure out why the color doesn't work-->
-  <TextView
-    android:id="@+id/scale_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/standard_padding"
-    android:focusable="true"
-    android:clickable="true"
-    android:textColor="@color/textColor"
-    android:background="?attr/selectableItemBackground"
-    tools:text="G Major"/>
-
-</com.google.android.material.card.MaterialCardView>
+  android:layout_height="wrap_content"
+  android:padding="@dimen/standard_padding"
+  android:textColor="@color/textColor"
+  android:textSize="@dimen/medium_text_size"
+  android:textAlignment="center"
+  tools:text="G major"
+  />

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -31,27 +30,24 @@ public class GameFragment extends Fragment {
   private FragmentGameBinding binding;
   private NavController navController;
   private MainViewModel viewModel;
+  private GameFragmentArgs args;
+
+  //pass these three into the viewmodel
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
+
   private int score = 0;
   private int hearts = 3;
   private int speed;
 
-  public static GameFragment createInstance() {
-    GameFragment fragment = new GameFragment();
-    Bundle args = new Bundle();
-    //Add parameter values to args, using args.put???().
-    fragment.setArguments(args);
-    return fragment;
-  }
-
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Bundle args = getArguments();
+    //noinspection ConstantConditions
+    args = GameFragmentArgs.fromBundle(getArguments());
     // Do whatever is necessary with args.
-//    speed = args.getInt("fix this to make it get speed from shared preferences");
+//    put getting speed from shared preferences in viewmodel;
   }
 
   @Nullable
@@ -61,33 +57,45 @@ public class GameFragment extends Fragment {
     binding = FragmentGameBinding.inflate(inflater);
     navController = NavHostFragment.findNavController(this);
     binding.pauseButton.setOnClickListener((v) -> {
-      // TODO popup a dialog with volume toggle, resume, return to title screen buttons
-      navController.navigate(GameFragmentDirections.openTitle());
+      navController.navigate(GameFragmentDirections.openPauseDialog());
     });
     //noinspection ConstantConditions
-    gameMode = GameFragmentArgs.fromBundle(getArguments()).getGameMode();
+    gameMode = args.getGameMode();
+    tonic = args.getTonic();
+    mode = args.getMode();
+    return binding.getRoot();
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+//    setupViewModel();
+//    setUpViews();
+  }
+
+  private void setUpViews() {
     if (gameMode == GameMode.LEARN) {
       tonic = GameFragmentArgs.fromBundle(getArguments()).getTonic();
       mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
+    } else {
+      Scale scale = viewModel.getRandomScale();
+      tonic = scale.getTonic();
+      mode = scale.getMode();
     }
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
     binding.score.setText(getString(R.string.score_format, score));
     binding.scaleTitle.setText(
         getString(R.string.scale_title_format, tonic.toString().toUpperCase(),
             mode.toString().toLowerCase()));
-    return binding.getRoot();
+  }
+
+  private Scale getRandomScale() {
+    return viewModel.getRandomScale();
   }
 
   private void playLevel(Scale scale) {
     navController.navigate(GameFragmentDirections.openScaleDialog());
-    //do some stuff in here
-    Level level = new Level(scale);
-    boolean wonLevel = level.play();
-    if (wonLevel) {
-      // pop up a dialog saying congrats, you won!
-    } else {
-      // pop up a dialog saying sorry, you lost
-    }
+    //do some stuff in here, maybe?
   }
 
   private void setupViewModel() {
@@ -104,6 +112,9 @@ public class GameFragment extends Fragment {
     score = level.getScore();
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
     binding.score.setText(getString(R.string.score_format, score));
+    if (viewModel.getLevelWon().getValue() != null) {
+      navController.navigate(GameFragmentDirections.openEndLevelDialog());
+    }
   }
 
   public enum GameMode {

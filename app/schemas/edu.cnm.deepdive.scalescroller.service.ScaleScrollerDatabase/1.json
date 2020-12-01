@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4b09b79f0f947573e3cb30f34366dbce",
+    "identityHash": "431f5b161ad4d0b89ccd4d5ad1dc1478",
     "entities": [
       {
         "tableName": "Player",
@@ -274,7 +274,7 @@
       },
       {
         "tableName": "Scale",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tonic` INTEGER NOT NULL, `mode` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scale_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tonic` INTEGER NOT NULL, `mode` INTEGER NOT NULL, `difficulty` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -291,6 +291,12 @@
           {
             "fieldPath": "mode",
             "columnName": "mode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "difficulty",
+            "columnName": "difficulty",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -310,6 +316,14 @@
               "mode"
             ],
             "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Scale_tonic_mode` ON `${TABLE_NAME}` (`tonic`, `mode`)"
+          },
+          {
+            "name": "index_Scale_difficulty",
+            "unique": false,
+            "columnNames": [
+              "difficulty"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Scale_difficulty` ON `${TABLE_NAME}` (`difficulty`)"
           }
         ],
         "foreignKeys": []
@@ -413,7 +427,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4b09b79f0f947573e3cb30f34366dbce')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '431f5b161ad4d0b89ccd4d5ad1dc1478')"
     ]
   }
 }

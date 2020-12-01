@@ -17,5 +17,8 @@
   <string name="score_format">%06d</string>
   <string name="scale_title_format">%s %s</string>
   <string name="scale_format">%$1s %$2s has these notes:\n%$3s</string>
+  <string name="congratulations_learn">Congratulations! You won the level!</string>
+  <string name="failure_learn">Sorry, you lost the level. Try again next time.</string>
+  <string name="congratulations_challenge">Congratulations! Your score was %06d.</string>
 
 </resources>

@@ -1,16 +1,19 @@
 package edu.cnm.deepdive.scalescroller.controller;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.scalescroller.adapter.ScaleRecyclerAdapter;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentScaleSelectBinding;
+import edu.cnm.deepdive.scalescroller.viewmodel.MainViewModel;
 
 /**
  * Allows the user to select a scale from a RecyclerView for Learn mode.
@@ -18,7 +21,6 @@ import edu.cnm.deepdive.scalescroller.databinding.FragmentScaleSelectBinding;
 public class ScaleSelectFragment extends Fragment {
 
   private FragmentScaleSelectBinding binding;
-  private ScaleRecyclerAdapter adapter;
   private NavController navController;
 
   /**
@@ -39,10 +41,19 @@ public class ScaleSelectFragment extends Fragment {
       navController.navigate(ScaleSelectFragmentDirections.openTitle());
     });
     // TODO Set listener for the elements in the recycler view
-    adapter = new ScaleRecyclerAdapter(getActivity());
-    binding.scaleRecycler.setAdapter(adapter);
     return binding.getRoot();
   }
 
-
+  // TODO javadoc
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+    viewModel.getScales().observe(getViewLifecycleOwner(), (scales) -> {
+      //noinspection ConstantConditions
+      ScaleRecyclerAdapter adapter = new ScaleRecyclerAdapter(getContext(), scales, (scale) ->
+          navController.navigate(ScaleSelectFragmentDirections.openLearnModeGame(scale.getTonic(), scale.getMode())));
+      binding.scaleRecycler.setAdapter(adapter);
+    });
+  }
 }

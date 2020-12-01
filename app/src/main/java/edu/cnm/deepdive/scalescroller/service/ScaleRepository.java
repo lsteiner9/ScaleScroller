@@ -77,6 +77,15 @@ public class ScaleRepository {
   }
 
   /**
+   * Returns LiveData of all scales, ordered by difficulty.
+   *
+   * @return {@code LiveData} of a {@code List} of {@code Scale}.
+   */
+  public LiveData<List<Scale>> getAllOrdered() {
+    return scaleDao.selectAllOrderByDifficulty();
+  }
+
+  /**
    * Returns LiveData of a scale, given its tonic and mode.
    *
    * @param mode  The mode of the scale.

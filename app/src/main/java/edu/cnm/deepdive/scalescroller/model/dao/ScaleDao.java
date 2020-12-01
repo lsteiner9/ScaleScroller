@@ -119,6 +119,10 @@ public interface ScaleDao {
   @Query("SELECT * FROM Scale")
   LiveData<List<Scale>> selectAll();
 
+  // TODO add javadoc
+  @Query("SELECT * FROM Scale ORDER BY difficulty ASC")
+  LiveData<List<Scale>> selectAllOrderByDifficulty();
+
   /**
    * Queries the database for a specific scale, based on tonic and mode.
    *

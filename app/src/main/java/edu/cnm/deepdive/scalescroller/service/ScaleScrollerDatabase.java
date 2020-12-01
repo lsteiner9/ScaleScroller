@@ -121,6 +121,7 @@ public abstract class ScaleScrollerDatabase extends RoomDatabase {
           Scale scale = new Scale();
           scale.setMode(mode);
           scale.setTonic(note);
+          scale.setDifficulty(mode.getDifficulty().get(note));
           scales.add(scale);
         }
       }

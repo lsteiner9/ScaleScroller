@@ -76,8 +76,7 @@
     <argument
       android:name="game_mode"
       app:argType="edu.cnm.deepdive.scalescroller.controller.GameFragment$GameMode"
-      android:defaultValue="LEARN"
-      />
+      android:defaultValue="LEARN"/>
 
     <argument
       android:name="tonic"
@@ -87,8 +86,7 @@
     <argument
       android:name="mode"
       app:argType="edu.cnm.deepdive.scalescroller.model.entity.Mode"
-      android:defaultValue="MAJOR"
-      />
+      android:defaultValue="MAJOR"/>
 
     <action
       android:id="@id/open_title"
@@ -98,11 +96,30 @@
       android:id="@+id/open_scale_dialog"
       app:destination="@+id/navigation_scale_dialog"/>
 
+    <action
+      android:id="@+id/open_end_level_dialog"
+      app:destination="@id/navigation_end_level_dialog"/>
+
+    <action
+      android:id="@+id/open_pause_dialog"
+      app:destination="@id/navigation_pause_dialog"/>
+
   </fragment>
 
   <fragment
     android:id="@+id/navigation_scale_dialog"
-    android:name="edu.cnm.deepdive.scalescroller.controller.ScaleDialogFragment">
+    android:name="edu.cnm.deepdive.scalescroller.controller.ScaleDialogFragment"/>
+
+  <fragment
+    android:id="@+id/navigation_end_level_dialog"
+    android:name="edu.cnm.deepdive.scalescroller.controller.EndLevelDialogFragment"/>
+
+  <fragment
+    android:id="@+id/navigation_pause_dialog"
+    android:name="edu.cnm.deepdive.scalescroller.controller.PauseDialogFragment">
+    <action
+      android:id="@id/open_title"
+      app:destination="@id/navigation_title"/>
   </fragment>
 
 </navigation>

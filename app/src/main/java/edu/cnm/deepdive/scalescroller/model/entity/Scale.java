@@ -30,6 +30,10 @@ public class Scale {
   @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
   private Mode mode;
 
+  // TODO add to ERD
+  @ColumnInfo(index = true)
+  private int difficulty;
+
   /**
    * Returns the auto-generated id for the scale.
    *
@@ -88,4 +92,13 @@ public class Scale {
     this.mode = mode;
   }
 
+
+  //TODO add javadoc
+  public int getDifficulty() {
+    return difficulty;
+  }
+
+  public void setDifficulty(int difficulty) {
+    this.difficulty = difficulty;
+  }
 }

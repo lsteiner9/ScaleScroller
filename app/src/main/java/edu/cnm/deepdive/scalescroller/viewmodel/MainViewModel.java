@@ -28,6 +28,7 @@ import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
+//TODO javadoc
 public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final MutableLiveData<Level> level;
@@ -76,14 +77,14 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     selectedScale = new Scale();
 //    selectedScale.setMode(mode);
 //    selectedScale.setTonic(tonic);
-    scales = scaleRepository.getAll().getValue();
+//    scales = scaleRepository.getAll().getValue();
     rng = new SecureRandom();
     preferences = PreferenceManager.getDefaultSharedPreferences(application);
     pending = new CompositeDisposable();
     if (gameMode == LEARN) {
-      startLearnLevel();
+//      startLearnLevel();
     } else {
-      startChallengeAttempt();
+//      startChallengeAttempt();
     }
   }
 
@@ -115,6 +116,10 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return level.getValue().getScale();
   }
 
+  public GameMode getGameMode() {
+    return gameMode;
+  }
+
   public void startLearnLevel() {
     Level level = new Level(selectedScale);
   }
@@ -125,13 +130,18 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 //      startScaleChallengeAttempt();
 //    }
   }
-  public void startScaleChallengeAttempt() {
+
+  public LiveData<List<Scale>> getScales() {
+    return scaleRepository.getAllOrdered();
+  }
+
+  public Scale getRandomScale() {
     if (scales.size() <= 0) {
       scales = scaleRepository.getAll().getValue();
     }
     int randomNum = rng.nextInt(scales.size());
     Scale randomScale = scales.get(randomNum);
     scales.remove(randomNum);
-    Level level = new Level(randomScale);
+    return randomScale;
   }
 }

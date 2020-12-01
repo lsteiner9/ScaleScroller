@@ -117,8 +117,8 @@ public enum Note {
   @Override
   public String toString() {
     return super.toString()
-        .replace('_', ' ')
-        .replace("SHARP", "#")
+        .replaceAll("_", "")
+        .replace("SHARP", "#") //TODO use unicode values for sharp/flat
         .replace("FLAT", "b");
   }
 }

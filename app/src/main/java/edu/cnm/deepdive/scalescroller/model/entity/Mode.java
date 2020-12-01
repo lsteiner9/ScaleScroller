@@ -139,8 +139,8 @@ public enum Mode {
   @Override
   public String toString() {
     return super.toString()
-        .replace('_', ' ')
-        .replace("SHARP", "#")
+        .replaceAll("_", " ")
+        .replace("SHARP", "#") //TODO use unicode values for sharp and flat
         .replace("FLAT", "b");
   }
 }

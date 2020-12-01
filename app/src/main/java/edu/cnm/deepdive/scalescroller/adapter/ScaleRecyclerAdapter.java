@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.scalescroller.adapter.ScaleRecyclerAdapter.Holder;
 import edu.cnm.deepdive.scalescroller.databinding.ItemScaleBinding;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
-import edu.cnm.deepdive.scalescroller.service.ScaleRepository;
 import java.util.List;
 
 /**
@@ -18,24 +17,22 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
   private static final String SCALE_FORMAT = "%s %s";
 
+  private final OnScaleClickListener listener;
   private final Context context;
   private final List<Scale> scales;
   private final LayoutInflater inflater;
-  private final ScaleRepository scaleRepository;
 
   /**
    * The constructor initializes the context, the list of scales and
+   *
    * @param context
    */
-  public ScaleRecyclerAdapter(@NonNull Context context) {
+  public ScaleRecyclerAdapter(@NonNull Context context, List<Scale> scales,
+      OnScaleClickListener listener) {
     this.context = context;
-    scaleRepository = new ScaleRepository(context);
-    scales = scaleRepository.getAll().getValue();
     inflater = LayoutInflater.from(context);
-  }
-
-  public List<Scale> getScales() {
-    return scales;
+    this.scales = scales;
+    this.listener = listener;
   }
 
   @NonNull
@@ -66,8 +63,17 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
     private void bind(int position) {
       Scale scale = scales.get(position);
-      binding.scaleName.setText(String.format(SCALE_FORMAT, scale.getTonic().toString().toUpperCase(), scale.getMode().toString().toLowerCase()));
+      binding.scaleName.setText(String.format(SCALE_FORMAT,
+          scale.getTonic().toString().toUpperCase(),
+          scale.getMode().toString().toLowerCase()));
+      itemView.setOnClickListener((v) -> listener.onClick(scale));
     }
+  }
+
+  public interface OnScaleClickListener {
+
+    void onClick(Scale scale);
+
   }
 
 }
