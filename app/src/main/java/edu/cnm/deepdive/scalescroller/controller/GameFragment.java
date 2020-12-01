@@ -4,9 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.scalescroller.R;
@@ -17,6 +21,7 @@ import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
 import edu.cnm.deepdive.scalescroller.service.LearnLevelAttemptRepository;
+import edu.cnm.deepdive.scalescroller.viewmodel.MainViewModel;
 
 // TODO javadoc
 public class GameFragment extends Fragment {
@@ -25,13 +30,13 @@ public class GameFragment extends Fragment {
   private ChallengeAttemptRepository challengeAttemptRepository;
   private FragmentGameBinding binding;
   private NavController navController;
-  // TODO this kind of stuff should be in the viewmodel
-  private int hearts = 3;
-  private int score = 0;
-  private int speed = 5; // placeholder
+  private MainViewModel viewModel;
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
+  private int score = 0;
+  private int hearts = 3;
+  private int speed;
 
   public static GameFragment createInstance() {
     GameFragment fragment = new GameFragment();
@@ -46,6 +51,7 @@ public class GameFragment extends Fragment {
     super.onCreate(savedInstanceState);
     Bundle args = getArguments();
     // Do whatever is necessary with args.
+//    speed = args.getInt("fix this to make it get speed from shared preferences");
   }
 
   @Nullable
@@ -53,14 +59,17 @@ public class GameFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentGameBinding.inflate(inflater);
-    tonic = GameFragmentArgs.fromBundle(getArguments()).getTonic();
-    mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
-    gameMode = GameFragmentArgs.fromBundle(getArguments()).getGameMode();
     navController = NavHostFragment.findNavController(this);
     binding.pauseButton.setOnClickListener((v) -> {
       // TODO popup a dialog with volume toggle, resume, return to title screen buttons
       navController.navigate(GameFragmentDirections.openTitle());
     });
+    //noinspection ConstantConditions
+    gameMode = GameFragmentArgs.fromBundle(getArguments()).getGameMode();
+    if (gameMode == GameMode.LEARN) {
+      tonic = GameFragmentArgs.fromBundle(getArguments()).getTonic();
+      mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
+    }
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
     binding.score.setText(getString(R.string.score_format, score));
     binding.scaleTitle.setText(
@@ -70,20 +79,31 @@ public class GameFragment extends Fragment {
   }
 
   private void playLevel(Scale scale) {
-// TODO pop up a dialog with the scale's notes
+    navController.navigate(GameFragmentDirections.openScaleDialog());
+    //do some stuff in here
     Level level = new Level(scale);
-    level.setHearts(hearts);
-    level.setSpeed(speed);
-    level.setScore(score);
     boolean wonLevel = level.play();
-    // need a viewmodel here to get livedata of hearts/score
-    hearts = level.getHearts();
-    score = level.getScore();
     if (wonLevel) {
       // pop up a dialog saying congrats, you won!
     } else {
       // pop up a dialog saying sorry, you lost
     }
+  }
+
+  private void setupViewModel() {
+    FragmentActivity activity = getActivity();
+    //noinspection ConstantConditions
+    viewModel = new ViewModelProvider(activity).get(MainViewModel.class);
+    getLifecycle().addObserver(viewModel);
+    LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
+    viewModel.getLevel().observe(lifecycleOwner, this::updateGameDisplay);
+  }
+
+  private void updateGameDisplay(Level level) {
+    hearts = level.getHearts();
+    score = level.getScore();
+    binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
+    binding.score.setText(getString(R.string.score_format, score));
   }
 
   public enum GameMode {

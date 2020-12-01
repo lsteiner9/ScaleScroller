@@ -14,6 +14,8 @@ import edu.cnm.deepdive.scalescroller.controller.GameFragment.GameMode;
 import edu.cnm.deepdive.scalescroller.model.Level;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt;
+import edu.cnm.deepdive.scalescroller.model.entity.Mode;
+import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
@@ -28,6 +30,7 @@ import java.util.Random;
 
 public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
 
+  private final MutableLiveData<Level> level;
   private final MutableLiveData<ChallengeAttempt> challengeAttempt;
   private final MutableLiveData<ScaleChallengeAttempt> scaleChallengeAttempt;
   private final MutableLiveData<LearnLevelAttempt> learnLevelAttempt;
@@ -38,16 +41,20 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final SharedPreferences preferences;
   private final Random rng;
 
-  private final GameMode gameMode = LEARN;
-  private final Scale selectedScale;
-  private List<Scale> scales;
-
   private final PlayerRepository playerRepository;
   private final LearnLevelAttemptRepository learnLevelAttemptRepository;
   private final ChallengeAttemptRepository challengeAttemptRepository;
   private final ScaleRepository scaleRepository;
   private final ScaleChallengeAttemptRepository scaleChallengeAttemptRepository;
 
+  private int hearts = 3;
+  private int score = 0;
+  private int speed = 5; //placeholder, idk what speeds will look like
+  private Scale selectedScale;
+  private Note tonic;
+  private Mode mode;
+  private GameMode gameMode = LEARN;
+  private List<Scale> scales;
 
   public MainViewModel(@NonNull Application application) {
     super(application);
@@ -57,6 +64,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     scaleRepository = new ScaleRepository(application);
     scaleChallengeAttemptRepository = new ScaleChallengeAttemptRepository(application);
 
+    level = new MutableLiveData<>();
     challengeAttempt = new MutableLiveData<>();
     scaleChallengeAttempt = new MutableLiveData<>();
     learnLevelAttempt = new MutableLiveData<>();
@@ -79,6 +87,10 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     }
   }
 
+  public LiveData<Level> getLevel() {
+    return level;
+  }
+
   public LiveData<ChallengeAttempt> getChallengeAttempt() {
     return challengeAttempt;
   }
@@ -97,6 +109,10 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   public LiveData<Throwable> getThrowable() {
     return throwable;
+  }
+
+  public Scale getScale() {
+    return level.getValue().getScale();
   }
 
   public void startLearnLevel() {

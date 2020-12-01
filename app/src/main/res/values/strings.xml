@@ -16,5 +16,6 @@
   <string name="placeholder_for_hearts">%s lives left!</string>
   <string name="score_format">%06d</string>
   <string name="scale_title_format">%s %s</string>
+  <string name="scale_format">%$1s %$2s has these notes:\n%$3s</string>
 
 </resources>

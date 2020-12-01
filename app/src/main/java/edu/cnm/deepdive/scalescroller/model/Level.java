@@ -3,6 +3,7 @@ package edu.cnm.deepdive.scalescroller.model;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
@@ -19,11 +20,11 @@ public class Level {
 
   public Level(Scale scale) {
     this.scale = scale;
-    correctNotes = getNotes(scale);
+    correctNotes = getNotes();
   }
 
   //THIS IS A MESSSSSS (and probably still doesn't work quite right)
-  private Note[] getNotes(Scale scale) {
+  private Note[] getNotes() {
     Map<Integer, Note[]> letterNameMap = Note.getNoteMap();
     Mode mode = scale.getMode();
     Note tonic = scale.getTonic();
@@ -89,6 +90,14 @@ public class Level {
 
   public Scale getScale() {
     return scale;
+  }
+
+  public Note[] getCorrectNotes() {
+    return correctNotes;
+  }
+
+  public String getNotesString() {
+    return Arrays.toString(correctNotes);
   }
 
 }
