@@ -66,21 +66,21 @@ public class Level {
     Mode mode = scale.getMode();
     Note tonic = scale.getTonic();
     int tonicNumber = tonic.getNumber();
-    byte[] steps = mode.getSteps();
+    int[] steps = mode.getSteps();
     Set<Integer> noteNumbers = new HashSet<>();
-    int length = (mode == Mode.MELODIC_MINOR) ? 9 : 7;
+    for (int step : steps) {
+      noteNumbers.add(step + tonicNumber);
+    }
     Set<Note> notes = new HashSet<>();
     notes.add(tonic);
-    for (int i = 1; i < length; i++) {
-      noteNumbers.add(tonicNumber + steps[i - 1]);
-    }
     for (Note note : Note.values()) {
       int number = note.getNumber();
       if (noteNumbers.contains(number)) {
         Note[] possibilities = letterNameMap.get(number);
-        if (tonic.toString().contains("#") && possibilities[0].toString().contains("b")) {
-          notes.add(possibilities[1]);
-        } else if (tonic.toString().contains("b") && possibilities[0].toString().contains("#")) {
+        String tonicString = tonic.toString();
+        String possibleString = possibilities[0].toString();
+        if ((tonicString.contains("\u266f") && possibleString.contains("\u266d"))
+            || (tonicString.contains("\u266d") && possibleString.contains("\u266f"))) {
           notes.add(possibilities[1]);
         } else {
           notes.add(possibilities[0]);

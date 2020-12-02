@@ -18,6 +18,7 @@ import edu.cnm.deepdive.scalescroller.service.ScaleRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 
+//TODO javadoc
 public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private static final int DEFAULT_NUM_SCORES = 10;

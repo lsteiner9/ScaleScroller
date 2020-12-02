@@ -118,6 +118,8 @@ public enum Note {
   public String toString() {
     return super.toString()
         .replaceAll("_", "")
+        .replace("DOUBLE SHARP", "\u266f\u266f")
+        .replace("DOUBLE FLAT", "\u266d\u266d")
         .replace("SHARP", "\u266f")
         .replace("FLAT", "\u266d");
   }

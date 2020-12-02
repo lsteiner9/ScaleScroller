@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public enum Mode {
 
-  MAJOR(new byte[]{2, 4, 5, 7, 9, 11}) {
+  MAJOR(new int[]{2, 4, 5, 7, 9, 11}) {
     @Override
     public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
@@ -33,7 +33,7 @@ public enum Mode {
       return map;
     }
   },
-  NATURAL_MINOR(new byte[]{2, 3, 5, 7, 8, 10}) {
+  NATURAL_MINOR(new int[]{2, 3, 5, 7, 8, 10}) {
     @Override
     public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
@@ -55,7 +55,7 @@ public enum Mode {
       return map;
     }
   },
-  HARMONIC_MINOR(new byte[]{2, 3, 5, 7, 8, 11}) {
+  HARMONIC_MINOR(new int[]{2, 3, 5, 7, 8, 11}) {
     @Override
     public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
@@ -77,7 +77,7 @@ public enum Mode {
       return map;
     }
   },
-  MELODIC_MINOR(new byte[]{2, 3, 5, 7, 8, 9, 10, 11}) {
+  MELODIC_MINOR(new int[]{2, 3, 5, 7, 8, 9, 10, 11}) {
     @Override
     public Map<Note, Integer> getDifficulty() {
       Map<Note, Integer> map = new HashMap<>();
@@ -100,7 +100,7 @@ public enum Mode {
     }
   };
 
-  private final byte[] steps;
+  private final int[] steps;
   private final Map<Note, Integer> difficultyMap;
 
   /**
@@ -109,7 +109,7 @@ public enum Mode {
    *
    * @param steps The notes in the scale.
    */
-  Mode(byte[] steps) {
+  Mode(int[] steps) {
     this.steps = steps;
     difficultyMap = getDifficulty();
   }
@@ -126,7 +126,7 @@ public enum Mode {
    *
    * @return
    */
-  public byte[] getSteps() {
+  public int[] getSteps() {
     return steps;
   }
 

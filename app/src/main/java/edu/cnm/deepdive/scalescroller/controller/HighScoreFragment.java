@@ -33,7 +33,7 @@ public class HighScoreFragment extends Fragment {
     return binding.getRoot();
   }
 
-  //TODO this isn't working, is it because there are no attempts to show?
+  //TODO this isn't working, is it because there are no attempts to show? How can I be sure, or how can I put a "no scores to show" textview?
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);

@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.scalescroller.adapter;
 
-import android.content.ClipData.Item;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
