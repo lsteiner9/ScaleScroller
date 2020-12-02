@@ -40,6 +40,18 @@
       android:id="@+id/open_title"
       app:destination="@id/navigation_title"/>
 
+    <action
+      android:id="@+id/open_high_score"
+      app:destination="@id/navigation_high_scores"/>
+
+    <action
+      android:id="@+id/open_audio_settings"
+      app:destination="@id/navigation_audio_settings"/>
+
+    <action
+      android:id="@+id/open_speed_settings"
+      app:destination="@id/navigation_speed_settings"/>
+
   </fragment>
 
   <fragment
@@ -121,5 +133,20 @@
       android:id="@id/open_title"
       app:destination="@id/navigation_title"/>
   </fragment>
+
+  <fragment
+    android:id="@+id/navigation_high_scores"
+    android:name="edu.cnm.deepdive.scalescroller.controller.HighScoreFragment">
+    <action
+      android:id="@id/open_settings"
+      app:destination="@id/navigation_settings"/>
+  </fragment>
+
+  <fragment
+    android:id="@+id/navigation_audio_settings"
+    android:name="edu.cnm.deepdive.scalescroller.controller.AudioSettingsFragment"/>
+  <fragment
+    android:id="@+id/navigation_speed_settings"
+    android:name="edu.cnm.deepdive.scalescroller.controller.SpeedSettingsFragment"/>
 
 </navigation>

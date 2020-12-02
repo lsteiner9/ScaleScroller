@@ -19,20 +19,40 @@ import edu.cnm.deepdive.scalescroller.databinding.FragmentPauseDialogBinding;
 //TODO javadoc
 public class PauseDialogFragment extends DialogFragment {
 
-  private AlertDialog dialog;
+//  private AlertDialog dialog;
+//  private NavController navController;
+//
+//  @NonNull
+//  @Override
+//  public Dialog onCreateDialog(
+//      @Nullable Bundle savedInstanceState) {
+//    navController = NavHostFragment.findNavController(this);
+//    dialog = new Builder(getContext())
+//        .setMessage(R.string.level_paused)
+//        .setPositiveButton(R.string.resume, (dialog, which) -> {})
+//        .setNegativeButton(R.string.return_to_title, ((dialog, which)
+//            -> navController.navigate(PauseDialogFragmentDirections.openTitle())))
+//        .create();
+//    dialog.show();
+//    return dialog;
+//  }
+    private AlertDialog dialog;
   private NavController navController;
   private FragmentPauseDialogBinding binding;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    navController = NavHostFragment.findNavController(this);
     binding = FragmentPauseDialogBinding.inflate(LayoutInflater.from(getContext()));
+    binding.returnButton.setOnClickListener((v) -> {
+      navController.navigate(PauseDialogFragmentDirections.openTitle());
+    });
   }
 
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-    navController = NavHostFragment.findNavController(this);
     dialog = new Builder(getContext())
         .setView(binding.getRoot())
         .setMessage(R.string.level_paused)

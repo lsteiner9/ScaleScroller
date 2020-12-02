@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.scalescroller.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceFragmentCompat;
+import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentSettingsBinding;
 
 /**
@@ -34,9 +35,10 @@ public class SettingsFragment extends Fragment {
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentSettingsBinding.inflate(inflater);
     navController = NavHostFragment.findNavController(this);
-    binding.settingsBackButton.setOnClickListener((v) -> {
-      navController.navigate(SettingsFragmentDirections.openTitle());
-    });
+    binding.settingsBackButton.setOnClickListener((v) -> navController.navigate(SettingsFragmentDirections.openTitle()));
+    binding.audioSettingsButton.setOnClickListener((v) -> navController.navigate(SettingsFragmentDirections.openAudioSettings()));
+    binding.changeSpeedButton.setOnClickListener((v) -> navController.navigate(SettingsFragmentDirections.openSpeedSettings()));
+    binding.highScoresButton.setOnClickListener((v) -> navController.navigate(SettingsFragmentDirections.openHighScore()));
     return binding.getRoot();
   }
 

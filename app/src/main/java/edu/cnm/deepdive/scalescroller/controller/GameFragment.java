@@ -48,7 +48,7 @@ public class GameFragment extends Fragment {
     //noinspection ConstantConditions
     args = GameFragmentArgs.fromBundle(getArguments());
     // Do whatever is necessary with args.
-//    put getting speed from shared preferences in viewmodel;
+//    put getting speed from shared audio_preferences in viewmodel;
   }
 
   @Nullable

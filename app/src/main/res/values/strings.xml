@@ -10,7 +10,7 @@
   <string name="login_failure_message">Unable to sign in with the provided credentials</string>
   <string name="audio_settings">Audio Settings</string>
   <string name="change_speed">Change Speed (Learn Mode)</string>
-  <string name="high_scores">High Scores (Challenge Mode)</string>
+  <string name="high_scores_button">High Scores (Challenge Mode)</string>
   <string name="select_a_scale">Select a Scale</string>
   <string name="logout">logout</string>
 
@@ -26,5 +26,11 @@
   <string name="level_paused">Level paused</string>
   <string name="return_to_title">Return to title</string>
   <string name="resume">Resume</string>
+  <string name="high_scores">High scores</string>
+  <string name="speed_pref_summary">A slower speed will make the sidescroller easier in learn mode, while a faster speed will make it more challenging. This setting has no effect on Challenge mode.</string>
+  <string name="speed_pref_title">Scroller Speed</string>
+  <string name="audio_toggle_key">audio_toggle_key</string>
+  <string name="speed_pref_key">speed_pref_key</string>
+  <string name="volume_slider_key">volume_slider_key</string>
 
 </resources>

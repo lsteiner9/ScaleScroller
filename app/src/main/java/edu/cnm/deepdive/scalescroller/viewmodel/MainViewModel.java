@@ -16,9 +16,11 @@ import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
+import edu.cnm.deepdive.scalescroller.model.entity.Player;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
+import edu.cnm.deepdive.scalescroller.service.GoogleSignInService;
 import edu.cnm.deepdive.scalescroller.service.LearnLevelAttemptRepository;
 import edu.cnm.deepdive.scalescroller.service.PlayerRepository;
 import edu.cnm.deepdive.scalescroller.service.ScaleChallengeAttemptRepository;
@@ -47,6 +49,8 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final ChallengeAttemptRepository challengeAttemptRepository;
   private final ScaleRepository scaleRepository;
   private final ScaleChallengeAttemptRepository scaleChallengeAttemptRepository;
+  private final GoogleSignInService signInService;
+
 
   private int hearts = 3;
   private int score = 0;
@@ -56,6 +60,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private Mode mode;
   private GameMode gameMode = LEARN;
   private List<Scale> scales;
+  private final int DEFAULT_NUM_SCORES = 10;
 
   public MainViewModel(@NonNull Application application) {
     super(application);
@@ -64,6 +69,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     challengeAttemptRepository = new ChallengeAttemptRepository(application);
     scaleRepository = new ScaleRepository(application);
     scaleChallengeAttemptRepository = new ScaleChallengeAttemptRepository(application);
+    signInService = GoogleSignInService.getInstance();
 
     level = new MutableLiveData<>();
     challengeAttempt = new MutableLiveData<>();
@@ -129,6 +135,14 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 //    while (hearts > 0) {
 //      startScaleChallengeAttempt();
 //    }
+  }
+
+  public LiveData<Player> getPlayer() {
+    return playerRepository.getByOauth(signInService.getAccount().getId());
+  }
+
+  public LiveData<List<ChallengeAttempt>> getHighScores() {
+    return challengeAttemptRepository.getHighScores(DEFAULT_NUM_SCORES);
   }
 
   public LiveData<List<Scale>> getScales() {

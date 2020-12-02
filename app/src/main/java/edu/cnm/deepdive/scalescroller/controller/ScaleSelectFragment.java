@@ -54,14 +54,15 @@ public class ScaleSelectFragment extends Fragment {
   /**
    * Creates a recycler view containing the scales in the database, with scales the user cannot
    * select displayed as grayed-out.
-    * @param view A {@code View} object.
+   *
+   * @param view               A {@code View} object.
    * @param savedInstanceState A {@code Bundle}
    */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-    playerRepository.getByOauth(signInService.getAccount().getId())
+    viewModel.getPlayer()
         .observe(getViewLifecycleOwner(),
             player -> highestDifficulty = player.getHighestLearnLevel());
     viewModel.getScales().observe(getViewLifecycleOwner(), (scales) -> {
