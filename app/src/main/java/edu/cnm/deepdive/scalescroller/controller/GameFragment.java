@@ -21,7 +21,10 @@ import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
 import edu.cnm.deepdive.scalescroller.service.LearnLevelAttemptRepository;
-import edu.cnm.deepdive.scalescroller.viewmodel.MainViewModel;
+import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
+import java.security.SecureRandom;
+import java.util.List;
+import java.util.Random;
 
 // TODO javadoc
 public class GameFragment extends Fragment {
@@ -30,13 +33,14 @@ public class GameFragment extends Fragment {
   private ChallengeAttemptRepository challengeAttemptRepository;
   private FragmentGameBinding binding;
   private NavController navController;
-  private MainViewModel viewModel;
+  private GameViewModel viewModel;
   private GameFragmentArgs args;
 
-  //pass these three into the viewmodel
+  private Random rng;
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
+  private List<Scale> scales;
 
   private int score = 0;
   private int hearts = 3;
@@ -48,7 +52,6 @@ public class GameFragment extends Fragment {
     //noinspection ConstantConditions
     args = GameFragmentArgs.fromBundle(getArguments());
     // Do whatever is necessary with args.
-//    put getting speed from shared audio_preferences in viewmodel;
   }
 
   @Nullable
@@ -70,19 +73,28 @@ public class GameFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-//    setupViewModel();
-//    setUpViews();
+    setupViewModel();
+    setUpViews();
+  }
+
+  private void setupViewModel() {
+    FragmentActivity activity = getActivity();
+    //noinspection ConstantConditions
+    viewModel = new ViewModelProvider(activity).get(GameViewModel.class);
+    getLifecycle().addObserver(viewModel);
+    LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
+    viewModel.setGameMode(gameMode);
+    viewModel.getScales().observe(getViewLifecycleOwner(), (scaleList) -> scales = scaleList);
+    if (gameMode == GameMode.CHALLENGE) {
+      rng = new SecureRandom();
+      setRandomScale(rng);
+    }
+    viewModel.setTonic(tonic);
+    viewModel.setMode(mode);
+    viewModel.getLevel().observe(lifecycleOwner, this::updateGameDisplay);
   }
 
   private void setUpViews() {
-    if (gameMode == GameMode.LEARN) {
-      tonic = GameFragmentArgs.fromBundle(getArguments()).getTonic();
-      mode = GameFragmentArgs.fromBundle(getArguments()).getMode();
-    } else {
-      Scale scale = viewModel.getRandomScale();
-      tonic = scale.getTonic();
-      mode = scale.getMode();
-    }
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
     binding.score.setText(getString(R.string.score_format, score));
     binding.scaleTitle.setText(
@@ -90,32 +102,30 @@ public class GameFragment extends Fragment {
             mode.toString().toLowerCase()));
   }
 
-  private Scale getRandomScale() {
-    return viewModel.getRandomScale();
-  }
-
   private void playLevel(Scale scale) {
     navController.navigate(GameFragmentDirections.openScaleDialog());
     //do some stuff in here, maybe?
   }
 
-  private void setupViewModel() {
-    FragmentActivity activity = getActivity();
-    //noinspection ConstantConditions
-    viewModel = new ViewModelProvider(activity).get(MainViewModel.class);
-    getLifecycle().addObserver(viewModel);
-    LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
-    viewModel.getLevel().observe(lifecycleOwner, this::updateGameDisplay);
-  }
 
   private void updateGameDisplay(Level level) {
     hearts = level.getHearts();
     score = level.getScore();
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
     binding.score.setText(getString(R.string.score_format, score));
-    if (viewModel.getLevelWon().getValue() != null) {
+    if (false/*game is finished*/) {
       navController.navigate(GameFragmentDirections.openEndLevelDialog());
     }
+  }
+
+  public void setRandomScale(Random rng) {
+    if (scales.size() <= 0) {
+      viewModel.getScales().observe(getViewLifecycleOwner(), (scaleList) -> scales = scaleList);
+    }
+    int randomNum = rng.nextInt(scales.size());
+    Scale randomScale = scales.get(randomNum);
+    tonic = randomScale.getTonic();
+    mode = randomScale.getMode();
   }
 
   public enum GameMode {

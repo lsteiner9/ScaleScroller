@@ -41,7 +41,8 @@ public class HighScoreFragment extends Fragment {
     MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
     viewModel.getPlayer().observe(getViewLifecycleOwner(), (p) -> player = p);
     viewModel.getHighScores().observe(getViewLifecycleOwner(), (attempts) -> {
-          HighScoreRecyclerAdapter adapter =
+      //noinspection ConstantConditions
+      HighScoreRecyclerAdapter adapter =
               new HighScoreRecyclerAdapter(getContext(), attempts, player);
           binding.scoresRecycler.setAdapter(adapter);
         }

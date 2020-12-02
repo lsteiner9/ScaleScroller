@@ -9,9 +9,9 @@
 
   <SeekBarPreference
     android:key="@string/speed_pref_key"
-    app:min="3"
-    android:max="6"
-    android:defaultValue="4"
+    app:min="@integer/speed_min"
+    android:max="@integer/speed_max"
+    android:defaultValue="@integer/speed_pref_default"
     app:seekBarIncrement="1"
     app:showSeekBarValue="false"
     android:title="@string/speed_pref_title"

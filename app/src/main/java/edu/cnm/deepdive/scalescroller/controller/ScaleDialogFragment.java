@@ -10,20 +10,20 @@ import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.model.Level;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
-import edu.cnm.deepdive.scalescroller.viewmodel.MainViewModel;
+import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
 
 // TODO javadoc
 public class ScaleDialogFragment extends DialogFragment {
 
   private AlertDialog dialog;
-  private MainViewModel viewModel;
+  private GameViewModel viewModel;
   private Level level;
   private Scale scale;
 
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-    viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+    viewModel = new ViewModelProvider(getActivity()).get(GameViewModel.class);
     level = viewModel.getLevel().getValue();
     scale = level.getScale();
     dialog = new AlertDialog.Builder(getActivity())
