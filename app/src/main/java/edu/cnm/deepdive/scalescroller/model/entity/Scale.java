@@ -30,7 +30,6 @@ public class Scale {
   @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
   private Mode mode;
 
-  // TODO add to ERD
   @ColumnInfo(index = true)
   private int difficulty;
 
@@ -101,4 +100,5 @@ public class Scale {
   public void setDifficulty(int difficulty) {
     this.difficulty = difficulty;
   }
+
 }

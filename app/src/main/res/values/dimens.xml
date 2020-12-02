@@ -15,4 +15,5 @@
   <dimen name="large_icon_dimen">80dp</dimen>
 
   <dimen name="small_text_view_width">200dp</dimen>
+  <dimen name="standard_card_dimen">60dp</dimen>
 </resources>

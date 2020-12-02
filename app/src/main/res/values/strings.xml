@@ -22,5 +22,9 @@
   <string name="congratulations_learn">Congratulations! You won the level!</string>
   <string name="failure_learn">Sorry, you lost the level. Try again next time.</string>
   <string name="congratulations_challenge">Congratulations! Your score was %06d.</string>
+  <string name="scale_select_error">Pass previous scale levels first.</string>
+  <string name="level_paused">Level paused</string>
+  <string name="return_to_title">Return to title</string>
+  <string name="resume">Resume</string>
 
 </resources>

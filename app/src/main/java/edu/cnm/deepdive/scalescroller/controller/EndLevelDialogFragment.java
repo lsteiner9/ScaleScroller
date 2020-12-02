@@ -11,6 +11,7 @@ import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.controller.GameFragment.GameMode;
 import edu.cnm.deepdive.scalescroller.viewmodel.MainViewModel;
 
+//TODO javadoc
 public class EndLevelDialogFragment extends DialogFragment {
 
   private AlertDialog dialog;

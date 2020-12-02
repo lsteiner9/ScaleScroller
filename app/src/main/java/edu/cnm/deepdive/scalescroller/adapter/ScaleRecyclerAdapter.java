@@ -12,6 +12,7 @@ import edu.cnm.deepdive.scalescroller.databinding.ItemScaleBinding;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import java.util.List;
 
+//TODO javadoc
 /**
  * Allows for the scales in the database to be listed in a RecyclerView.
  */
@@ -26,7 +27,8 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
   private final int highestDifficulty;
 
   /**
-   * The constructor initializes the context, the list of scales and
+   * The constructor initializes the context, the list of scales, an onClickListener, and the
+   * highest difficulty scale the player has access to.
    *
    * @param context
    */
@@ -65,13 +67,14 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
       this.binding = binding;
     }
 
+    //TODO why isn't the color working consistently?
     private void bind(int position) {
       Scale scale = scales.get(position);
       binding.scaleName.setText(String.format(SCALE_FORMAT,
           scale.getTonic().toString().toUpperCase(),
           scale.getMode().toString().toLowerCase()));
-      if (position <= highestDifficulty) {
-        binding.scaleName.setTextColor(ContextCompat.getColor(context, R.color.textColor));
+      if (position > highestDifficulty) {
+        binding.scaleName.setTextColor(ContextCompat.getColor(context, R.color.inactiveColor));
       }
       itemView.setOnClickListener((v) -> listener.onClick(scale));
     }

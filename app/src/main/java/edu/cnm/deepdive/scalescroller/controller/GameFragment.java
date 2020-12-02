@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentGameBinding;
@@ -57,7 +58,7 @@ public class GameFragment extends Fragment {
     binding = FragmentGameBinding.inflate(inflater);
     navController = NavHostFragment.findNavController(this);
     binding.pauseButton.setOnClickListener((v) -> {
-      navController.navigate(GameFragmentDirections.openPauseDialog());
+      Navigation.findNavController(getView()).navigate(GameFragmentDirections.openPauseDialog());
     });
     //noinspection ConstantConditions
     gameMode = args.getGameMode();
