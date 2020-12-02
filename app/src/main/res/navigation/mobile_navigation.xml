@@ -144,9 +144,17 @@
 
   <fragment
     android:id="@+id/navigation_audio_settings"
-    android:name="edu.cnm.deepdive.scalescroller.controller.AudioSettingsFragment"/>
+    android:name="edu.cnm.deepdive.scalescroller.controller.AudioSettingsFragment">
+    <action
+      android:id="@id/open_settings"
+      app:destination="@id/navigation_settings"/>
+  </fragment>
   <fragment
     android:id="@+id/navigation_speed_settings"
-    android:name="edu.cnm.deepdive.scalescroller.controller.SpeedSettingsFragment"/>
+    android:name="edu.cnm.deepdive.scalescroller.controller.SpeedSettingsFragment">
+    <action
+      android:id="@id/open_settings"
+      app:destination="@id/navigation_settings"/>
+  </fragment>
 
 </navigation>

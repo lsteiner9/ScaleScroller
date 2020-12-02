@@ -2,6 +2,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <Preference
+    android:key="@string/pref_back_button"
+    app:icon="@drawable/ic_back_arrow_24"
+    android:layout="@layout/pref_back_button"/>
+
   <SeekBarPreference
     android:key="@string/speed_pref_key"
     app:min="3"
@@ -11,6 +16,7 @@
     app:showSeekBarValue="false"
     android:title="@string/speed_pref_title"
     android:summary="@string/speed_pref_summary"/>
+
 
 
 </PreferenceScreen>

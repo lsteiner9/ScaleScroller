@@ -32,5 +32,6 @@
   <string name="audio_toggle_key">audio_toggle_key</string>
   <string name="speed_pref_key">speed_pref_key</string>
   <string name="volume_slider_key">volume_slider_key</string>
+  <string name="pref_back_button">back_button</string>
 
 </resources>
