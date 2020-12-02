@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -62,10 +63,11 @@ public class ScaleSelectFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+    LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
     viewModel.getPlayer()
-        .observe(getViewLifecycleOwner(),
+        .observe(lifecycleOwner,
             player -> highestDifficulty = player.getHighestLearnLevel());
-    viewModel.getScales().observe(getViewLifecycleOwner(), (scales) -> {
+    viewModel.getScales().observe(lifecycleOwner, (scales) -> {
       //noinspection ConstantConditions
       ScaleRecyclerAdapter adapter = new ScaleRecyclerAdapter(getContext(), scales, (scale) -> {
         if (scale.getDifficulty() > highestDifficulty) {

@@ -5,6 +5,7 @@
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
     <item name="android:textColor">@color/textColor</item>
+    <item name="android:textColorSecondary">@color/textColor</item>
   </style>
 
   <style name="AppTheme.NoActionBar">
@@ -25,7 +26,6 @@
   </style>
 
   <style name="FullscreenTheme.Preferences" parent="PreferenceThemeOverlay">
-    <item name="colorPrimaryDark">@color/textColor</item>
     <item name="colorAccent">@color/textColor</item>
   </style>
 

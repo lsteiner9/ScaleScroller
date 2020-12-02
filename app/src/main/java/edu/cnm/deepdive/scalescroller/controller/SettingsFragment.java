@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentSettingsBinding;
 
 /**
@@ -18,6 +19,17 @@ public class SettingsFragment extends Fragment {
 
   private FragmentSettingsBinding binding;
   private NavController navController;
+
+  /**
+   * Resets the theme - needed if coming from the SpeedSettings or AudioSettings fragments.
+   * @param savedInstanceState A {@code Bundle}.
+   */
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    //noinspection ConstantConditions
+    getContext().getTheme().applyStyle(R.style.FullscreenTheme, true);
+  }
 
   /**
    * Initializes navigation.

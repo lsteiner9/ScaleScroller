@@ -47,6 +47,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return playerRepository.getByOauth(signInService.getAccount().getId());
   }
 
+  //TODO get the player id for use here - how??
   public LiveData<List<ChallengeAttempt>> getHighScores() {
     return challengeAttemptRepository.getHighScores(DEFAULT_NUM_SCORES);
   }

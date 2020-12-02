@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -29,14 +30,11 @@ import java.util.Random;
 // TODO javadoc
 public class GameFragment extends Fragment {
 
-  private LearnLevelAttemptRepository learnLevelAttemptRepository;
-  private ChallengeAttemptRepository challengeAttemptRepository;
   private FragmentGameBinding binding;
   private NavController navController;
   private GameViewModel viewModel;
   private GameFragmentArgs args;
 
-  private Random rng;
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
@@ -44,7 +42,7 @@ public class GameFragment extends Fragment {
 
   private int score = 0;
   private int hearts = 3;
-  private int speed;
+  private int speed; // do i even need this in here?
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,9 +59,9 @@ public class GameFragment extends Fragment {
     binding = FragmentGameBinding.inflate(inflater);
     navController = NavHostFragment.findNavController(this);
     binding.pauseButton.setOnClickListener((v) -> {
+      //noinspection ConstantConditions
       Navigation.findNavController(getView()).navigate(GameFragmentDirections.openPauseDialog());
     });
-    //noinspection ConstantConditions
     gameMode = args.getGameMode();
     tonic = args.getTonic();
     mode = args.getMode();
@@ -84,10 +82,10 @@ public class GameFragment extends Fragment {
     getLifecycle().addObserver(viewModel);
     LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
     viewModel.setGameMode(gameMode);
-    viewModel.getScales().observe(getViewLifecycleOwner(), (scaleList) -> scales = scaleList);
+//why is scales returning null??
     if (gameMode == GameMode.CHALLENGE) {
-      rng = new SecureRandom();
-      setRandomScale(rng);
+      viewModel.getScales().observe(lifecycleOwner,
+          scaleList -> scales = GameFragment.this.setRandomScale(scaleList, new SecureRandom()));
     }
     viewModel.setTonic(tonic);
     viewModel.setMode(mode);
@@ -105,6 +103,7 @@ public class GameFragment extends Fragment {
   private void playLevel(Scale scale) {
     navController.navigate(GameFragmentDirections.openScaleDialog());
     //do some stuff in here, maybe?
+    //for challenge, need to call setRandomScale again but pass in the current list of scales
   }
 
 
@@ -118,14 +117,18 @@ public class GameFragment extends Fragment {
     }
   }
 
-  public void setRandomScale(Random rng) {
+  public List<Scale> setRandomScale(List<Scale> scales, Random rng) {
     if (scales.size() <= 0) {
-      viewModel.getScales().observe(getViewLifecycleOwner(), (scaleList) -> scales = scaleList);
+      viewModel.getScales().observe(getViewLifecycleOwner(), (scaleList) ->
+          GameFragment.this.scales = setRandomScale(scaleList, new SecureRandom()));
+    } else {
+      int randomNum = rng.nextInt(scales.size());
+      Scale randomScale = scales.get(randomNum);
+      scales.remove(randomNum);
+      tonic = randomScale.getTonic();
+      mode = randomScale.getMode();
     }
-    int randomNum = rng.nextInt(scales.size());
-    Scale randomScale = scales.get(randomNum);
-    tonic = randomScale.getTonic();
-    mode = randomScale.getMode();
+    return scales;
   }
 
   public enum GameMode {

@@ -33,5 +33,8 @@
   <string name="speed_pref_key">speed_pref_key</string>
   <string name="volume_slider_key">volume_slider_key</string>
   <string name="pref_back_button">back_button</string>
+  <string name="audio_settings_title">Audio Settings</string>
+  <string name="speed_settings_title">Speed Settings</string>
+  <string name="no_scores">No scores to display</string>
 
 </resources>

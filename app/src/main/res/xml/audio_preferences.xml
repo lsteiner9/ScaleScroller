@@ -6,7 +6,7 @@
   <Preference
     android:key="@string/pref_back_button"
     app:icon="@drawable/ic_back_arrow_24"
-    android:layout="@layout/pref_back_button"/>
+    android:layout="@layout/pref_audio_back_button"/>
 
   <SwitchPreferenceCompat
     android:key="@string/audio_toggle_key"

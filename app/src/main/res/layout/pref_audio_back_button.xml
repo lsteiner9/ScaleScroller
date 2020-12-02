@@ -4,6 +4,9 @@
   android:id="@+id/preferences_back_button"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  app:icon="@drawable/ic_back_arrow_24">
+  app:icon="@drawable/ic_back_arrow_24"
+  android:text="@string/audio_settings_title"
+  android:textSize="@dimen/large_text_size"
+  android:textAllCaps="false">
 
 </com.google.android.material.button.MaterialButton>

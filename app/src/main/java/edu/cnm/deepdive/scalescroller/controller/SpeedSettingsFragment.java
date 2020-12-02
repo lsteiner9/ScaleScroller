@@ -48,13 +48,4 @@ public class SpeedSettingsFragment extends PreferenceFragmentCompat {
     });
   }
 
-  /**
-   * Overrides onDestroy to set the theme back to the FullscreenTheme used in the rest of the app.
-   */
-  @Override
-  public void onDestroy() {
-    //noinspection ConstantConditions
-    getContext().getTheme().applyStyle(R.style.FullscreenTheme, true);
-    super.onDestroy();
-  }
 }

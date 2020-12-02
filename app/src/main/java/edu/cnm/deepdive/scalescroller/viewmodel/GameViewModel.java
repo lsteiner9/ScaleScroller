@@ -88,7 +88,8 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     speedPrefDefault = application.getResources().getInteger(R.integer.speed_pref_default);
     speed = preferences.getInt(speedPrefKey, speedPrefDefault);
     pending = new CompositeDisposable();
-    // how to get out of livedata for scale list?
+    hearts = INITIAL_HEARTS;
+    score = INITIAL_SCORE;
   }
 
   public LiveData<Level> getLevel() {
@@ -123,15 +124,4 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
 //    }
   }
 
-  public Scale setRandomScale() {
-    if (scales.size() <= 0) {
-      scales = scaleRepository.getAll().getValue();
-    }
-    int randomNum = rng.nextInt(scales.size());
-    Scale randomScale = scales.get(randomNum);
-    scales.remove(randomNum);
-    tonic = randomScale.getTonic();
-    mode = randomScale.getMode();
-    return randomScale;
-  }
 }
