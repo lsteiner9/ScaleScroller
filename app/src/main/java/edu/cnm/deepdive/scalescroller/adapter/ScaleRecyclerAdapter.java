@@ -12,7 +12,6 @@ import edu.cnm.deepdive.scalescroller.databinding.ItemScaleBinding;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import java.util.List;
 
-//TODO javadoc
 /**
  * Allows for the scales in the database to be listed in a RecyclerView.
  */
@@ -28,9 +27,12 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
   /**
    * The constructor initializes the context, the list of scales, an onClickListener, and the
-   * highest difficulty scale the player has access to.
+   * highest difficulty scale the current player has access to.
    *
-   * @param context
+   * @param context           The application context.
+   * @param scales            A {@code List} of {@link Scale} to be displayed.
+   * @param listener          A type of onClickListener.
+   * @param highestDifficulty The highest difficulty scale the current player has access to.
    */
   public ScaleRecyclerAdapter(@NonNull Context context, List<Scale> scales,
       OnScaleClickListener listener, int highestDifficulty) {
@@ -58,16 +60,30 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
     return scales.size();
   }
 
+  /**
+   * A ViewHolder class that aids in setting and inflating xml in the RecyclerView.
+   */
   class Holder extends RecyclerView.ViewHolder {
 
     private final ItemScaleBinding binding;
 
+    /**
+     * The constructor initializes the viewBinding.
+     *
+     * @param binding A {@code ItemScaleBinding} object.
+     */
     private Holder(@NonNull ItemScaleBinding binding) {
       super(binding.getRoot());
       this.binding = binding;
     }
 
     //TODO why isn't the color working consistently?
+    /**
+     * Binds each {@code Scale} to its corresponding position in the RecyclerView, and sets the text
+     * for the tonic and mode of the scale.
+     *
+     * @param position The scale's position in the RecyclerView and the scales list.
+     */
     private void bind(int position) {
       Scale scale = scales.get(position);
       binding.scaleName.setText(String.format(SCALE_FORMAT,
@@ -80,6 +96,9 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
     }
   }
 
+  /**
+   * This interface can be implemented to handle clicks of scales in the adapter.
+   */
   public interface OnScaleClickListener {
 
     void onClick(Scale scale);

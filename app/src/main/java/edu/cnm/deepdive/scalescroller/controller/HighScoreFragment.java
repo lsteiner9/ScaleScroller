@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -15,13 +14,23 @@ import edu.cnm.deepdive.scalescroller.adapter.HighScoreRecyclerAdapter;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentHighScoreBinding;
 import edu.cnm.deepdive.scalescroller.viewmodel.MainViewModel;
 
-// TODO javadoc
+/**
+ * Allows the user to view high scores from Challenge mode from a RecyclerView.
+ */
 public class HighScoreFragment extends Fragment {
 
   private FragmentHighScoreBinding binding;
   private NavController navController;
   private String displayName;
 
+  /**
+   * Sets up navigation.
+   *
+   * @param inflater           A {@code LayoutInflater}.
+   * @param container          A {@code ViewGroup}.
+   * @param savedInstanceState A {@code Bundle}.
+   * @return A {@code View}.
+   */
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,13 +43,20 @@ public class HighScoreFragment extends Fragment {
   }
 
   //TODO this isn't working, is it because there are no attempts to show? How can I be sure, or how can I put a "no scores to show" textview?
+  /**
+   * Creates a recycler view containing the high scores from the database, with information about
+   * the player and timestamp for each score.
+   *
+   * @param view               A {@code View} object.
+   * @param savedInstanceState A {@code Bundle}
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
     viewModel.getHighScores().observe(getViewLifecycleOwner(), (attempts) -> {
-      //noinspection ConstantConditions
-      HighScoreRecyclerAdapter adapter =
+          //noinspection ConstantConditions
+          HighScoreRecyclerAdapter adapter =
               new HighScoreRecyclerAdapter(getContext(), attempts);
           binding.scoresRecycler.setAdapter(adapter);
         }

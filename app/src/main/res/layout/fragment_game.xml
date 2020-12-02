@@ -53,8 +53,7 @@
     app:layout_constraintBottom_toTopOf="@id/horizontal_guideline1"
     app:layout_constraintEnd_toEndOf="parent"/>
 
-  <!--TODO figure out the best way to do the hearts - below is just a placeholder-->
-
+  <!--TODO Figure out a way to do a graphical representation of hearts, rather than text-->
   <TextView
     android:id="@+id/hearts"
     android:layout_width="wrap_content"
@@ -67,7 +66,7 @@
     app:layout_constraintBottom_toTopOf="@id/horizontal_guideline1"
     app:layout_constraintEnd_toStartOf="@id/score"/>
 
-  <!--TODO insert surface view or something-->
+  <!--TODO Insert surface view here-->
   <com.google.android.material.button.MaterialButton
     android:id="@+id/move_up"
     android:layout_width="wrap_content"
@@ -88,8 +87,7 @@
     app:icon="@drawable/ic_arrow_downward_24"
     app:iconSize="80dp"/>
 
-<!--  TODO link up these two buttons in some sort of layout so they can be moved together-->
-<!--  also, is there a way to not use a button? Because it's a pain that the background overlaps-->
+<!--  TODO Find a better way to do this drawable-->
   <com.google.android.material.button.MaterialButton
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -109,7 +107,7 @@
     app:icon="@drawable/ic_music_note_24"
     app:iconSize="@dimen/large_icon_dimen"/>
 
-<!--  TODO make these actually work, this is a dummy layout-->
+<!--  TODO Take this mockup layout out after surface view is created-->
   <com.google.android.material.textview.MaterialTextView
     android:layout_width="@dimen/standard_icon_dimen"
     android:layout_height="@dimen/standard_icon_dimen"

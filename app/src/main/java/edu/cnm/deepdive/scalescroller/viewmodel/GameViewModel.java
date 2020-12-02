@@ -1,7 +1,5 @@
 package edu.cnm.deepdive.scalescroller.viewmodel;
 
-import static edu.cnm.deepdive.scalescroller.controller.GameFragment.GameMode.LEARN;
-
 import android.app.Application;
 import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
@@ -31,7 +29,10 @@ import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
-//TODO javadoc
+//TODO do game logic
+/**
+ * Serves as the ViewModel for the GameFragment.
+ */
 public class GameViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private static final int INITIAL_HEARTS = 3;
@@ -43,11 +44,9 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<LearnLevelAttempt> learnLevelAttempt;
   private final MutableLiveData<Boolean> levelWon;
   private final MutableLiveData<Throwable> throwable;
-
   private final CompositeDisposable pending;
   private final SharedPreferences preferences;
   private final Random rng;
-
   private final PlayerRepository playerRepository;
   private final LearnLevelAttemptRepository learnLevelAttemptRepository;
   private final ChallengeAttemptRepository challengeAttemptRepository;
@@ -55,18 +54,21 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   private final ScaleChallengeAttemptRepository scaleChallengeAttemptRepository;
   private final GoogleSignInService signInService;
 
-
   private int hearts;
   private int score;
   private String speedPrefKey;
   private int speedPrefDefault;
   private int speed;
-  private Scale selectedScale;
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
-  private List<Scale> scales;
 
+  /**
+   * The constructor initializes repositories, services, and other elements needed by the
+   * ViewModel.
+   *
+   * @param application The ScaleScroller application.
+   */
   public GameViewModel(@NonNull Application application) {
     super(application);
     playerRepository = new PlayerRepository(application);
@@ -92,36 +94,65 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     score = INITIAL_SCORE;
   }
 
+  /**
+   * Returns LiveData of a level.
+   *
+   * @return {@code LiveData} of the current {@link Level}
+   */
   public LiveData<Level> getLevel() {
     return level;
   }
 
+  /**
+   * Returns LiveData of a list of scales, ordered by difficulty.
+   *
+   * @return {@code LiveData} of a {@code List} of {@link Scale}
+   */
   public LiveData<List<Scale>> getScales() {
     return scaleRepository.getAllOrdered();
   }
 
-
+  /**
+   * Sets the GameMode of the ViewModel to the enumerated types LEARN or CHALLENGE. If Challenge
+   * mode has been selected, the default speed is used to start, ignoring any user preferences set
+   * for Learn mode.
+   *
+   * @param gameMode A enumerated {@link GameMode} type.
+   */
   public void setGameMode(GameMode gameMode) {
     this.gameMode = gameMode;
+    if (gameMode == GameMode.CHALLENGE) {
+      speed = speedPrefDefault;
+    }
   }
 
+  /**
+   * Sets the tonic of the scale in the ViewModel to one of the enumerated types.
+   *
+   * @param tonic A enumerated {@link Note} type.
+   */
   public void setTonic(Note tonic) {
     this.tonic = tonic;
   }
 
+  /**
+   * Sets the mode of the scale in the ViewModel to one of the enumerated types.
+   *
+   * @param mode A enumerated {@link Mode} type.
+   */
   public void setMode(Mode mode) {
     this.mode = mode;
   }
 
-  public void startLearnLevel() {
-//    Level level = new Level(selectedScale);
-  }
-
-  public void startChallengeAttempt() {
-//    idk how to do this
-//    while (hearts > 0) {
-//      startScaleChallengeAttempt();
-//    }
+  /**
+   * Starts a single level. If the level is for Learn mode, uses the speed from SharedPreferences.
+   * If the level is for Challenge mode, increments the speed upon completion of the level.
+   */
+  public void startLevel() {
+    //start the level, do stuff
+    if (gameMode == GameMode.CHALLENGE) {
+      speed++;
+    }
   }
 
 }

@@ -11,7 +11,11 @@ import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.controller.GameFragment.GameMode;
 import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
 
-//TODO javadoc
+/**
+ * Creates a dialog that pops up at the end of the level (in Learn mode) or game (in Challenge
+ * mode). Informs the player of the game status - won or lost for Learn mode, score for Challenge
+ * mode.
+ */
 public class EndLevelDialogFragment extends DialogFragment {
 
   private AlertDialog dialog;
@@ -32,7 +36,8 @@ public class EndLevelDialogFragment extends DialogFragment {
 //    format = (gameMode == GameMode.LEARN)? format : getString(R.string.congratulations_challenge);
     dialog = new AlertDialog.Builder(getActivity())
 //        .setMessage(String.format(format, score))
-        .setPositiveButton(android.R.string.ok, (dialog, which) -> {})
+        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+        })
         .create();
     return dialog;
   }

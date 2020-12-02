@@ -92,11 +92,20 @@ public class Scale {
   }
 
 
-  //TODO add javadoc
+  /**
+   * Returns the difficulty of the scale.
+   *
+   * @return
+   */
   public int getDifficulty() {
     return difficulty;
   }
 
+  /**
+   * Sets the difficulty of the scale.
+   *
+   * @param difficulty The difficulty of the scale.
+   */
   public void setDifficulty(int difficulty) {
     this.difficulty = difficulty;
   }

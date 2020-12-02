@@ -31,7 +31,7 @@ public class ScaleSelectFragment extends Fragment {
   private int highestDifficulty;
 
   /**
-   * Sets up navigation and the RecyclerView adapter.
+   * Sets up navigation.
    *
    * @param inflater           A {@code LayoutInflater}.
    * @param container          A {@code ViewGroup}.

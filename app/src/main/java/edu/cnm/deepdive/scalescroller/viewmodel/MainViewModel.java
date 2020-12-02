@@ -18,7 +18,9 @@ import edu.cnm.deepdive.scalescroller.service.ScaleRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 
-//TODO javadoc
+/**
+ * Serves as the ViewModel for all fragments except the GameFragment.
+ */
 public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private static final int DEFAULT_NUM_SCORES = 10;
@@ -33,6 +35,12 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final SharedPreferences preferences;
   private final GoogleSignInService signInService;
 
+  /**
+   * The constructor initializes repositories, services, and other elements needed by the
+   * ViewModel.
+   *
+   * @param application The ScaleScroller application.
+   */
   public MainViewModel(@NonNull Application application) {
     super(application);
     challengeAttemptRepository = new ChallengeAttemptRepository(application);
@@ -44,15 +52,30 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     signInService = GoogleSignInService.getInstance();
   }
 
+  /**
+   * Returns LiveData of the current player.
+   *
+   * @return {@code LiveData} of the current {@link Player}.
+   */
   public LiveData<Player> getPlayer() {
     return playerRepository.getByOauth(signInService.getAccount().getId());
   }
 
-  //TODO get the player id for use here - how??
+  /**
+   * Returns LiveData of a list of the highest-scoring challenge attempts. Uses the default number
+   * of high scores.
+   *
+   * @return {@code LiveData} of a {@code List} of the highest-scoring {@link ChallengeAttempt}.
+   */
   public LiveData<List<ChallengeAttempt>> getHighScores() {
     return challengeAttemptRepository.getHighScores(DEFAULT_NUM_SCORES);
   }
 
+  /**
+   * Returns LiveData of a list of all scales in the database, ordered by difficulty.
+   *
+   * @return {@code LiveData} of a {@code List} of all {@link Scale} in the database.
+   */
   public LiveData<List<Scale>> getScales() {
     return scaleRepository.getAllOrdered();
   }

@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -20,36 +19,32 @@ import edu.cnm.deepdive.scalescroller.model.Level;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
-import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
-import edu.cnm.deepdive.scalescroller.service.LearnLevelAttemptRepository;
 import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
 import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
-// TODO javadoc
+/**
+ * The GameFragment is where the gameplay takes place, for both Learn and Challenge modes.
+ */
 public class GameFragment extends Fragment {
 
   private FragmentGameBinding binding;
   private NavController navController;
   private GameViewModel viewModel;
   private GameFragmentArgs args;
-
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
   private List<Scale> scales;
-
   private int score = 0;
   private int hearts = 3;
-  private int speed; // do i even need this in here?
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     //noinspection ConstantConditions
     args = GameFragmentArgs.fromBundle(getArguments());
-    // Do whatever is necessary with args.
   }
 
   @Nullable
@@ -117,7 +112,7 @@ public class GameFragment extends Fragment {
     }
   }
 
-  public List<Scale> setRandomScale(List<Scale> scales, Random rng) {
+  private List<Scale> setRandomScale(List<Scale> scales, Random rng) {
     if (scales.size() <= 0) {
       viewModel.getScales().observe(getViewLifecycleOwner(), (scaleList) ->
           GameFragment.this.scales = setRandomScale(scaleList, new SecureRandom()));
@@ -131,6 +126,9 @@ public class GameFragment extends Fragment {
     return scales;
   }
 
+  /**
+   * Enumerates the two game modes - LEARN and CHALLENGE.
+   */
   public enum GameMode {
     LEARN, CHALLENGE
   }

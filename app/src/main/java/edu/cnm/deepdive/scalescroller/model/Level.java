@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.scalescroller.model;
 
+import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
@@ -8,54 +9,123 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-// TODO javadoc
+/**
+ * The {@code Level} class contains game logic used in conjunction with the {@link
+ * edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel}.
+ */
 public class Level {
 
+  private static final int MIN_PASSING_SCORE = R.integer.min_passing_score;
   private int score;
   private int hearts;
-  private int speed;
   private final Scale scale;
+  private Boolean levelWon;
   private Note[] correctNotes;
 
+  /**
+   * The constructor initializes the scale used in the level, and creates a list of the correct
+   * notes from the scale.
+   *
+   * @param scale The scale used.
+   */
   public Level(Scale scale) {
     this.scale = scale;
     correctNotes = getNotes();
   }
 
-  // TODO Put logic here for each level in the game
+  // TODO Put logic here for each level in the game?
 
+  /**
+   * Returns the current score in the level.
+   *
+   * @return The current score.
+   */
   public int getScore() {
     return score;
   }
 
-  public void setScore(int score) {
-    this.score = score;
+  /**
+   * Sets the score for the level by adding the new points. Also sets levelWon to true if the
+   * minimum score has been reached.
+   *
+   * @param points The points to be added to the current score.
+   */
+  public void setScore(int points) {
+    score += points;
+    if (score >= MIN_PASSING_SCORE) {
+      levelWon = true;
+    }
   }
 
+  /**
+   * Returns the current number of lives/hearts left.
+   *
+   * @return The hearts left.
+   */
   public int getHearts() {
     return hearts;
   }
 
-  public void setHearts(int hearts) {
-    this.hearts = hearts;
+  /**
+   * Increments or decrements the number of hearts left. Also sets levelWon to false if there are no
+   * hearts left.
+   *
+   * @param heartAdded True if a heart has been added, false if it has been removed.
+   */
+  public void setHearts(boolean heartAdded) {
+    if (heartAdded) {
+      hearts++;
+    } else {
+      hearts--;
+    }
+    if (hearts == 0) {
+      levelWon = false;
+    }
   }
 
-  public int getSpeed() {
-    return speed;
-  }
-
-  public void setSpeed(int speed) {
-    this.speed = speed;
-  }
-
+  /**
+   * Returns the scale associated with the level.
+   *
+   * @return The level's scale.
+   */
   public Scale getScale() {
     return scale;
   }
 
+  /**
+   * Returns true if the level has been won and false if it has been lost. If the level is in
+   * progress, this will return null.
+   *
+   * @return Whether the level has been won, lost, or is in progress.
+   */
+  public Boolean getLevelWon() {
+    return levelWon;
+  }
+
+  /**
+   * Returns the correct notes associated with the scale (and by extension, the level).
+   *
+   * @return An array of {@link Note} that belong in the scale.
+   */
   public Note[] getCorrectNotes() {
     return correctNotes;
   }
 
+  /**
+   * Returns the notes not associated with the scale.
+   *
+   * @return An array of {@link Note} that do not belong in the scale.
+   */
+  public Note[] getIncorrectNotes() {
+    // TODO stream all note values and filter based whether they are not in correctNotes
+    return null;
+  }
+
+  /**
+   * Returns a String representation of the correct notes of the scale.
+   *
+   * @return A String of correctNotes.
+   */
   public String getNotesString() {
     return Arrays.toString(correctNotes);
   }

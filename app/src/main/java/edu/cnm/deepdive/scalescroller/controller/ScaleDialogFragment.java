@@ -12,7 +12,10 @@ import edu.cnm.deepdive.scalescroller.model.Level;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
 
-// TODO javadoc
+/**
+ * Creates a dialog that pops up at the beginning of each scale level to show the notes of the scale
+ * for reference.
+ */
 public class ScaleDialogFragment extends DialogFragment {
 
   private AlertDialog dialog;
@@ -31,7 +34,8 @@ public class ScaleDialogFragment extends DialogFragment {
             scale.getTonic().toString().toUpperCase(),
             scale.getMode().toString().toLowerCase(),
             level.getNotesString()))
-        .setPositiveButton(android.R.string.ok, (dialog, which) -> {})
+        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+        })
         .create();
     return dialog;
   }
