@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentTitleBinding;
 import edu.cnm.deepdive.scalescroller.service.GoogleSignInService;
+import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
 
 /**
  * The title fragment is the main navigational hub, and allows the user to select different game
@@ -48,6 +50,7 @@ public class TitleFragment extends Fragment {
         navController.navigate(TitleFragmentDirections.openChallengeModeGame()));
     binding.settingsButton.setOnClickListener(
         (v) -> navController.navigate(TitleFragmentDirections.openSettings()));
+    new ViewModelProvider(getActivity()).get(GameViewModel.class).setResume(true);
     return binding.getRoot();
   }
 

@@ -15,7 +15,6 @@ import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
-import edu.cnm.deepdive.scalescroller.model.entity.Player;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
@@ -44,6 +43,10 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<LearnLevelAttempt> learnLevelAttempt;
   private final MutableLiveData<Boolean> levelWon;
   private final MutableLiveData<Throwable> throwable;
+  private final MutableLiveData<Integer> hearts;
+  private final MutableLiveData<Integer> score;
+  private final MutableLiveData<Boolean> resume;
+
   private final CompositeDisposable pending;
   private final SharedPreferences preferences;
   private final Random rng;
@@ -54,8 +57,6 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   private final ScaleChallengeAttemptRepository scaleChallengeAttemptRepository;
   private final GoogleSignInService signInService;
 
-  private int hearts;
-  private int score;
   private String speedPrefKey;
   private int speedPrefDefault;
   private int speed;
@@ -84,14 +85,15 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     learnLevelAttempt = new MutableLiveData<>();
     levelWon = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
+    hearts = new MutableLiveData<>();
+    score = new MutableLiveData<>();
+    resume = new MutableLiveData<>(true);
     rng = new SecureRandom();
     preferences = PreferenceManager.getDefaultSharedPreferences(application);
     speedPrefKey = application.getString(R.string.speed_pref_key);
     speedPrefDefault = application.getResources().getInteger(R.integer.speed_pref_default);
     speed = preferences.getInt(speedPrefKey, speedPrefDefault);
     pending = new CompositeDisposable();
-    hearts = INITIAL_HEARTS;
-    score = INITIAL_SCORE;
   }
 
   /**
@@ -110,6 +112,22 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
    */
   public LiveData<List<Scale>> getScales() {
     return scaleRepository.getAllOrdered();
+  }
+
+  public LiveData<Boolean> getResume() {
+    return resume;
+  }
+
+  public void setResume(boolean resume) {
+    this.resume.setValue(resume);
+  }
+
+  public LiveData<Integer> getHearts() {
+    return hearts;
+  }
+
+  public LiveData<Integer> getScore() {
+    return score;
   }
 
   /**

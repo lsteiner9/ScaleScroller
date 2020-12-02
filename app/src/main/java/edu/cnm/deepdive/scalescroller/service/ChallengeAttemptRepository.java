@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.scalescroller.model.dao.ChallengeAttemptDao;
 import edu.cnm.deepdive.scalescroller.model.dao.PlayerDao;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
+import edu.cnm.deepdive.scalescroller.model.pojo.ChallengeAttemptWithPlayer;
 import io.reactivex.Completable;
 import java.util.List;
 
@@ -92,7 +93,7 @@ public class ChallengeAttemptRepository {
    * @param numScores The number of scores to return.
    * @return {@code LiveData} of a {@code List} of {@code ChallengeAttempt}.
    */
-  public LiveData<List<ChallengeAttempt>> getHighScores(int numScores) {
+  public LiveData<List<ChallengeAttemptWithPlayer>> getHighScores(int numScores) {
     return challengeAttemptDao.selectHighScores(numScores);
   }
 

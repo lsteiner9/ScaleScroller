@@ -4,75 +4,41 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.scalescroller.R;
-import edu.cnm.deepdive.scalescroller.databinding.FragmentPauseDialogBinding;
+import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
 
-//TODO why do none of the dialogs work????
 /**
  * Creates a dialog that pops up when the player presses the pause button. From this dialog, the
  * player can resume the game or return to the title screen.
  */
 public class PauseDialogFragment extends DialogFragment {
 
-  //  private AlertDialog dialog;
-//  private NavController navController;
-//
-//  @NonNull
-//  @Override
-//  public Dialog onCreateDialog(
-//      @Nullable Bundle savedInstanceState) {
-//    navController = NavHostFragment.findNavController(this);
-//    dialog = new Builder(getContext())
-//        .setMessage(R.string.level_paused)
-//        .setPositiveButton(R.string.resume, (dialog, which) -> {})
-//        .setNegativeButton(R.string.return_to_title, ((dialog, which)
-//            -> navController.navigate(PauseDialogFragmentDirections.openTitle())))
-//        .create();
-//    dialog.show();
-//    return dialog;
-//  }
   private AlertDialog dialog;
-  private NavController navController;
-  private FragmentPauseDialogBinding binding;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    navController = NavHostFragment.findNavController(this);
-    binding = FragmentPauseDialogBinding.inflate(LayoutInflater.from(getContext()));
-    binding.returnButton.setOnClickListener((v) -> {
-      navController.navigate(PauseDialogFragmentDirections.openTitle());
-    });
+    setStyle(DialogFragment.STYLE_NO_FRAME, R.style.PauseDialog);
   }
 
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+    String buttonTitle = PauseDialogFragmentArgs.fromBundle(getArguments()).getButtonTitle();
     dialog = new Builder(getContext())
-        .setView(binding.getRoot())
         .setMessage(R.string.level_paused)
-        .setPositiveButton(R.string.resume, (dialog, which) -> {
-        })
-        .setNegativeButton(R.string.return_to_title, ((dialog, which)
-            -> navController.navigate(PauseDialogFragmentDirections.openTitle())))
+        .setPositiveButton(buttonTitle, (dialog, which) -> onClose(true))
+        .setNegativeButton(R.string.return_to_title, (dialog, which) -> onClose(false))
         .create();
-    dialog.show();
     return dialog;
   }
 
-  //this override is needed to make the dialog get created
-  @Nullable
-  @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    return binding.getRoot();
+  private void onClose(boolean resume) {
+    new ViewModelProvider(getActivity()).get(GameViewModel.class).setResume(resume);
   }
+
 }

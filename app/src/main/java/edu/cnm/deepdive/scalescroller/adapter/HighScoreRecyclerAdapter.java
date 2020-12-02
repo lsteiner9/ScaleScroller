@@ -9,6 +9,7 @@ import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.adapter.HighScoreRecyclerAdapter.Holder;
 import edu.cnm.deepdive.scalescroller.databinding.ItemScoreBinding;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
+import edu.cnm.deepdive.scalescroller.model.pojo.ChallengeAttemptWithPlayer;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 public class HighScoreRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
   private final Context context;
-  private final List<ChallengeAttempt> highScoreAttempts;
+  private final List<ChallengeAttemptWithPlayer> highScoreAttempts;
   private final LayoutInflater inflater;
 
   /**
@@ -27,7 +28,7 @@ public class HighScoreRecyclerAdapter extends RecyclerView.Adapter<Holder> {
    * @param highScoreAttempts The list of high-scoring attempts.
    */
   public HighScoreRecyclerAdapter(@NonNull Context context,
-      List<ChallengeAttempt> highScoreAttempts) {
+      List<ChallengeAttemptWithPlayer> highScoreAttempts) {
     this.context = context;
     this.highScoreAttempts = highScoreAttempts;
     inflater = LayoutInflater.from(context);
@@ -79,10 +80,9 @@ public class HighScoreRecyclerAdapter extends RecyclerView.Adapter<Holder> {
      * @param position The attempt's position in the RecyclerView and the high-score list.
      */
     private void bind(int position) {
-      ChallengeAttempt challengeAttempt = highScoreAttempts.get(position);
+      ChallengeAttemptWithPlayer challengeAttempt = highScoreAttempts.get(position);
       binding.scoreNumber.setText(position + 1);
-      // TODO somehow get the player name out of the playerid - how??
-//      binding.player.setText(challengeAttempt.getPlayerId());
+      binding.player.setText(challengeAttempt.getPlayer().getUsername());
       //TODO format the total score and the timestamp
       binding.highScore.setText(challengeAttempt.getTotalScore());
       binding.timestamp.setText(challengeAttempt.getTimestamp().toString());

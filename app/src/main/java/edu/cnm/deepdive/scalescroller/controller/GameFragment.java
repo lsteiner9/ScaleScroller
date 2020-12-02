@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.scalescroller.controller;
 
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentGameBinding;
 import edu.cnm.deepdive.scalescroller.model.Level;
@@ -29,10 +32,15 @@ import java.util.Random;
  */
 public class GameFragment extends Fragment {
 
+  private SharedPreferences preferences;
+  private MediaPlayer mediaPlayer;
   private FragmentGameBinding binding;
   private NavController navController;
   private GameViewModel viewModel;
   private GameFragmentArgs args;
+  private String volumePrefKey;
+  private int volumePrefDefault;
+  private int volume;
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
@@ -55,8 +63,14 @@ public class GameFragment extends Fragment {
     navController = NavHostFragment.findNavController(this);
     binding.pauseButton.setOnClickListener((v) -> {
       //noinspection ConstantConditions
-      Navigation.findNavController(getView()).navigate(GameFragmentDirections.openPauseDialog());
+      Navigation.findNavController(getView()).navigate(GameFragmentDirections.openPauseDialog("text"));
     });
+    preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+    volumePrefKey = getString(R.string.volume_slider_key);
+    volumePrefDefault = getResources().getInteger(R.integer.audio_pref_default);
+    volume = preferences.getInt(volumePrefKey, volumePrefDefault);
+    playSound(R.raw.start_level);
+
     gameMode = args.getGameMode();
     tonic = args.getTonic();
     mode = args.getMode();
@@ -77,19 +91,33 @@ public class GameFragment extends Fragment {
     getLifecycle().addObserver(viewModel);
     LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
     viewModel.setGameMode(gameMode);
-//why is scales returning null??
     if (gameMode == GameMode.CHALLENGE) {
       viewModel.getScales().observe(lifecycleOwner,
           scaleList -> scales = GameFragment.this.setRandomScale(scaleList, new SecureRandom()));
     }
     viewModel.setTonic(tonic);
     viewModel.setMode(mode);
+    viewModel.getHearts().observe(lifecycleOwner, this::updateHearts);
+    viewModel.getScore().observe(lifecycleOwner, this::updateScore);
     viewModel.getLevel().observe(lifecycleOwner, this::updateGameDisplay);
+    viewModel.getResume().observe(lifecycleOwner, (resume) -> {
+      if (!resume) {
+        navController.navigate(GameFragmentDirections.openTitle());
+      }
+    });
+  }
+
+  private void updateScore(Integer score) {
+    binding.score.setText(getString(R.string.score_format, score));
+    playSound(R.raw.correct_coin);
+  }
+
+  private void updateHearts(Integer hearts) {
+    binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
+    playSound(R.raw.incorrect_coin);
   }
 
   private void setUpViews() {
-    binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
-    binding.score.setText(getString(R.string.score_format, score));
     binding.scaleTitle.setText(
         getString(R.string.scale_title_format, tonic.toString().toUpperCase(),
             mode.toString().toLowerCase()));
@@ -97,6 +125,7 @@ public class GameFragment extends Fragment {
 
   private void playLevel(Scale scale) {
     navController.navigate(GameFragmentDirections.openScaleDialog());
+    playSound(R.raw.start_level);
     //do some stuff in here, maybe?
     //for challenge, need to call setRandomScale again but pass in the current list of scales
   }
@@ -124,6 +153,14 @@ public class GameFragment extends Fragment {
       mode = randomScale.getMode();
     }
     return scales;
+  }
+
+  //TODO Why doesn't it want to create the MediaPlayer?
+  private void playSound(Integer resource) {
+    mediaPlayer = MediaPlayer.create(getContext(), resource);
+    mediaPlayer.setVolume(0.0f, volume);
+    mediaPlayer.start();
+    mediaPlayer.setOnCompletionListener((ignored) -> mediaPlayer.release());
   }
 
   /**

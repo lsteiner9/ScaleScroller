@@ -5,8 +5,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
+import edu.cnm.deepdive.scalescroller.model.pojo.ChallengeAttemptWithPlayer;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -131,8 +133,9 @@ public interface ChallengeAttemptDao {
    * @param numScores The number of scores to return.
    * @return {@code LiveData} of a {@code List} of high-scoring attempts.
    */
+  @Transaction
   @Query("SELECT * FROM ChallengeAttempt ORDER BY total_score DESC LIMIT :numScores")
-  LiveData<List<ChallengeAttempt>> selectHighScores(int numScores);
+  LiveData<List<ChallengeAttemptWithPlayer>> selectHighScores(int numScores);
 
   /**
    * Queries the database for the attempts with the highest scores made by a specific player.

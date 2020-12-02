@@ -77,10 +77,9 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
       this.binding = binding;
     }
 
-    //TODO why isn't the color working consistently?
     /**
      * Binds each {@code Scale} to its corresponding position in the RecyclerView, and sets the text
-     * for the tonic and mode of the scale.
+     * for the tonic and mode of the scale. Grays out the scales that are not accessible to the user.
      *
      * @param position The scale's position in the RecyclerView and the scales list.
      */
@@ -91,6 +90,8 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
           scale.getMode().toString().toLowerCase()));
       if (position > highestDifficulty) {
         binding.scaleName.setTextColor(ContextCompat.getColor(context, R.color.inactiveColor));
+      } else {
+        binding.scaleName.setTextColor(ContextCompat.getColor(context, R.color.textColor));
       }
       itemView.setOnClickListener((v) -> listener.onClick(scale));
     }

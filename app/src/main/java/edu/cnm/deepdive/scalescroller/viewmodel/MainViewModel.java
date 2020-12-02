@@ -11,6 +11,7 @@ import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.Player;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
+import edu.cnm.deepdive.scalescroller.model.pojo.ChallengeAttemptWithPlayer;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
 import edu.cnm.deepdive.scalescroller.service.GoogleSignInService;
 import edu.cnm.deepdive.scalescroller.service.PlayerRepository;
@@ -67,7 +68,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
    *
    * @return {@code LiveData} of a {@code List} of the highest-scoring {@link ChallengeAttempt}.
    */
-  public LiveData<List<ChallengeAttempt>> getHighScores() {
+  public LiveData<List<ChallengeAttemptWithPlayer>> getHighScores() {
     return challengeAttemptRepository.getHighScores(DEFAULT_NUM_SCORES);
   }
 

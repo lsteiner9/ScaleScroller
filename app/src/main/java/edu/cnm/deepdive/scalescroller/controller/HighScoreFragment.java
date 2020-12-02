@@ -21,7 +21,6 @@ public class HighScoreFragment extends Fragment {
 
   private FragmentHighScoreBinding binding;
   private NavController navController;
-  private String displayName;
 
   /**
    * Sets up navigation.
@@ -42,7 +41,6 @@ public class HighScoreFragment extends Fragment {
     return binding.getRoot();
   }
 
-  //TODO this isn't working, is it because there are no attempts to show? How can I be sure, or how can I put a "no scores to show" textview?
   /**
    * Creates a recycler view containing the high scores from the database, with information about
    * the player and timestamp for each score.
