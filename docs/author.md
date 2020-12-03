@@ -1,6 +1,6 @@
 ## Author
 
-![Laura Steiner](img/laura-steiner.jpg)
+<img src="img/laura-steiner.jpg" width="225">
 
 Laura Steiner is an aspiring Java developer and a professional violist, violinist, and music teacher. ScaleScroller is her first mobile application.
 
