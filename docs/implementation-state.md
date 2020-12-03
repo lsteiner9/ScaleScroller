@@ -8,11 +8,11 @@ Functional issues:
 
 * MediaPlayer audio adjustment is not working completely, though the audio toggle does work. The seekbar seems to be acting like a toggle - if set to 0, there is no sound. If set to anything about 0, there is full volume.
 
-* The function for getting correct notes for each scale is not always working.
+* The function for getting correct notes for each scale is not always working. It works better (though not perfectly) for scales with many accidentals.
 
-* The scale/level information is maintained even after going to the title screen, so challenge mode never displays a new scale when clicking it after the first time.
+* The scale/level information is maintained even after going to the title screen, so challenge mode never displays a new scale when clicking it after the first time. To see the randomness of challenge mode's scale picker, the app must be restarted.
 
-* As mentioned above, gameplay is not functional.
+* As mentioned above, gameplay is not functional, and even with the mockup, an end game state cannot be reached.
 
 Aesthetic/cosmetic issues:
 
@@ -22,7 +22,7 @@ Aesthetic/cosmetic issues:
 
 * Change font style to match the music note icon.
 
-* Soundtrack, played through AudioPlayer.
+* Create a soundtrack to play through MediaPlayer.
 
 * Allow the user to unlock new playable characters (whole note, quarter note, dotted notes, rests, etc.) or different character colors as they progress through the game.
 
