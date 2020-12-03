@@ -51,7 +51,7 @@ public class ScaleChallengeAttempt {
   /**
    * Returns the auto-generated id for the associative entity.
    *
-   * @return
+   * @return The id.
    */
   public long getId() {
     return id;
@@ -69,7 +69,7 @@ public class ScaleChallengeAttempt {
   /**
    * Returns the id of the {@code ChallengeAttempt} foreign key.
    *
-   * @return
+   * @return The id of the challenge attempt.
    */
   public long getAttemptId() {
     return attemptId;
@@ -87,7 +87,7 @@ public class ScaleChallengeAttempt {
   /**
    * Returns the id of the {@code Scale} foreign key.
    *
-   * @return
+   * @return The id of the scale.
    */
   public long getScaleId() {
     return scaleId;
@@ -105,7 +105,7 @@ public class ScaleChallengeAttempt {
   /**
    * Returns the timestamp when the associative entity was created.
    *
-   * @return
+   * @return The timestamp.
    */
   @NonNull
   public Date getTimestamp() {

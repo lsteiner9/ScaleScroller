@@ -36,7 +36,7 @@ public class Scale {
   /**
    * Returns the auto-generated id for the scale.
    *
-   * @return
+   * @return The scale's id.
    */
   public long getId() {
     return id;
@@ -54,7 +54,7 @@ public class Scale {
   /**
    * Returns the tonic of the scale: an enumerated type from the {@code Note} enum.
    *
-   * @return
+   * @return The scale's tonic.
    */
   @NonNull
   public Note getTonic() {
@@ -74,7 +74,7 @@ public class Scale {
    * Returns the mode of the scale (major, natural minor, etc.): an enumerated type from the {@code
    * Mode} enum.
    *
-   * @return
+   * @return The scale's mode.
    */
   @NonNull
   public Mode getMode() {
@@ -95,7 +95,7 @@ public class Scale {
   /**
    * Returns the difficulty of the scale.
    *
-   * @return
+   * @return The scale's difficulty.
    */
   public int getDifficulty() {
     return difficulty;

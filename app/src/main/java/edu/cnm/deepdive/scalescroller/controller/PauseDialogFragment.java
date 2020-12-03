@@ -19,12 +19,23 @@ public class PauseDialogFragment extends DialogFragment {
 
   private AlertDialog dialog;
 
+  /**
+   * Sets the style for the dialog.
+   *
+   * @param savedInstanceState A {@code Bundle}
+   */
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setStyle(DialogFragment.STYLE_NO_FRAME, R.style.DialogTheme);
   }
 
+  /**
+   * Creates and sets the text for the dialog.
+   *
+   * @param savedInstanceState A {@code Bundle}
+   * @return The dialog that was created.
+   */
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

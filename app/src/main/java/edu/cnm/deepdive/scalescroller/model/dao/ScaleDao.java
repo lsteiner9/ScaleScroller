@@ -6,7 +6,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;

@@ -130,7 +130,6 @@ public class Level {
     return Arrays.toString(correctNotes);
   }
 
-  //THIS IS A MESSSSSS (and probably still doesn't work quite right)
   private Note[] getNotes() {
     Map<Integer, Note[]> letterNameMap = Note.getNoteMap();
     Mode mode = scale.getMode();

@@ -79,7 +79,8 @@ public class ScaleRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
     /**
      * Binds each {@code Scale} to its corresponding position in the RecyclerView, and sets the text
-     * for the tonic and mode of the scale. Grays out the scales that are not accessible to the user.
+     * for the tonic and mode of the scale. Grays out the scales that are not accessible to the
+     * user.
      *
      * @param position The scale's position in the RecyclerView and the scales list.
      */

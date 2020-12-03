@@ -2,7 +2,6 @@ package edu.cnm.deepdive.scalescroller.service;
 
 import android.content.Context;
 import androidx.lifecycle.LiveData;
-import edu.cnm.deepdive.scalescroller.model.dao.ChallengeAttemptDao;
 import edu.cnm.deepdive.scalescroller.model.dao.LearnLevelAttemptDao;
 import edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt;
 import io.reactivex.Completable;

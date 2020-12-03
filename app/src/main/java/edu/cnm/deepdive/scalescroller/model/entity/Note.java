@@ -72,7 +72,7 @@ public enum Note {
   /**
    * Returns all of the possible tonic notes.
    *
-   * @return
+   * @return All possible tonics.
    */
   public static Note[] tonics() {
     return Arrays.stream(Note.values())
@@ -81,9 +81,9 @@ public enum Note {
   }
 
   /**
-   * Returns the number of half-steps away from C, mod 12.
+   * Returns the note's number of half-steps away from C, mod 12.
    *
-   * @return
+   * @return The note's number of half-steps away from C
    */
   public int getNumber() {
     return number;
@@ -92,7 +92,7 @@ public enum Note {
   /**
    * Returns true if the note is a possible tonic.
    *
-   * @return
+   * @return A boolean indicating whether the note could be a tonic.
    */
   public boolean isTonic() {
     return tonic;
@@ -111,7 +111,7 @@ public enum Note {
   /**
    * Overrides the toString method for a more user-readable note representation.
    *
-   * @return
+   * @return A string of the Note.
    */
   @NonNull
   @Override

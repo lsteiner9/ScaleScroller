@@ -3,7 +3,6 @@ package edu.cnm.deepdive.scalescroller.service;
 import android.content.Context;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.scalescroller.model.dao.ChallengeAttemptDao;
-import edu.cnm.deepdive.scalescroller.model.dao.PlayerDao;
 import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.pojo.ChallengeAttemptWithPlayer;
 import io.reactivex.Completable;

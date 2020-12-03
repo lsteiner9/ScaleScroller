@@ -5,8 +5,8 @@ import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.Player;
 
 /**
- * {@code ChallengeAttemptWithPlayer} extends the {@link ChallengeAttempt} entity to provide support for
- * queries that need the {@link Player} object in addition to the ChallengeAttempt object.
+ * {@code ChallengeAttemptWithPlayer} extends the {@link ChallengeAttempt} entity to provide support
+ * for queries that need the {@link Player} object in addition to the ChallengeAttempt object.
  */
 public class ChallengeAttemptWithPlayer extends ChallengeAttempt {
 
@@ -15,7 +15,8 @@ public class ChallengeAttemptWithPlayer extends ChallengeAttempt {
 
   /**
    * Returns the {@code Player} associated with the {@code ChallengeAttempt}.
-   * @return
+   *
+   * @return The player associated with the attempt.
    */
   public Player getPlayer() {
     return player;
@@ -23,6 +24,7 @@ public class ChallengeAttemptWithPlayer extends ChallengeAttempt {
 
   /**
    * Sets the {@code Player} associated with the {@code ChallengeAttempt}.
+   *
    * @param player The {@code Player} object to be set.
    */
   public void setPlayer(Player player) {

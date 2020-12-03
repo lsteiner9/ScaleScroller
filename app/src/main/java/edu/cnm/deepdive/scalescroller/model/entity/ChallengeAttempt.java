@@ -52,7 +52,7 @@ public class ChallengeAttempt {
   /**
    * Returns the auto-generated id for the Challenge level attempt.
    *
-   * @return
+   * @return The id of the Challenge attempt.
    */
   public long getId() {
     return id;
@@ -70,7 +70,7 @@ public class ChallengeAttempt {
   /**
    * Returns the player id associated with the Challenge level attempt.
    *
-   * @return
+   * @return Returns the player's id.
    */
   public long getPlayerId() {
     return playerId;
@@ -88,7 +88,7 @@ public class ChallengeAttempt {
   /**
    * Returns the total score the player achieved in the Challenge level attempt.
    *
-   * @return
+   * @return The total score achieved.
    */
   public int getTotalScore() {
     return totalScore;
@@ -106,7 +106,7 @@ public class ChallengeAttempt {
   /**
    * Returns the timestamp when the attempt was completed/saved to the database.
    *
-   * @return
+   * @return The timestamp.
    */
   @NonNull
   public Date getTimestamp() {
@@ -125,7 +125,7 @@ public class ChallengeAttempt {
   /**
    * Returns the number of correct coins collected.
    *
-   * @return
+   * @return The total correct coins.
    */
   public int getCorrectCoins() {
     return correctCoins;
@@ -143,7 +143,7 @@ public class ChallengeAttempt {
   /**
    * Returns the number of incorrect coins collected.
    *
-   * @return
+   * @return The total incorrect coins.
    */
   public int getIncorrectCoins() {
     return incorrectCoins;
@@ -162,7 +162,7 @@ public class ChallengeAttempt {
    * Returns the id of the last scale attempted (i.e. the scale that the player lost their last life
    * on).
    *
-   * @return
+   * @return The id of the last scale attempted.
    */
   public long getLastScaleId() {
     return lastScaleId;
@@ -172,7 +172,7 @@ public class ChallengeAttempt {
    * Sets the id of the last scale attempted (i.e. the scale that the player lost their last life
    * on).
    *
-   * @param lastScaleId The ide of the last scale attempted.
+   * @param lastScaleId The id of the last scale attempted.
    */
   public void setLastScaleId(long lastScaleId) {
     this.lastScaleId = lastScaleId;

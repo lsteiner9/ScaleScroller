@@ -106,7 +106,7 @@ public abstract class ScaleScrollerDatabase extends RoomDatabase {
   }
 
   /**
-   * Overrides a method to populate the database with scales.
+   * Overrides onCreate to populate the database with scales.
    */
   public static class Callback extends RoomDatabase.Callback {
 

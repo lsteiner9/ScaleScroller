@@ -28,11 +28,11 @@ public class AudioSettingsFragment extends PreferenceFragmentCompat {
   }
 
   /**
-   * Overrides onCreatePreferences to set the preferences from a resource file and to set up a
-   * click listener on a back button.
+   * Overrides onCreatePreferences to set the preferences from a resource file and to set up a click
+   * listener on a back button.
    *
    * @param savedInstanceState A {@code} Bundle.
-   * @param rootKey A String.
+   * @param rootKey            A String.
    */
   @Override
   public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {

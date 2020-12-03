@@ -57,7 +57,7 @@ public class LearnLevelAttempt {
   /**
    * Returns the auto-generated id for the Learn level attempt.
    *
-   * @return
+   * @return The attempt id.
    */
   public long getId() {
     return id;
@@ -75,7 +75,7 @@ public class LearnLevelAttempt {
   /**
    * Returns the player id associated with the Learn level attempt.
    *
-   * @return
+   * @return The player's id.
    */
   public long getPlayerId() {
     return playerId;
@@ -93,7 +93,7 @@ public class LearnLevelAttempt {
   /**
    * Returns the id for the attempted scale.
    *
-   * @return
+   * @return The scale's id.
    */
   public long getScaleId() {
     return scaleId;
@@ -111,7 +111,7 @@ public class LearnLevelAttempt {
   /**
    * Returns the difficulty of the attempted scale.
    *
-   * @return
+   * @return The scale's difficulty.
    */
   public int getDifficulty() {
     return difficulty;
@@ -129,7 +129,7 @@ public class LearnLevelAttempt {
   /**
    * Returns the timestamp when the attempt was completed/saved to the database.
    *
-   * @return
+   * @return The timestamp when the attempt was completed/saved.
    */
   @NonNull
   public Date getTimestamp() {
@@ -148,7 +148,7 @@ public class LearnLevelAttempt {
   /**
    * Returns the number of correct coins collected.
    *
-   * @return
+   * @return The number of correct coins.
    */
   public int getCorrectCoins() {
     return correctCoins;
@@ -166,7 +166,7 @@ public class LearnLevelAttempt {
   /**
    * Returns the number of incorrect coins collected.
    *
-   * @return
+   * @return The number of incorrect coins.
    */
   public int getIncorrectCoins() {
     return incorrectCoins;

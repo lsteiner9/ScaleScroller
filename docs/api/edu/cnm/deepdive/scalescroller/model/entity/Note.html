@@ -289,7 +289,7 @@ extends java.lang.Enum&lt;<a href="Note.html" title="enum in edu.cnm.deepdive.sc
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumber()">getNumber</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Returns the number of half-steps away from C, mod 12.</div>
+<div class="block">Returns the note's number of half-steps away from C, mod 12.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -637,6 +637,7 @@ not permitted.)</div>
 <div class="block">Returns all of the possible tonic notes.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dd>All possible tonics.</dd>
 </dl>
 </li>
 </ul>
@@ -647,9 +648,10 @@ not permitted.)</div>
 <li class="blockList">
 <h4>getNumber</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getNumber()</pre>
-<div class="block">Returns the number of half-steps away from C, mod 12.</div>
+<div class="block">Returns the note's number of half-steps away from C, mod 12.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dd>The note's number of half-steps away from C</dd>
 </dl>
 </li>
 </ul>
@@ -663,6 +665,7 @@ not permitted.)</div>
 <div class="block">Returns true if the note is a possible tonic.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dd>A boolean indicating whether the note could be a tonic.</dd>
 </dl>
 </li>
 </ul>
@@ -694,6 +697,7 @@ public&nbsp;java.lang.String&nbsp;toString()</pre>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Enum&lt;<a href="Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a>&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dd>A string of the Note.</dd>
 </dl>
 </li>
 </ul>

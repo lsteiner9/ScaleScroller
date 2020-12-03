@@ -220,8 +220,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.html" title="class in edu.cnm.deepdive.scalescroller.model.pojo"><span class="typeNameLink">ChallengeAttemptWithPlayer</span></a> - Class in <a href="edu/cnm/deepdive/scalescroller/model/pojo/package-summary.html">edu.cnm.deepdive.scalescroller.model.pojo</a></dt>
 <dd>
-<div class="block"><code>ChallengeAttemptWithPlayer</code> extends the <a href="edu/cnm/deepdive/scalescroller/model/entity/ChallengeAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity"><code>ChallengeAttempt</code></a> entity to provide support for
- queries that need the <a href="edu/cnm/deepdive/scalescroller/model/entity/Player.html" title="class in edu.cnm.deepdive.scalescroller.model.entity"><code>Player</code></a> object in addition to the ChallengeAttempt object.</div>
+<div class="block"><code>ChallengeAttemptWithPlayer</code> extends the <a href="edu/cnm/deepdive/scalescroller/model/entity/ChallengeAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity"><code>ChallengeAttempt</code></a> entity to provide support
+ for queries that need the <a href="edu/cnm/deepdive/scalescroller/model/entity/Player.html" title="class in edu.cnm.deepdive.scalescroller.model.entity"><code>Player</code></a> object in addition to the ChallengeAttempt object.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.html#%3Cinit%3E()">ChallengeAttemptWithPlayer()</a></span> - Constructor for class edu.cnm.deepdive.scalescroller.model.pojo.<a href="edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.html" title="class in edu.cnm.deepdive.scalescroller.model.pojo">ChallengeAttemptWithPlayer</a></dt>
 <dd>&nbsp;</dd>
@@ -620,7 +620,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Returns the current number of lives/hearts left.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getHearts()">getHearts()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns LiveData of an Integer value that holds the player's hearts.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/service/LearnLevelAttemptRepository.html#getHighestDifficulty(long)">getHighestDifficulty(long)</a></span> - Method in class edu.cnm.deepdive.scalescroller.service.<a href="edu/cnm/deepdive/scalescroller/service/LearnLevelAttemptRepository.html" title="class in edu.cnm.deepdive.scalescroller.service">LearnLevelAttemptRepository</a></dt>
 <dd>
 <div class="block">Returns LiveData of the learn level attempt with the highest difficulty rating.</div>
@@ -738,7 +740,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/Note.html#getNumber()">getNumber()</a></span> - Method in enum edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a></dt>
 <dd>
-<div class="block">Returns the number of half-steps away from C, mod 12.</div>
+<div class="block">Returns the note's number of half-steps away from C, mod 12.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/Player.html#getOauthKey()">getOauthKey()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/Player.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Player</a></dt>
 <dd>
@@ -765,7 +767,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Returns the player id associated with the Learn level attempt.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getResume()">getResume()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns LiveData of a Boolean value indicating dialog directions.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/databinding/ActivityLoginBinding.html#getRoot()">getRoot()</a></span> - Method in class edu.cnm.deepdive.scalescroller.databinding.<a href="edu/cnm/deepdive/scalescroller/databinding/ActivityLoginBinding.html" title="class in edu.cnm.deepdive.scalescroller.databinding">ActivityLoginBinding</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/databinding/ActivityMainBinding.html#getRoot()">getRoot()</a></span> - Method in class edu.cnm.deepdive.scalescroller.databinding.<a href="edu/cnm/deepdive/scalescroller/databinding/ActivityMainBinding.html" title="class in edu.cnm.deepdive.scalescroller.databinding">ActivityMainBinding</a></dt>
@@ -839,7 +843,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Returns the current score in the level.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getScore()">getScore()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns LiveData of an Integer value that holds the player's score.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/Mode.html#getSteps()">getSteps()</a></span> - Method in enum edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/Mode.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Mode</a></dt>
 <dd>
 <div class="block">Returns the notes in the scale (in terms of half-steps above tonic).</div>
@@ -1204,6 +1210,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Overrides onCreate to apply a preferences-specific style.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/EndLevelDialogFragment.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/EndLevelDialogFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">EndLevelDialogFragment</a></dt>
+<dd>
+<div class="block">Sets the style for the dialog.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/GameFragment.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/GameFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">GameFragment</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/LoginActivity.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/LoginActivity.html" title="class in edu.cnm.deepdive.scalescroller.controller">LoginActivity</a></dt>
@@ -1215,9 +1225,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Inflates the xml file and sets the content view.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/PauseDialogFragment.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/PauseDialogFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">PauseDialogFragment</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the style for the dialog.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/ScaleDialogFragment.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/ScaleDialogFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">ScaleDialogFragment</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the style for the dialog.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/SettingsFragment.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/SettingsFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">SettingsFragment</a></dt>
 <dd>
 <div class="block">Resets the theme - needed if coming from the SpeedSettings or AudioSettings fragments.</div>
@@ -1229,15 +1243,21 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/service/ScaleScrollerDatabase.Callback.html#onCreate(androidx.sqlite.db.SupportSQLiteDatabase)">onCreate(SupportSQLiteDatabase)</a></span> - Method in class edu.cnm.deepdive.scalescroller.service.<a href="edu/cnm/deepdive/scalescroller/service/ScaleScrollerDatabase.Callback.html" title="class in edu.cnm.deepdive.scalescroller.service">ScaleScrollerDatabase.Callback</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/EndLevelDialogFragment.html#onCreateDialog(android.os.Bundle)">onCreateDialog(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/EndLevelDialogFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">EndLevelDialogFragment</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates and sets the text for the dialog.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/PauseDialogFragment.html#onCreateDialog(android.os.Bundle)">onCreateDialog(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/PauseDialogFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">PauseDialogFragment</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates and sets the text for the dialog.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/ScaleDialogFragment.html#onCreateDialog(android.os.Bundle)">onCreateDialog(Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/ScaleDialogFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">ScaleDialogFragment</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates and sets the text for the dialog.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/AudioSettingsFragment.html#onCreatePreferences(android.os.Bundle,java.lang.String)">onCreatePreferences(Bundle, String)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/AudioSettingsFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">AudioSettingsFragment</a></dt>
 <dd>
-<div class="block">Overrides onCreatePreferences to set the preferences from a resource file and to set up a
- click listener on a back button.</div>
+<div class="block">Overrides onCreatePreferences to set the preferences from a resource file and to set up a click
+ listener on a back button.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/SpeedSettingsFragment.html#onCreatePreferences(android.os.Bundle,java.lang.String)">onCreatePreferences(Bundle, String)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/SpeedSettingsFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">SpeedSettingsFragment</a></dt>
 <dd>
@@ -1245,7 +1265,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  listener on a back button.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/GameFragment.html#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)">onCreateView(LayoutInflater, ViewGroup, Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/GameFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">GameFragment</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets up bindings, preferences, and general data.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/HighScoreFragment.html#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)">onCreateView(LayoutInflater, ViewGroup, Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/HighScoreFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">HighScoreFragment</a></dt>
 <dd>
 <div class="block">Sets up navigation.</div>
@@ -1478,7 +1500,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="edu/cnm/deepdive/scalescroller/service/ScaleScrollerDatabase.Callback.html" title="class in edu.cnm.deepdive.scalescroller.service"><span class="typeNameLink">ScaleScrollerDatabase.Callback</span></a> - Class in <a href="edu/cnm/deepdive/scalescroller/service/package-summary.html">edu.cnm.deepdive.scalescroller.service</a></dt>
 <dd>
-<div class="block">Overrides a method to populate the database with scales.</div>
+<div class="block">Overrides onCreate to populate the database with scales.</div>
 </dd>
 <dt><a href="edu/cnm/deepdive/scalescroller/service/ScaleScrollerDatabase.Converters.html" title="class in edu.cnm.deepdive.scalescroller.service"><span class="typeNameLink">ScaleScrollerDatabase.Converters</span></a> - Class in <a href="edu/cnm/deepdive/scalescroller/service/package-summary.html">edu.cnm.deepdive.scalescroller.service</a></dt>
 <dd>
@@ -1750,7 +1772,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Sets the player id associated with the Learn level attempt.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#setResume(boolean)">setResume(boolean)</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the resume value indicating dialog directions.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/LearnLevelAttempt.html#setScaleId(long)">setScaleId(long)</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/LearnLevelAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">LearnLevelAttempt</a></dt>
 <dd>
 <div class="block">Sets the id for the attempted scale.</div>

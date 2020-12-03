@@ -56,6 +56,14 @@ public class GameFragment extends Fragment {
     args = GameFragmentArgs.fromBundle(getArguments());
   }
 
+  /**
+   * Sets up bindings, preferences, and general data.
+   *
+   * @param inflater           A {@code LayoutInflater}
+   * @param container          A {@code ViewGroup}
+   * @param savedInstanceState A {@code Bundle}
+   * @return A {@code View} object.
+   */
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater,
@@ -70,7 +78,6 @@ public class GameFragment extends Fragment {
     volumePrefKey = getString(R.string.volume_slider_key);
     volumePrefDefault = getResources().getInteger(R.integer.audio_pref_default);
     volume = preferences.getInt(volumePrefKey, volumePrefDefault);
-    playSound(R.raw.start_level);
 
     gameMode = args.getGameMode();
     tonic = args.getTonic();

@@ -22,6 +22,7 @@ public class SettingsFragment extends Fragment {
 
   /**
    * Resets the theme - needed if coming from the SpeedSettings or AudioSettings fragments.
+   *
    * @param savedInstanceState A {@code Bundle}.
    */
   @Override

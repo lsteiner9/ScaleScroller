@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Random;
 
 //TODO do game logic
+
 /**
  * Serves as the ViewModel for the GameFragment.
  */
@@ -114,18 +115,38 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     return scaleRepository.getAllOrdered();
   }
 
+  /**
+   * Returns LiveData of a Boolean value indicating dialog directions.
+   *
+   * @return {@code LiveData} of a {@code Boolean}.
+   */
   public LiveData<Boolean> getResume() {
     return resume;
   }
 
+  /**
+   * Sets the resume value indicating dialog directions.
+   *
+   * @param resume A boolean value.
+   */
   public void setResume(boolean resume) {
     this.resume.setValue(resume);
   }
 
+  /**
+   * Returns LiveData of an Integer value that holds the player's hearts.
+   *
+   * @return {@code LiveData} of a {@code Integer}.
+   */
   public LiveData<Integer> getHearts() {
     return hearts;
   }
 
+  /**
+   * Returns LiveData of an Integer value that holds the player's score.
+   *
+   * @return {@code LiveData} of a {@code Integer}.
+   */
   public LiveData<Integer> getScore() {
     return score;
   }
@@ -163,8 +184,9 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   /**
-   * Starts a single level. If the level is for Learn mode, uses the speed from SharedPreferences.
-   * If the level is for Challenge mode, increments the speed upon completion of the level.
+   * Starts a single level. If the level is for Learn mode, uses the speed from SharedPreferences
+   * (set in the constructor). If the level is for Challenge mode, increments the speed upon
+   * completion of the level.
    */
   public void startLevel() {
     //start the level, do stuff

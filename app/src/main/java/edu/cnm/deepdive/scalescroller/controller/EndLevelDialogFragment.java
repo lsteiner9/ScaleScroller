@@ -21,14 +21,33 @@ public class EndLevelDialogFragment extends DialogFragment {
   private boolean gameWon;
   private int score;
 
+  /**
+   * Sets the style for the dialog.
+   *
+   * @param savedInstanceState A {@code Bundle}
+   */
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setStyle(DialogFragment.STYLE_NO_FRAME, R.style.DialogTheme);
+  }
+
+  /**
+   * Creates and sets the text for the dialog.
+   *
+   * @param savedInstanceState A {@code Bundle}
+   * @return The dialog that was created.
+   */
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
     gameWon = EndLevelDialogFragmentArgs.fromBundle(getArguments()).getGameWon();
     gameMode = EndLevelDialogFragmentArgs.fromBundle(getArguments()).getGameMode();
     score = EndLevelDialogFragmentArgs.fromBundle(getArguments()).getScore();
-    String format = (gameWon)? getString(R.string.congratulations_learn) : getString(R.string.failure_learn);
-    format = (gameMode.equals(GameMode.LEARN.toString()))? format : getString(R.string.congratulations_challenge);
+    String format =
+        (gameWon) ? getString(R.string.congratulations_learn) : getString(R.string.failure_learn);
+    format = (gameMode.equals(GameMode.LEARN.toString())) ? format
+        : getString(R.string.congratulations_challenge);
     dialog = new AlertDialog.Builder(getActivity())
         .setMessage(String.format(format, score))
         .setPositiveButton(android.R.string.ok, (dialog, which) -> {

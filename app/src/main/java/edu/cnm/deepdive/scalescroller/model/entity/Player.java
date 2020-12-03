@@ -35,7 +35,7 @@ public class Player {
   /**
    * Returns the auto-generated id for the player.
    *
-   * @return
+   * @return The player's id.
    */
   public long getId() {
     return id;
@@ -53,7 +53,7 @@ public class Player {
   /**
    * Returns the OAuth key for the player.
    *
-   * @return
+   * @return The player's OAuth key.
    */
   @NonNull
   public String getOauthKey() {
@@ -72,7 +72,7 @@ public class Player {
   /**
    * Returns the player's username.
    *
-   * @return
+   * @return The player's username.
    */
   @NonNull
   public String getUsername() {
@@ -91,7 +91,7 @@ public class Player {
   /**
    * Returns the highest learn level difficulty that the player has completed.
    *
-   * @return
+   * @return The player's highest learn level difficulty.
    */
   public int getHighestLearnLevel() {
     return highestLearnLevel;

@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
   /**
    * Inflates the xml file and sets the content view.
+   *
    * @param savedInstanceState A {@code Bundle}
    */
   @Override

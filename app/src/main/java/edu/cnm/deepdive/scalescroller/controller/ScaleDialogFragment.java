@@ -16,12 +16,23 @@ public class ScaleDialogFragment extends DialogFragment {
 
   private AlertDialog dialog;
 
+  /**
+   * Sets the style for the dialog.
+   *
+   * @param savedInstanceState A {@code Bundle}
+   */
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setStyle(DialogFragment.STYLE_NO_FRAME, R.style.DialogTheme);
   }
 
+  /**
+   * Creates and sets the text for the dialog.
+   *
+   * @param savedInstanceState A {@code Bundle}
+   * @return The dialog that was created.
+   */
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -31,7 +42,8 @@ public class ScaleDialogFragment extends DialogFragment {
     String notes = ScaleDialogFragmentArgs.fromBundle(getArguments()).getNotes();
     dialog = new AlertDialog.Builder(getActivity())
         .setMessage(getString(R.string.scale_dialog_format, tonic, mode, notes))
-        .setPositiveButton(android.R.string.ok, (dialog, which) -> {})
+        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+        })
         .create();
     return dialog;
   }

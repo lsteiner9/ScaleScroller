@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Enumerates the different modes available for use in ScaleScroller. Each enumerated type includes
- * the notes, measured in half-steps from the tonic, and a difficulty rating to help structure
+ * notes, measured in half-steps from the tonic, and a difficulty rating to help structure
  * gameplay.
  */
 public enum Mode {
@@ -117,14 +117,14 @@ public enum Mode {
   /**
    * Returns a map of tonic notes to integer difficulties.
    *
-   * @return
+   * @return A map of tonics to difficulties.
    */
   public abstract Map<Note, Integer> getDifficulty();
 
   /**
    * Returns the notes in the scale (in terms of half-steps above tonic).
    *
-   * @return
+   * @return The notes in the scale.
    */
   public int[] getSteps() {
     return steps;
@@ -133,7 +133,7 @@ public enum Mode {
   /**
    * Overrides the toString method for a more user-readable scale mode representation.
    *
-   * @return
+   * @return A string of the mode.
    */
   @NonNull
   @Override
