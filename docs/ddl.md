@@ -87,4 +87,4 @@ CREATE INDEX IF NOT EXISTS `index_ScaleChallengeAttempt_timestamp` ON `ScaleChal
 
 [`ddl.sql` on GitHub](https://github.com/lsteiner9/scale-scroller/blob/master/docs/sql/ddl.sql)
 
-[*Return to previous page*](index.md)
+[*Return to main page*](index.md#ddl)

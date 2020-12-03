@@ -8,12 +8,12 @@
 
 	* Audio is not critical to the functionality of the app, and can be turned off if desired. 
 
-* Google Sign-in 
+* Google Sign In 
 	
 	* Click for [documentation.](https://developers.google.com/identity/sign-in/android/start-integrating)
 
-	* Sign-in lets the user associate their data with a username and account. This allows multiple players to use the app on the same device. 
+	* Sign In lets the user associate their data with a username and account. This allows multiple players to use the app on the same device. 
 	
 	* Currently, Sign In is required, as there is currently no way to continue as a guest. Ideally, Sign In would not be required: if Sign In is unavailable or the user wishes to play as a guest, the app will still work. User data will still be recorded, with one player per device.
 
-[*Return to previous page*](index.md)
+[*Return to previous page*](index.md#cloud--or-device-based-services-or-data)

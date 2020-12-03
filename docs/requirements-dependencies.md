@@ -6,7 +6,7 @@
     
 * Minimum Android API required: 24; Target Android API: 29.
 
-* Other restrictions
+* Other restrictions:
 
     * The app is landscape-orientation only. Other orientations may be used without causing the app to crash, but the display will always be landscape.
     
@@ -34,4 +34,4 @@
 
     * Google Sign In
     
-[*Return to previous page*](index.md)
+[*Return to previous page*](index.md#technical-requirements-and-dependencies)

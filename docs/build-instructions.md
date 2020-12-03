@@ -6,4 +6,4 @@
 
 3. After the project has fully loaded, run the application on the device of your choice. You may need to select the device and the application from a pulldown if they do not initially show up. Note that the app is designed for use in the landscape orientation. 
 
-[*Return to previous page*](index.md)
+[*Return to previous page*](index.md#build-instructions)

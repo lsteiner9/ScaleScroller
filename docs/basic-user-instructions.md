@@ -1,6 +1,6 @@
 ## Basic user instructions
 
-(Intended functionality)
+### Intended functionality
 
 1. In the initial screen, sign in with Google or continue as a guest user. 
 
@@ -14,7 +14,7 @@
 
 6. Is Learn mode too hard/too easy? Change the speed of the sidescroller in settings. If Challenge mode is too hard, work through more of Learn mode first. If it's too easy, congratulations, you are a ScaleScroller expert!
 
-(Current functionality)
+### Current functionality
 
 1. In the initial screen, sign in with Google. 
 
@@ -23,3 +23,5 @@
 3. Pay attention to the notes that pop up on the resulting dialog - these are the correct notes in the scale, and collecting coins with other notes will make you lose a life.
 
 4. Click on at least of the coins with a correct note to simulate beating the level. Click on any of the coins with an incorrect note to simulate losing the level.
+
+[*Return to previous page*](index.md#basic-user-instructions)

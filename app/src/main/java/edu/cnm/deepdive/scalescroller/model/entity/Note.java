@@ -83,7 +83,7 @@ public enum Note {
   /**
    * Returns the note's number of half-steps away from C, mod 12.
    *
-   * @return The note's number of half-steps away from C
+   * @return The note's number of half-steps away from C.
    */
   public int getNumber() {
     return number;

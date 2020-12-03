@@ -50,4 +50,4 @@ Links for classes and interfaces redirect to the associated class within the Sca
  
 * [DDL](ddl.md)
 
-[*Return to previous page*](index.md)
+[*Return to previous page*](index.md#data-model-implementation)

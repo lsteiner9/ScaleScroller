@@ -24,4 +24,4 @@ My motivation for creating this app was to bring together my enjoyment of video 
 
     * Challenge mode is harder: the user is expected to already know their scales, either from progressing through learn mode or through external instruction. Challenge mode can start with any scale, and once each level is beaten, a new random scale appears. The speed of the sidescroller progressively gets faster as the user beats more scale levels. Once the game has ended, the score is recorded and added to a high score board, if applicable.
 	
-[*Return to previous page*](index.md)
+[*Return to previous page*](index.md#project-description)

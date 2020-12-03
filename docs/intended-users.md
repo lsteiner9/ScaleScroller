@@ -20,4 +20,4 @@
 
     * [David Trujillo](persona/persona-4.md)
     
-[*Return to previous page*](index.md)
+[*Return to previous page*](index.md#intended-users)
