@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `Player`
 (
     `player_id`           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `oauth_key`           TEXT,
+    `oauth_key`           TEXT                              NOT NULL,
     `username`            TEXT                              NOT NULL,
     `highest_learn_level` INTEGER                           NOT NULL
 );
@@ -53,12 +53,15 @@ CREATE INDEX IF NOT EXISTS `index_ChallengeAttempt_last_scale_id` ON `ChallengeA
 
 CREATE TABLE IF NOT EXISTS `Scale`
 (
-    `scale_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `tonic`    INTEGER                           NOT NULL,
-    `mode`     INTEGER                           NOT NULL
+    `scale_id`   INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    `tonic`      INTEGER                           NOT NULL,
+    `mode`       INTEGER                           NOT NULL,
+    `difficulty` INTEGER                           NOT NULL
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS `index_Scale_tonic_mode` ON `Scale` (`tonic`, `mode`);
+
+CREATE INDEX IF NOT EXISTS `index_Scale_difficulty` ON `Scale` (`difficulty`);
 
 CREATE TABLE IF NOT EXISTS `ScaleChallengeAttempt`
 (

@@ -16,20 +16,20 @@
 
     * Google Sign In
     
+    * JUnit5
+    
     * Material Design
     
     * ReactiveX
     
-    * Room
+    * Room/SQLite
     
-    * JUnit
+    * Stetho
 
 * Permissions required to run the app
 
-    * Internet
+    * Internet (for Google Sign In)
     
-    * Device audio
-
 * External services consumed
 
     * Google Sign In

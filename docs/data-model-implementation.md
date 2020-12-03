@@ -14,6 +14,10 @@ Links for classes and interfaces redirect to the associated class within the Sca
 
 * [ScaleChallengeAttempt](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/model/entity/ScaleChallengeAttempt.java)
 
+### POJO classes
+
+* [ChallengeAttemptWithPlayer](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.java)
+
 ### DAO interfaces
 
 * [PlayerDao](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/model/dao/PlayerDao.java)
@@ -41,5 +45,9 @@ Links for classes and interfaces redirect to the associated class within the Sca
 * [ScaleRepository](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/ScaleRepository.java)
 
 * [ScaleChallengeAttemptRepository](https://github.com/lsteiner9/scale-scroller/blob/master/app/src/main/java/edu/cnm/deepdive/scalescroller/service/ScaleChallengeAttemptRepository.java)
+
+### DDL
+ 
+* [DDL](ddl.md)
 
 [*Return to previous page*](index.md)
