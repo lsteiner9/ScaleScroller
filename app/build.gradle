@@ -127,5 +127,7 @@ android.applicationVariants.all { variant ->
             linksOffline 'https://developers.google.com/android/reference', "${projectDir}/../link-offline/google"
             windowTitle docTitle
         }
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.source = '8'
     }
 }
