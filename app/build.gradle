@@ -11,6 +11,12 @@ static def quoted(String value) {
     return "\"$value\""
 }
 
+ext {
+    appName = 'ScaleScroller'
+    appNameSlug = 'scalescroller'
+    baseUrl = 'https://lsteiner9.github.io'
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -56,7 +62,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    // Material Design components
+    // Material Design component dependencies
     implementation 'com.google.android.material:material:1.2.1'
 
     // Preferences/settings dependencies
@@ -79,7 +85,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
-    //Room dependencies
+    //Room and SQLite dependencies
     def room_version = '2.2.5'
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
@@ -88,6 +94,7 @@ dependencies {
     //Google Sign In dependency
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
+    // TODO remove this dependency on completion
     // Stetho (inspection) dependency
     implementation 'com.facebook.stetho:stetho:1.5.1'
 
@@ -96,4 +103,29 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+}
+
+android.applicationVariants.all { variant ->
+    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
+        def docTitle = "${appName} ${project.android.defaultConfig.versionName}"
+        def compileTask = variant.javaCompileProvider.get()
+        def androidLibJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+        title docTitle
+        description "Generates Javadoc for $variant.name."
+        source = compileTask.source
+        destinationDir = file("${projectDir}/../docs/api")
+        doFirst {
+            classpath = files(compileTask.classpath.files) + files(androidLibJar)
+        }
+        options {
+            links 'https://docs.oracle.com/javase/8/docs/api/'
+            links 'http://reactivex.io/RxJava/javadoc/'
+            links 'https://javadoc.io/doc/io.reactivex.rxjava2/rxandroid/latest/'
+            links 'https://javadoc.io/doc/com.facebook.stetho/stetho/latest/'
+            links 'https://commons.apache.org/proper/commons-csv/apidocs/'
+            linksOffline 'https://developer.android.com/reference', "${projectDir}/../link-offline/android"
+            linksOffline 'https://developers.google.com/android/reference', "${projectDir}/../link-offline/google"
+            windowTitle docTitle
+        }
+    }
 }

@@ -106,29 +106,66 @@
 
     <action
       android:id="@+id/open_scale_dialog"
-      app:destination="@+id/navigation_scale_dialog"/>
+      app:destination="@+id/navigation_scale_dialog">
+      <argument
+        android:name="tonic"
+        app:argType="string"/>
+      <argument
+        android:name="mode"
+        app:argType="string"/>
+      <argument
+        android:name="notes"
+        app:argType="string"/>
+    </action>
 
     <action
       android:id="@+id/open_end_level_dialog"
-      app:destination="@id/navigation_end_level_dialog"/>
+      app:destination="@id/navigation_end_level_dialog">
+      <argument
+        android:name="game_mode"
+        app:argType="string"/>
+      <argument
+        android:name="game_won"
+        app:argType="boolean"/>
+      <argument
+        android:name="score"
+        app:argType="integer"/>
+    </action>
 
     <action
       android:id="@+id/open_pause_dialog"
       app:destination="@id/navigation_pause_dialog">
-      <argument
-        android:name="button_title"
-        app:argType="string"/>
     </action>
 
   </fragment>
 
   <dialog
     android:id="@+id/navigation_scale_dialog"
-    android:name="edu.cnm.deepdive.scalescroller.controller.ScaleDialogFragment"/>
+    android:name="edu.cnm.deepdive.scalescroller.controller.ScaleDialogFragment">
+    <argument
+      android:name="tonic"
+      app:argType="string"/>
+    <argument
+      android:name="mode"
+      app:argType="string"/>
+    <argument
+      android:name="notes"
+      app:argType="string"/>
+  </dialog>
 
   <dialog
     android:id="@+id/navigation_end_level_dialog"
-    android:name="edu.cnm.deepdive.scalescroller.controller.EndLevelDialogFragment"/>
+    android:name="edu.cnm.deepdive.scalescroller.controller.EndLevelDialogFragment">
+    <argument
+      android:name="game_mode"
+      app:argType="string"/>
+    <argument
+      android:name="game_won"
+      app:argType="boolean"/>
+    <argument
+      android:name="score"
+      app:argType="integer"/>
+  </dialog>
 
   <dialog
     android:id="@+id/navigation_pause_dialog"
@@ -136,9 +173,6 @@
     <action
       android:id="@id/open_title"
       app:destination="@id/navigation_title"/>
-    <argument
-      android:name="button_title"
-      app:argType="string"/>
   </dialog>
 
   <fragment

@@ -1,0 +1,10 @@
+edu.cnm.deepdive.scalescroller
+edu.cnm.deepdive.scalescroller.adapter
+edu.cnm.deepdive.scalescroller.controller
+edu.cnm.deepdive.scalescroller.databinding
+edu.cnm.deepdive.scalescroller.model
+edu.cnm.deepdive.scalescroller.model.dao
+edu.cnm.deepdive.scalescroller.model.entity
+edu.cnm.deepdive.scalescroller.model.pojo
+edu.cnm.deepdive.scalescroller.service
+edu.cnm.deepdive.scalescroller.viewmodel

@@ -36,5 +36,6 @@
   <string name="audio_settings_title">Audio Settings</string>
   <string name="speed_settings_title">Speed Settings</string>
   <string name="no_scores">No scores to display</string>
+  <string name="c_major_scale_notes">CEDFGABC</string>
 
 </resources>

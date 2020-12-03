@@ -91,7 +91,7 @@ public class ChallengeAttemptRepository {
    * Returns LiveData of the challenge attempts with the highest scores.
    *
    * @param numScores The number of scores to return.
-   * @return {@code LiveData} of a {@code List} of {@code ChallengeAttempt}.
+   * @return {@code LiveData} of a {@code List} of {@code ChallengeAttemptWithPlayer}.
    */
   public LiveData<List<ChallengeAttemptWithPlayer>> getHighScores(int numScores) {
     return challengeAttemptDao.selectHighScores(numScores);

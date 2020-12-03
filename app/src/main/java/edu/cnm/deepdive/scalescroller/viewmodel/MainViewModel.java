@@ -63,10 +63,11 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   /**
-   * Returns LiveData of a list of the highest-scoring challenge attempts. Uses the default number
-   * of high scores.
+   * Returns LiveData of a list of the highest-scoring challenge attempts and their associated
+   * players. Uses the default number of high scores.
    *
-   * @return {@code LiveData} of a {@code List} of the highest-scoring {@link ChallengeAttempt}.
+   * @return {@code LiveData} of a {@code List} of the highest-scoring {@link
+   * ChallengeAttemptWithPlayer}.
    */
   public LiveData<List<ChallengeAttemptWithPlayer>> getHighScores() {
     return challengeAttemptRepository.getHighScores(DEFAULT_NUM_SCORES);

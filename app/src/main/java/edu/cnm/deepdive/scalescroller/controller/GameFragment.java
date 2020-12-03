@@ -45,6 +45,7 @@ public class GameFragment extends Fragment {
   private Mode mode;
   private GameMode gameMode;
   private List<Scale> scales;
+  private String notes;
   private int score = 0;
   private int hearts = 3;
 
@@ -63,7 +64,7 @@ public class GameFragment extends Fragment {
     navController = NavHostFragment.findNavController(this);
     binding.pauseButton.setOnClickListener((v) -> {
       //noinspection ConstantConditions
-      Navigation.findNavController(getView()).navigate(GameFragmentDirections.openPauseDialog("text"));
+      Navigation.findNavController(getView()).navigate(GameFragmentDirections.openPauseDialog());
     });
     preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
     volumePrefKey = getString(R.string.volume_slider_key);
@@ -124,7 +125,9 @@ public class GameFragment extends Fragment {
   }
 
   private void playLevel(Scale scale) {
-    navController.navigate(GameFragmentDirections.openScaleDialog());
+    navController.navigate(GameFragmentDirections.openScaleDialog(
+        tonic.toString().toUpperCase(), mode.toString().toLowerCase(), getString(
+            R.string.c_major_scale_notes)));
     playSound(R.raw.start_level);
     //do some stuff in here, maybe?
     //for challenge, need to call setRandomScale again but pass in the current list of scales
@@ -137,7 +140,8 @@ public class GameFragment extends Fragment {
     binding.hearts.setText(getString(R.string.placeholder_for_hearts, hearts));
     binding.score.setText(getString(R.string.score_format, score));
     if (false/*game is finished*/) {
-      navController.navigate(GameFragmentDirections.openEndLevelDialog());
+      navController.navigate(GameFragmentDirections.openEndLevelDialog(gameMode.toString(),
+          level.getLevelWon(), score));
     }
   }
 
@@ -155,7 +159,6 @@ public class GameFragment extends Fragment {
     return scales;
   }
 
-  //TODO Why doesn't it want to create the MediaPlayer?
   private void playSound(Integer resource) {
     mediaPlayer = MediaPlayer.create(getContext(), resource);
     mediaPlayer.setVolume(0.0f, volume);
