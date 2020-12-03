@@ -25,8 +25,12 @@ import edu.cnm.deepdive.scalescroller.service.ScaleChallengeAttemptRepository;
 import edu.cnm.deepdive.scalescroller.service.ScaleRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 //TODO do game logic
 
@@ -47,9 +51,9 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<Integer> hearts;
   private final MutableLiveData<Integer> score;
   private final MutableLiveData<Boolean> resume;
+  private final MutableLiveData<Boolean> paused;
 
   private final CompositeDisposable pending;
-  private final SharedPreferences preferences;
   private final Random rng;
   private final PlayerRepository playerRepository;
   private final LearnLevelAttemptRepository learnLevelAttemptRepository;
@@ -58,11 +62,10 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   private final ScaleChallengeAttemptRepository scaleChallengeAttemptRepository;
   private final GoogleSignInService signInService;
 
-  private String speedPrefKey;
-  private int speedPrefDefault;
-  private int speed;
+  private Scale scale;
   private Note tonic;
   private Mode mode;
+  private Note[] notes;
   private GameMode gameMode;
 
   /**
@@ -89,12 +92,14 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     hearts = new MutableLiveData<>();
     score = new MutableLiveData<>();
     resume = new MutableLiveData<>(true);
+    paused = new MutableLiveData<>(false);
     rng = new SecureRandom();
-    preferences = PreferenceManager.getDefaultSharedPreferences(application);
-    speedPrefKey = application.getString(R.string.speed_pref_key);
-    speedPrefDefault = application.getResources().getInteger(R.integer.speed_pref_default);
-    speed = preferences.getInt(speedPrefKey, speedPrefDefault);
     pending = new CompositeDisposable();
+    do {
+      tonic = getRandomTonic(rng);
+      mode = getRandomMode(rng);
+    } while (scaleRepository.getByScaleName(mode, tonic) == null);
+    notes = getNotes();
   }
 
   /**
@@ -152,17 +157,21 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   /**
-   * Sets the GameMode of the ViewModel to the enumerated types LEARN or CHALLENGE. If Challenge
-   * mode has been selected, the default speed is used to start, ignoring any user preferences set
-   * for Learn mode.
+   * Sets the GameMode of the ViewModel to the enumerated types LEARN or CHALLENGE.
    *
    * @param gameMode A enumerated {@link GameMode} type.
    */
   public void setGameMode(GameMode gameMode) {
     this.gameMode = gameMode;
-    if (gameMode == GameMode.CHALLENGE) {
-      speed = speedPrefDefault;
-    }
+  }
+
+  /**
+   * Returns the tonic of the scale.
+   *
+   * @return The tonic of the scale.
+   */
+  public Note getTonic() {
+    return tonic;
   }
 
   /**
@@ -175,6 +184,15 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   /**
+   * Returns the mode of the scale.
+   *
+   * @return The mode of the scale.
+   */
+  public Mode getMode() {
+    return mode;
+  }
+
+  /**
    * Sets the mode of the scale in the ViewModel to one of the enumerated types.
    *
    * @param mode A enumerated {@link Mode} type.
@@ -184,15 +202,69 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   /**
-   * Starts a single level. If the level is for Learn mode, uses the speed from SharedPreferences
-   * (set in the constructor). If the level is for Challenge mode, increments the speed upon
-   * completion of the level.
+   * Starts a single level.
    */
   public void startLevel() {
     //start the level, do stuff
-    if (gameMode == GameMode.CHALLENGE) {
-      speed++;
+  }
+
+  /**
+   * Sets a boolean value indicating whether the game is paused or not.
+   *
+   * @param paused A boolean that indicates whether the game is paused or not.
+   */
+  public void setPaused(boolean paused) {
+    this.paused.setValue(paused);
+  }
+
+  private Mode getRandomMode(Random rng) {
+    Mode[] modes = Mode.values();
+    return modes[rng.nextInt(modes.length)];
+  }
+
+  private Note getRandomTonic(Random rng) {
+    Note[] notes = Note.tonics();
+    return notes[rng.nextInt(notes.length)];
+  }
+
+  /**
+   * Returns a String representation of the correct notes of the scale.
+   *
+   * @return A String of correctNotes.
+   */
+  public String getNotesString() {
+    StringBuilder builder = new StringBuilder();
+    for (Note note : notes) {
+      builder.append(note).append(", ");
     }
+    return builder.append(tonic).toString();
+  }
+
+  private Note[] getNotes() {
+    Map<Integer, Note[]> letterNameMap = Note.getNoteMap();
+    int tonicNumber = tonic.getNumber();
+    int[] steps = mode.getSteps();
+    Set<Integer> noteNumbers = new HashSet<>();
+    for (int step : steps) {
+      noteNumbers.add(step + tonicNumber);
+    }
+    Set<Note> notes = new HashSet<>();
+    notes.add(tonic);
+    for (Note note : Note.values()) {
+      int number = note.getNumber();
+      if (noteNumbers.contains(number)) {
+        Note[] possibilities = letterNameMap.get(number);
+        String tonicString = tonic.toString();
+        String possibleString = possibilities[0].toString();
+        if ((tonicString.contains("\u266f") && possibleString.contains("\u266d"))
+            || (tonicString.contains("\u266d") && possibleString.contains("\u266f"))) {
+          notes.add(possibilities[1]);
+        } else {
+          notes.add(possibilities[0]);
+        }
+      }
+    }
+    return notes.toArray(new Note[notes.size()]);
   }
 
 }

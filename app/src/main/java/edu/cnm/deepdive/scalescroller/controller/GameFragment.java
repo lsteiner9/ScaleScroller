@@ -6,17 +6,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.scalescroller.R;
+import edu.cnm.deepdive.scalescroller.adapter.ScaleRecyclerAdapter;
 import edu.cnm.deepdive.scalescroller.databinding.FragmentGameBinding;
 import edu.cnm.deepdive.scalescroller.model.Level;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
@@ -38,9 +41,15 @@ public class GameFragment extends Fragment {
   private NavController navController;
   private GameViewModel viewModel;
   private GameFragmentArgs args;
+
   private String volumePrefKey;
   private int volumePrefDefault;
   private int volume;
+  private String speedPrefKey;
+  private int speedPrefDefault;
+  private int speed;
+
+  private Scale scale;
   private Note tonic;
   private Mode mode;
   private GameMode gameMode;
@@ -70,18 +79,13 @@ public class GameFragment extends Fragment {
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentGameBinding.inflate(inflater);
     navController = NavHostFragment.findNavController(this);
+    FragmentActivity activity = getActivity();
+    viewModel = new ViewModelProvider(activity).get(GameViewModel.class);
     binding.pauseButton.setOnClickListener((v) -> {
+      viewModel.setPaused(true);
       //noinspection ConstantConditions
       Navigation.findNavController(getView()).navigate(GameFragmentDirections.openPauseDialog());
     });
-    preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-    volumePrefKey = getString(R.string.volume_slider_key);
-    volumePrefDefault = getResources().getInteger(R.integer.audio_pref_default);
-    volume = preferences.getInt(volumePrefKey, volumePrefDefault);
-
-    gameMode = args.getGameMode();
-    tonic = args.getTonic();
-    mode = args.getMode();
     return binding.getRoot();
   }
 
@@ -90,27 +94,46 @@ public class GameFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
     setupViewModel();
     setUpViews();
+    startGame();
   }
 
   private void setupViewModel() {
-    FragmentActivity activity = getActivity();
     //noinspection ConstantConditions
-    viewModel = new ViewModelProvider(activity).get(GameViewModel.class);
     getLifecycle().addObserver(viewModel);
     LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
+    gameMode = args.getGameMode();
+    tonic = args.getTonic();
+    mode = args.getMode();
+
+    preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+    volumePrefKey = getString(R.string.volume_slider_key);
+    volumePrefDefault = getResources().getInteger(R.integer.audio_pref_default);
+    volume = preferences.getInt(volumePrefKey, volumePrefDefault);
+    speedPrefKey = getString(R.string.speed_pref_key);
+    speedPrefDefault = getResources().getInteger(R.integer.speed_pref_default);
+    speed = (gameMode == GameMode.CHALLENGE) ? speedPrefDefault
+        : preferences.getInt(speedPrefKey, speedPrefDefault);
+
     viewModel.setGameMode(gameMode);
-    if (gameMode == GameMode.CHALLENGE) {
-      viewModel.getScales().observe(lifecycleOwner,
-          scaleList -> scales = GameFragment.this.setRandomScale(scaleList, new SecureRandom()));
+    if (gameMode != GameMode.CHALLENGE) {
+      viewModel.setTonic(tonic);
+      viewModel.setMode(mode);
+    } else {
+      tonic = viewModel.getTonic();
+      mode = viewModel.getMode();
     }
-    viewModel.setTonic(tonic);
-    viewModel.setMode(mode);
+    viewModel.getScales().observe(lifecycleOwner, (scales) -> {
+      if (scales != null) {
+        GameFragment.this.scales = scales;
+      }
+    });
     viewModel.getHearts().observe(lifecycleOwner, this::updateHearts);
     viewModel.getScore().observe(lifecycleOwner, this::updateScore);
     viewModel.getLevel().observe(lifecycleOwner, this::updateGameDisplay);
     viewModel.getResume().observe(lifecycleOwner, (resume) -> {
       if (!resume) {
         navController.navigate(GameFragmentDirections.openTitle());
+        //TODO clear scale, score, hearts data from viewmodel?
       }
     });
   }
@@ -129,12 +152,14 @@ public class GameFragment extends Fragment {
     binding.scaleTitle.setText(
         getString(R.string.scale_title_format, tonic.toString().toUpperCase(),
             mode.toString().toLowerCase()));
+    binding.score.setText(getString(R.string.score_format, 0));
+    binding.hearts.setText(getString(R.string.placeholder_for_hearts, 3));
+    viewModel.setPaused(true);
+    navController.navigate(GameFragmentDirections.openScaleDialog(
+        tonic.toString().toUpperCase(), mode.toString().toLowerCase(), viewModel.getNotesString()));
   }
 
-  private void playLevel(Scale scale) {
-    navController.navigate(GameFragmentDirections.openScaleDialog(
-        tonic.toString().toUpperCase(), mode.toString().toLowerCase(), getString(
-            R.string.c_major_scale_notes)));
+  private void startGame() {
     playSound(R.raw.start_level);
     //do some stuff in here, maybe?
     //for challenge, need to call setRandomScale again but pass in the current list of scales
@@ -152,18 +177,11 @@ public class GameFragment extends Fragment {
     }
   }
 
-  private List<Scale> setRandomScale(List<Scale> scales, Random rng) {
-    if (scales.size() <= 0) {
-      viewModel.getScales().observe(getViewLifecycleOwner(), (scaleList) ->
-          GameFragment.this.scales = setRandomScale(scaleList, new SecureRandom()));
-    } else {
-      int randomNum = rng.nextInt(scales.size());
-      Scale randomScale = scales.get(randomNum);
-      scales.remove(randomNum);
-      tonic = randomScale.getTonic();
-      mode = randomScale.getMode();
-    }
-    return scales;
+  private void setRandomScale(Random rng) {
+    int randomNum = rng.nextInt(scales.size());
+    Scale randomScale = scales.get(randomNum);
+    tonic = randomScale.getTonic();
+    mode = randomScale.getMode();
   }
 
   private void playSound(Integer resource) {

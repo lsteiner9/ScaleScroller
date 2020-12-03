@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.scalescroller.R;
+import edu.cnm.deepdive.scalescroller.viewmodel.GameViewModel;
 
 /**
  * Creates a dialog that pops up at the beginning of each scale level to show the notes of the scale
@@ -42,9 +44,13 @@ public class ScaleDialogFragment extends DialogFragment {
     String notes = ScaleDialogFragmentArgs.fromBundle(getArguments()).getNotes();
     dialog = new AlertDialog.Builder(getActivity())
         .setMessage(getString(R.string.scale_dialog_format, tonic, mode, notes))
-        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-        })
+        .setPositiveButton(android.R.string.ok, (dialog, which) -> onClose())
         .create();
     return dialog;
+  }
+
+  private void onClose() {
+    //noinspection ConstantConditions
+    new ViewModelProvider(getActivity()).get(GameViewModel.class).setPaused(false);
   }
 }

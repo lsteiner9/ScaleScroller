@@ -20,7 +20,6 @@ public class Level {
   private int hearts;
   private final Scale scale;
   private Boolean levelWon;
-  private Note[] correctNotes;
 
   /**
    * The constructor initializes the scale used in the level, and creates a list of the correct
@@ -30,7 +29,6 @@ public class Level {
    */
   public Level(Scale scale) {
     this.scale = scale;
-    correctNotes = getNotes();
   }
 
   // TODO Put logic here for each level in the game?
@@ -103,15 +101,6 @@ public class Level {
   }
 
   /**
-   * Returns the correct notes associated with the scale (and by extension, the level).
-   *
-   * @return An array of {@link Note} that belong in the scale.
-   */
-  public Note[] getCorrectNotes() {
-    return correctNotes;
-  }
-
-  /**
    * Returns the notes not associated with the scale.
    *
    * @return An array of {@link Note} that do not belong in the scale.
@@ -119,44 +108,6 @@ public class Level {
   public Note[] getIncorrectNotes() {
     // TODO stream all note values and filter based whether they are not in correctNotes
     return null;
-  }
-
-  /**
-   * Returns a String representation of the correct notes of the scale.
-   *
-   * @return A String of correctNotes.
-   */
-  public String getNotesString() {
-    return Arrays.toString(correctNotes);
-  }
-
-  private Note[] getNotes() {
-    Map<Integer, Note[]> letterNameMap = Note.getNoteMap();
-    Mode mode = scale.getMode();
-    Note tonic = scale.getTonic();
-    int tonicNumber = tonic.getNumber();
-    int[] steps = mode.getSteps();
-    Set<Integer> noteNumbers = new HashSet<>();
-    for (int step : steps) {
-      noteNumbers.add(step + tonicNumber);
-    }
-    Set<Note> notes = new HashSet<>();
-    notes.add(tonic);
-    for (Note note : Note.values()) {
-      int number = note.getNumber();
-      if (noteNumbers.contains(number)) {
-        Note[] possibilities = letterNameMap.get(number);
-        String tonicString = tonic.toString();
-        String possibleString = possibilities[0].toString();
-        if ((tonicString.contains("\u266f") && possibleString.contains("\u266d"))
-            || (tonicString.contains("\u266d") && possibleString.contains("\u266f"))) {
-          notes.add(possibilities[1]);
-        } else {
-          notes.add(possibilities[0]);
-        }
-      }
-    }
-    return notes.toArray(new Note[notes.size()]);
   }
 
 }
