@@ -1,10 +1,16 @@
 ## Current implementation state
 
-Currently, all screens are set up, with custom yet intuitive navigation. Data from the app is being stored in a SQLite database, and certain elements (scales, high scores, players) are displayed in the UI in certain places. The app uses Google Sign In and Media Player, as external or device-based services. Settings are stored in shared preferences for use in the app. The gameplay is not working (the game screen uses a mockup layout and very simple "gameplay"), but aside from that, the app looks and works generally as intended.
+Currently, all screens are set up, with custom yet intuitive navigation. Data from the app is being stored in a SQLite database, and certain elements (scales, high scores, players) are displayed in the UI. The app uses Google Sign In and Media Player, as external or device-based services. Settings are stored in shared preferences for use in the app. The gameplay is not working (the game screen uses a mockup layout and very simple "gameplay"), but aside from that, the app looks and works generally as intended.
 
 Functional issues:
 
 * The "Continue as guest" button does not yet function. Signing in through Google is currently the only way to access the app's content.
+
+* MediaPlayer audio adjustment is not working completely, though the audio toggle does work. The seekbar seems to be acting like a toggle - if set to 0, there is no sound. If set to anything about 0, there is full volume.
+
+* The function for getting correct notes for each scale is not always working.
+
+* The scale/level information is maintained even after going to the title screen, so challenge mode never displays a new scale when clicking it after the first time.
 
 * As mentioned above, gameplay is not functional.
 

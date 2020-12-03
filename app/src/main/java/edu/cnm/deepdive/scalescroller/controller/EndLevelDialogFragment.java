@@ -44,10 +44,9 @@ public class EndLevelDialogFragment extends DialogFragment {
     gameWon = EndLevelDialogFragmentArgs.fromBundle(getArguments()).getGameWon();
     gameMode = EndLevelDialogFragmentArgs.fromBundle(getArguments()).getGameMode();
     score = EndLevelDialogFragmentArgs.fromBundle(getArguments()).getScore();
-    String format =
-        (gameWon) ? getString(R.string.congratulations_learn) : getString(R.string.failure_learn);
-    format = (gameMode.equals(GameMode.LEARN.toString())) ? format
+    String format = (gameMode.equals(GameMode.LEARN.toString())) ? getString(R.string.congratulations_learn)
         : getString(R.string.congratulations_challenge);
+    format = (gameWon) ? format : getString(R.string.failure_learn);
     dialog = new AlertDialog.Builder(getActivity())
         .setMessage(String.format(format, score))
         .setPositiveButton(android.R.string.ok, (dialog, which) -> {

@@ -1,13 +1,11 @@
 package edu.cnm.deepdive.scalescroller.viewmodel;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.controller.GameFragment.GameMode;
 import edu.cnm.deepdive.scalescroller.model.Level;
@@ -15,6 +13,7 @@ import edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
+import edu.cnm.deepdive.scalescroller.model.entity.Player;
 import edu.cnm.deepdive.scalescroller.model.entity.Scale;
 import edu.cnm.deepdive.scalescroller.model.entity.ScaleChallengeAttempt;
 import edu.cnm.deepdive.scalescroller.service.ChallengeAttemptRepository;
@@ -25,24 +24,19 @@ import edu.cnm.deepdive.scalescroller.service.ScaleChallengeAttemptRepository;
 import edu.cnm.deepdive.scalescroller.service.ScaleRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-//TODO do game logic
+//TODO work on game logic
 
 /**
  * Serves as the ViewModel for the GameFragment.
  */
 public class GameViewModel extends AndroidViewModel implements LifecycleObserver {
 
-  private static final int INITIAL_HEARTS = 3;
-  private static final int INITIAL_SCORE = 0;
-
-  private final MutableLiveData<Level> level;
   private final MutableLiveData<ChallengeAttempt> challengeAttempt;
   private final MutableLiveData<ScaleChallengeAttempt> scaleChallengeAttempt;
   private final MutableLiveData<LearnLevelAttempt> learnLevelAttempt;
@@ -62,6 +56,7 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   private final ScaleChallengeAttemptRepository scaleChallengeAttemptRepository;
   private final GoogleSignInService signInService;
 
+  private Level level;
   private Scale scale;
   private Note tonic;
   private Mode mode;
@@ -83,7 +78,6 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     scaleChallengeAttemptRepository = new ScaleChallengeAttemptRepository(application);
     signInService = GoogleSignInService.getInstance();
 
-    level = new MutableLiveData<>();
     challengeAttempt = new MutableLiveData<>();
     scaleChallengeAttempt = new MutableLiveData<>();
     learnLevelAttempt = new MutableLiveData<>();
@@ -98,17 +92,29 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     do {
       tonic = getRandomTonic(rng);
       mode = getRandomMode(rng);
-    } while (scaleRepository.getByScaleName(mode, tonic) == null);
-    notes = getNotes();
+    } while (getScale(tonic, mode) == null);
+    notes = calculateNotes();
+    level = new Level(tonic, mode);
   }
 
   /**
-   * Returns LiveData of a level.
+   * Returns LiveData of a scale, given tonic and mode.
    *
-   * @return {@code LiveData} of the current {@link Level}
+   * @param tonic The scale's tonic.
+   * @param mode The scale's mode.
+   * @return {@code LiveData} of the {@code Scale}.
    */
-  public LiveData<Level> getLevel() {
-    return level;
+  public LiveData<Scale> getScale(Note tonic, Mode mode) {
+    return scaleRepository.getByScaleName(mode, tonic);
+  }
+
+  /**
+   * Returns LiveData of a Boolean indicating whether the player has won the level.
+   *
+   * @return {@code LiveData} of a {@code Boolean}.
+   */
+  public MutableLiveData<Boolean> getLevelWon() {
+    return levelWon;
   }
 
   /**
@@ -202,6 +208,24 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   /**
+   * Returns the {@link Level} object.
+   *
+   * @return The level.
+   */
+  public Level getLevel() {
+    return level;
+  }
+
+  /**
+   * Sets the {@code Level} object.
+   *
+   * @param level The leve.
+   */
+  public void setLevel(Level level) {
+    this.level = level;
+  }
+
+  /**
    * Starts a single level.
    */
   public void startLevel() {
@@ -217,15 +241,6 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     this.paused.setValue(paused);
   }
 
-  private Mode getRandomMode(Random rng) {
-    Mode[] modes = Mode.values();
-    return modes[rng.nextInt(modes.length)];
-  }
-
-  private Note getRandomTonic(Random rng) {
-    Note[] notes = Note.tonics();
-    return notes[rng.nextInt(notes.length)];
-  }
 
   /**
    * Returns a String representation of the correct notes of the scale.
@@ -237,16 +252,55 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     for (Note note : notes) {
       builder.append(note).append(", ");
     }
-    return builder.append(tonic).toString();
+    builder.append(tonic);
+    //TODO take this out once game is working
+    builder.append(getApplication().getString(R.string.placeholder_note_names));
+    return builder.toString();
   }
 
-  private Note[] getNotes() {
+  /**
+   * Returns an array of correct notes.
+   *
+   * @return An array of correct notes.
+   */
+  public Note[] getNotes() {
+    return notes;
+  }
+
+  /**
+   * Saves a challenge attempt to the database.
+   *
+   * @param challengeAttempt The attempt to be saved.
+   */
+  public void save(ChallengeAttempt challengeAttempt) {
+    challengeAttemptRepository.save(challengeAttempt);
+  }
+
+  /**
+   * Saves a learn attempt to the database.
+   *
+   * @param learnLevelAttempt The attempt to be saved.
+   */
+  public void save(LearnLevelAttempt learnLevelAttempt) {
+    learnLevelAttemptRepository.save(learnLevelAttempt);
+  }
+
+  /**
+   * Returns LiveData of the current player.
+   *
+   * @return {@code LiveData} of the current {@link Player}.
+   */
+  public LiveData<Player> getPlayer() {
+    return playerRepository.getByOauth(signInService.getAccount().getId());
+  }
+
+  private Note[] calculateNotes() {
     Map<Integer, Note[]> letterNameMap = Note.getNoteMap();
     int tonicNumber = tonic.getNumber();
     int[] steps = mode.getSteps();
     Set<Integer> noteNumbers = new HashSet<>();
     for (int step : steps) {
-      noteNumbers.add(step + tonicNumber);
+      noteNumbers.add((step + tonicNumber) % 12);
     }
     Set<Note> notes = new HashSet<>();
     notes.add(tonic);
@@ -259,12 +313,26 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
         if ((tonicString.contains("\u266f") && possibleString.contains("\u266d"))
             || (tonicString.contains("\u266d") && possibleString.contains("\u266f"))) {
           notes.add(possibilities[1]);
+//          TODO more checks here to narrow down the note possibilities
+//        } else if (!tonicString.contains("\u266f") && !tonicString.contains("\u266d")
+//            && (possibleString.contains(??))) {
+
         } else {
           notes.add(possibilities[0]);
         }
       }
     }
     return notes.toArray(new Note[notes.size()]);
+  }
+
+  private Mode getRandomMode(Random rng) {
+    Mode[] modes = Mode.values();
+    return modes[rng.nextInt(modes.length)];
+  }
+
+  private Note getRandomTonic(Random rng) {
+    Note[] notes = Note.tonics();
+    return notes[rng.nextInt(notes.length)];
   }
 
 }

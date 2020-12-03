@@ -4,8 +4,9 @@
   <integer name="speed_min">1</integer>
   <integer name="speed_max">10</integer>
 
-  <integer name="audio_pref_default">5</integer>
+  <integer name="audio_pref_default">50</integer>
   <integer name="audio_min">0</integer>
-  <integer name="audio_max">10</integer>
-  <integer name="min_passing_score">200</integer>
+  <integer name="audio_max">100</integer>
+  <integer name="min_passing_score">50</integer>
+  <integer name="coin_score">25</integer>
 </resources>

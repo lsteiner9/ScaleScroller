@@ -7,5 +7,8 @@
   <color name="heartColor">#980F0F</color>
   <color name="inactiveColor">#888888</color>
 
+  <color name="correctCoin">#0F670F</color>
+  <color name="incorrectCoin">#F12727</color>
+
   <color name="black_overlay">#66000000</color>
 </resources>

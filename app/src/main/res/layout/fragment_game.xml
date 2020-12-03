@@ -108,41 +108,50 @@
     app:iconSize="@dimen/large_icon_dimen"/>
 
 <!--  TODO Take this mockup layout out after surface view is created-->
-  <com.google.android.material.textview.MaterialTextView
-    android:layout_width="@dimen/standard_icon_dimen"
-    android:layout_height="@dimen/standard_icon_dimen"
-    android:background="@drawable/ic_coin_24"
-    android:textSize="@dimen/large_text_size"
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/coin_1"
+    android:layout_width="@dimen/coin_horizontal_dimen"
+    android:layout_height="@dimen/coin_vertical_dimen"
+    android:backgroundTint="@color/colorAccent"
+    android:textSize="@dimen/medium_text_size"
     android:textColor="@color/colorPrimary"
     android:textAlignment="center"
+    android:textAllCaps="false"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline2"
-    tools:text="F#"/>
+    app:cornerRadius="@dimen/circle_corner_radius"
+    tools:text="F♯"/>
 
-  <com.google.android.material.textview.MaterialTextView
-    android:layout_width="@dimen/standard_icon_dimen"
-    android:layout_height="@dimen/standard_icon_dimen"
-    android:background="@drawable/ic_coin_24"
-    android:textSize="@dimen/large_text_size"
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/coin_2"
+    android:layout_width="@dimen/coin_horizontal_dimen"
+    android:layout_height="@dimen/coin_vertical_dimen"
+    android:backgroundTint="@color/colorAccent"
+    android:textSize="@dimen/medium_text_size"
     android:textColor="@color/colorPrimary"
     android:textAlignment="center"
+    android:textAllCaps="false"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/move_down"
     app:layout_constraintTop_toTopOf="@id/horizontal_guideline1"
     app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline2"
+    app:cornerRadius="@dimen/circle_corner_radius"
     tools:text="C"/>
 
-  <com.google.android.material.textview.MaterialTextView
-    android:layout_width="@dimen/standard_icon_dimen"
-    android:layout_height="@dimen/standard_icon_dimen"
-    android:background="@drawable/ic_coin_24"
-    android:textSize="@dimen/large_text_size"
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/coin_3"
+    android:layout_width="@dimen/coin_horizontal_dimen"
+    android:layout_height="@dimen/coin_vertical_dimen"
+    android:backgroundTint="@color/colorAccent"
+    android:textSize="@dimen/medium_text_size"
     android:textColor="@color/colorPrimary"
     android:textAlignment="center"
+    android:textAllCaps="false"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/scale_title"
     app:layout_constraintTop_toTopOf="@id/horizontal_guideline2"
     app:layout_constraintBottom_toBottomOf="parent"
-    tools:text="D"/>
+    app:cornerRadius="@dimen/circle_corner_radius"
+    tools:text="B♭"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

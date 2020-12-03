@@ -3,11 +3,6 @@ package edu.cnm.deepdive.scalescroller.model;
 import edu.cnm.deepdive.scalescroller.R;
 import edu.cnm.deepdive.scalescroller.model.entity.Mode;
 import edu.cnm.deepdive.scalescroller.model.entity.Note;
-import edu.cnm.deepdive.scalescroller.model.entity.Scale;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * The {@code Level} class contains game logic used in conjunction with the {@link
@@ -18,17 +13,21 @@ public class Level {
   private static final int MIN_PASSING_SCORE = R.integer.min_passing_score;
   private int score;
   private int hearts;
-  private final Scale scale;
+  private final Note tonic;
+  private final Mode mode;
   private Boolean levelWon;
 
   /**
-   * The constructor initializes the scale used in the level, and creates a list of the correct
-   * notes from the scale.
+   * The constructor initializes the tonic and mode of the scale.
    *
-   * @param scale The scale used.
+   * @param tonic The scale's tonic.
+   * @param mode  The scale's mode.
    */
-  public Level(Scale scale) {
-    this.scale = scale;
+  public Level(Note tonic, Mode mode) {
+    this.tonic = tonic;
+    this.mode = mode;
+    score = 0;
+    hearts = 3;
   }
 
   // TODO Put logic here for each level in the game?
@@ -82,12 +81,21 @@ public class Level {
   }
 
   /**
-   * Returns the scale associated with the level.
+   * Returns the tonic of the scale.
    *
-   * @return The level's scale.
+   * @return The tonic of the scale.
    */
-  public Scale getScale() {
-    return scale;
+  public Note getTonic() {
+    return tonic;
+  }
+
+  /**
+   * Returns the mode of the scale.
+   *
+   * @return The mode of the scale.
+   */
+  public Mode getMode() {
+    return mode;
   }
 
   /**
@@ -98,16 +106,6 @@ public class Level {
    */
   public Boolean getLevelWon() {
     return levelWon;
-  }
-
-  /**
-   * Returns the notes not associated with the scale.
-   *
-   * @return An array of {@link Note} that do not belong in the scale.
-   */
-  public Note[] getIncorrectNotes() {
-    // TODO stream all note values and filter based whether they are not in correctNotes
-    return null;
   }
 
 }

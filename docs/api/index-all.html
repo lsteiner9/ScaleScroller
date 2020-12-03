@@ -229,6 +229,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/databinding/FragmentSettingsBinding.html#changeSpeedButton">changeSpeedButton</a></span> - Variable in class edu.cnm.deepdive.scalescroller.databinding.<a href="edu/cnm/deepdive/scalescroller/databinding/FragmentSettingsBinding.html" title="class in edu.cnm.deepdive.scalescroller.databinding">FragmentSettingsBinding</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/databinding/FragmentGameBinding.html#coin1">coin1</a></span> - Variable in class edu.cnm.deepdive.scalescroller.databinding.<a href="edu/cnm/deepdive/scalescroller/databinding/FragmentGameBinding.html" title="class in edu.cnm.deepdive.scalescroller.databinding">FragmentGameBinding</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/databinding/FragmentGameBinding.html#coin2">coin2</a></span> - Variable in class edu.cnm.deepdive.scalescroller.databinding.<a href="edu/cnm/deepdive/scalescroller/databinding/FragmentGameBinding.html" title="class in edu.cnm.deepdive.scalescroller.databinding">FragmentGameBinding</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/databinding/FragmentGameBinding.html#coin3">coin3</a></span> - Variable in class edu.cnm.deepdive.scalescroller.databinding.<a href="edu/cnm/deepdive/scalescroller/databinding/FragmentGameBinding.html" title="class in edu.cnm.deepdive.scalescroller.databinding">FragmentGameBinding</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/service/GoogleSignInService.html#completeSignIn(android.content.Intent)">completeSignIn(Intent)</a></span> - Method in class edu.cnm.deepdive.scalescroller.service.<a href="edu/cnm/deepdive/scalescroller/service/GoogleSignInService.html" title="class in edu.cnm.deepdive.scalescroller.service">GoogleSignInService</a></dt>
 <dd>
 <div class="block">Completes the signin process and sets the account.</div>
@@ -579,10 +585,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Returns the number of correct coins collected.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#getCorrectNotes()">getCorrectNotes()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
-<dd>
-<div class="block">Returns the correct notes associated with the scale (and by extension, the level).</div>
-</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/LearnLevelAttempt.html#getDifficulty()">getDifficulty()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/LearnLevelAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">LearnLevelAttempt</a></dt>
 <dd>
 <div class="block">Returns the difficulty of the attempted scale.</div>
@@ -673,10 +675,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Returns the number of incorrect coins collected.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#getIncorrectNotes()">getIncorrectNotes()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
-<dd>
-<div class="block">Returns the notes not associated with the scale.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/service/GoogleSignInService.html#getInstance()">getInstance()</a></span> - Static method in class edu.cnm.deepdive.scalescroller.service.<a href="edu/cnm/deepdive/scalescroller/service/GoogleSignInService.html" title="class in edu.cnm.deepdive.scalescroller.service">GoogleSignInService</a></dt>
 <dd>
 <div class="block">Returns an instance of the singleton GoogleSignInService.</div>
@@ -699,11 +697,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getLevel()">getLevel()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
 <dd>
-<div class="block">Returns LiveData of a level.</div>
+<div class="block">Returns the <a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model"><code>Level</code></a> object.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#getLevelWon()">getLevelWon()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
 <dd>
 <div class="block">Returns true if the level has been won and false if it has been lost.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getLevelWon()">getLevelWon()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Returns LiveData of a Boolean indicating whether the player has won the level.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/GameFragmentArgs.Builder.html#getMode()">getMode()</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/GameFragmentArgs.Builder.html" title="class in edu.cnm.deepdive.scalescroller.controller">GameFragmentArgs.Builder</a></dt>
 <dd>&nbsp;</dd>
@@ -724,6 +726,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Returns the mode of the scale (major, natural minor, etc.): an enumerated type from the <code>
  Mode</code> enum.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#getMode()">getMode()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
+<dd>
+<div class="block">Returns the mode of the scale.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getMode()">getMode()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Returns the mode of the scale.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/Note.html#getNoteMap()">getNoteMap()</a></span> - Static method in enum edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a></dt>
 <dd>
 <div class="block">Returns a map of Integers to notes.</div>
@@ -734,7 +744,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/ScaleDialogFragmentArgs.html#getNotes()">getNotes()</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/ScaleDialogFragmentArgs.html" title="class in edu.cnm.deepdive.scalescroller.controller">ScaleDialogFragmentArgs</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#getNotesString()">getNotesString()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getNotes()">getNotes()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Returns an array of correct notes.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getNotesString()">getNotesString()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
 <dd>
 <div class="block">Returns a String representation of the correct notes of the scale.</div>
 </dd>
@@ -749,6 +763,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.html#getPlayer()">getPlayer()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.pojo.<a href="edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.html" title="class in edu.cnm.deepdive.scalescroller.model.pojo">ChallengeAttemptWithPlayer</a></dt>
 <dd>
 <div class="block">Returns the <code>Player</code> associated with the <code>ChallengeAttempt</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getPlayer()">getPlayer()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Returns LiveData of the current player.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/MainViewModel.html#getPlayer()">getPlayer()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/MainViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">MainViewModel</a></dt>
 <dd>
@@ -792,9 +810,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/databinding/PrefSpeedBackButtonBinding.html#getRoot()">getRoot()</a></span> - Method in class edu.cnm.deepdive.scalescroller.databinding.<a href="edu/cnm/deepdive/scalescroller/databinding/PrefSpeedBackButtonBinding.html" title="class in edu.cnm.deepdive.scalescroller.databinding">PrefSpeedBackButtonBinding</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#getScale()">getScale()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getScale(edu.cnm.deepdive.scalescroller.model.entity.Note,edu.cnm.deepdive.scalescroller.model.entity.Mode)">getScale(Note, Mode)</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
 <dd>
-<div class="block">Returns the scale associated with the level.</div>
+<div class="block">Returns LiveData of a scale, given tonic and mode.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/service/ScaleChallengeAttemptRepository.html#getScaleChallengeAttempt(long)">getScaleChallengeAttempt(long)</a></span> - Method in class edu.cnm.deepdive.scalescroller.service.<a href="edu/cnm/deepdive/scalescroller/service/ScaleChallengeAttemptRepository.html" title="class in edu.cnm.deepdive.scalescroller.service">ScaleChallengeAttemptRepository</a></dt>
 <dd>
@@ -879,6 +897,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/Scale.html#getTonic()">getTonic()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/Scale.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Scale</a></dt>
 <dd>
 <div class="block">Returns the tonic of the scale: an enumerated type from the <code>Note</code> enum.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#getTonic()">getTonic()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
+<dd>
+<div class="block">Returns the tonic of the scale.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#getTonic()">getTonic()</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Returns the tonic of the scale.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/ChallengeAttempt.html#getTotalScore()">getTotalScore()</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/ChallengeAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">ChallengeAttempt</a></dt>
 <dd>
@@ -1112,10 +1138,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">The <code>Level</code> class contains game logic used in conjunction with the <a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel"><code>GameViewModel</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#%3Cinit%3E(edu.cnm.deepdive.scalescroller.model.entity.Scale)">Level(Scale)</a></span> - Constructor for class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/Level.html#%3Cinit%3E(edu.cnm.deepdive.scalescroller.model.entity.Note,edu.cnm.deepdive.scalescroller.model.entity.Mode)">Level(Note, Mode)</a></span> - Constructor for class edu.cnm.deepdive.scalescroller.model.<a href="edu/cnm/deepdive/scalescroller/model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></dt>
 <dd>
-<div class="block">The constructor initializes the scale used in the level, and creates a list of the correct
- notes from the scale.</div>
+<div class="block">The constructor initializes the tonic and mode of the scale.</div>
 </dd>
 <dt><a href="edu/cnm/deepdive/scalescroller/controller/LoginActivity.html" title="class in edu.cnm.deepdive.scalescroller.controller"><span class="typeNameLink">LoginActivity</span></a> - Class in <a href="edu/cnm/deepdive/scalescroller/controller/package-summary.html">edu.cnm.deepdive.scalescroller.controller</a></dt>
 <dd>
@@ -1265,9 +1290,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  listener on a back button.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/GameFragment.html#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)">onCreateView(LayoutInflater, ViewGroup, Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/GameFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">GameFragment</a></dt>
-<dd>
-<div class="block">Sets up bindings, preferences, and general data.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/HighScoreFragment.html#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)">onCreateView(LayoutInflater, ViewGroup, Bundle)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/HighScoreFragment.html" title="class in edu.cnm.deepdive.scalescroller.controller">HighScoreFragment</a></dt>
 <dd>
 <div class="block">Sets up navigation.</div>
@@ -1401,9 +1424,17 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Creates or updates a attempt record in the database.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#save(edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt)">save(ChallengeAttempt)</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Saves a challenge attempt to the database.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/service/LearnLevelAttemptRepository.html#save(edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt)">save(LearnLevelAttempt)</a></span> - Method in class edu.cnm.deepdive.scalescroller.service.<a href="edu/cnm/deepdive/scalescroller/service/LearnLevelAttemptRepository.html" title="class in edu.cnm.deepdive.scalescroller.service">LearnLevelAttemptRepository</a></dt>
 <dd>
 <div class="block">Creates or updates a attempt record in the database.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#save(edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt)">save(LearnLevelAttempt)</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Saves a learn attempt to the database.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/service/PlayerRepository.html#save(edu.cnm.deepdive.scalescroller.model.entity.Player)">save(Player)</a></span> - Method in class edu.cnm.deepdive.scalescroller.service.<a href="edu/cnm/deepdive/scalescroller/service/PlayerRepository.html" title="class in edu.cnm.deepdive.scalescroller.service">PlayerRepository</a></dt>
 <dd>
@@ -1732,6 +1763,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Sets the id of the last scale attempted (i.e.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#setLevel(edu.cnm.deepdive.scalescroller.model.Level)">setLevel(Level)</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Sets the <code>Level</code> object.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/GameFragmentArgs.Builder.html#setMode(edu.cnm.deepdive.scalescroller.model.entity.Mode)">setMode(Mode)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/GameFragmentArgs.Builder.html" title="class in edu.cnm.deepdive.scalescroller.controller">GameFragmentArgs.Builder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/controller/ScaleSelectFragmentDirections.OpenLearnModeGame.html#setMode(edu.cnm.deepdive.scalescroller.model.entity.Mode)">setMode(Mode)</a></span> - Method in class edu.cnm.deepdive.scalescroller.controller.<a href="edu/cnm/deepdive/scalescroller/controller/ScaleSelectFragmentDirections.OpenLearnModeGame.html" title="class in edu.cnm.deepdive.scalescroller.controller">ScaleSelectFragmentDirections.OpenLearnModeGame</a></dt>
@@ -1758,6 +1793,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/entity/Player.html#setOauthKey(java.lang.String)">setOauthKey(String)</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.entity.<a href="edu/cnm/deepdive/scalescroller/model/entity/Player.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Player</a></dt>
 <dd>
 <div class="block">Sets the OAuth key for the player.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html#setPaused(boolean)">setPaused(boolean)</a></span> - Method in class edu.cnm.deepdive.scalescroller.viewmodel.<a href="edu/cnm/deepdive/scalescroller/viewmodel/GameViewModel.html" title="class in edu.cnm.deepdive.scalescroller.viewmodel">GameViewModel</a></dt>
+<dd>
+<div class="block">Sets a boolean value indicating whether the game is paused or not.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.html#setPlayer(edu.cnm.deepdive.scalescroller.model.entity.Player)">setPlayer(Player)</a></span> - Method in class edu.cnm.deepdive.scalescroller.model.pojo.<a href="edu/cnm/deepdive/scalescroller/model/pojo/ChallengeAttemptWithPlayer.html" title="class in edu.cnm.deepdive.scalescroller.model.pojo">ChallengeAttemptWithPlayer</a></dt>
 <dd>

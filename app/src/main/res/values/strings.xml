@@ -37,5 +37,6 @@
   <string name="speed_settings_title">Speed Settings</string>
   <string name="no_scores">No scores to display</string>
   <string name="c_major_scale_notes">CEDFGABC</string>
+  <string name="placeholder_note_names">\n (These notes may currently be incorrect, click on F# and C for correct notes, Bb for incorrect.)</string>
 
 </resources>

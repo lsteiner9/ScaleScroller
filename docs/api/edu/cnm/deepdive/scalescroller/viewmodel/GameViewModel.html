@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -201,62 +201,140 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLevel()">getLevel</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Returns LiveData of a level.</div>
+<div class="block">Returns the <a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model"><code>Level</code></a> object.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/MutableLiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">MutableLiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang" class="externalLink">Boolean</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLevelWon()">getLevelWon</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns LiveData of a Boolean indicating whether the player has won the level.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../model/entity/Mode.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Mode</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMode()">getMode</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the mode of the scale.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a>[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNotes()">getNotes</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns an array of correct notes.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNotesString()">getNotesString</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns a String representation of the correct notes of the scale.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Player.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Player</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPlayer()">getPlayer</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns LiveData of the current player.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang" class="externalLink">Boolean</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResume()">getResume</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns LiveData of a Boolean value indicating dialog directions.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Scale.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Scale</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getScale(edu.cnm.deepdive.scalescroller.model.entity.Note,edu.cnm.deepdive.scalescroller.model.entity.Mode)">getScale</a></span>&#8203;(<a href="../model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a>&nbsp;tonic,
+        <a href="../model/entity/Mode.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Mode</a>&nbsp;mode)</code></th>
+<td class="colLast">
+<div class="block">Returns LiveData of a scale, given tonic and mode.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../model/entity/Scale.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Scale</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getScales()">getScales</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns LiveData of a list of scales, ordered by difficulty.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Integer.html?is-external=true" title="class or interface in java.lang" class="externalLink">Integer</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getScore()">getScore</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns LiveData of an Integer value that holds the player's score.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTonic()">getTonic</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the tonic of the scale.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#save(edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt)">save</a></span>&#8203;(<a href="../model/entity/ChallengeAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">ChallengeAttempt</a>&nbsp;challengeAttempt)</code></th>
+<td class="colLast">
+<div class="block">Saves a challenge attempt to the database.</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#save(edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt)">save</a></span>&#8203;(<a href="../model/entity/LearnLevelAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">LearnLevelAttempt</a>&nbsp;learnLevelAttempt)</code></th>
+<td class="colLast">
+<div class="block">Saves a learn attempt to the database.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setGameMode(edu.cnm.deepdive.scalescroller.controller.GameFragment.GameMode)">setGameMode</a></span>&#8203;(<a href="../controller/GameFragment.GameMode.html" title="enum in edu.cnm.deepdive.scalescroller.controller">GameFragment.GameMode</a>&nbsp;gameMode)</code></th>
 <td class="colLast">
 <div class="block">Sets the GameMode of the ViewModel to the enumerated types LEARN or CHALLENGE.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setLevel(edu.cnm.deepdive.scalescroller.model.Level)">setLevel</a></span>&#8203;(<a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a>&nbsp;level)</code></th>
+<td class="colLast">
+<div class="block">Sets the <code>Level</code> object.</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setMode(edu.cnm.deepdive.scalescroller.model.entity.Mode)">setMode</a></span>&#8203;(<a href="../model/entity/Mode.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Mode</a>&nbsp;mode)</code></th>
 <td class="colLast">
 <div class="block">Sets the mode of the scale in the ViewModel to one of the enumerated types.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPaused(boolean)">setPaused</a></span>&#8203;(boolean&nbsp;paused)</code></th>
+<td class="colLast">
+<div class="block">Sets a boolean value indicating whether the game is paused or not.</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setResume(boolean)">setResume</a></span>&#8203;(boolean&nbsp;resume)</code></th>
 <td class="colLast">
 <div class="block">Sets the resume value indicating dialog directions.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTonic(edu.cnm.deepdive.scalescroller.model.entity.Note)">setTonic</a></span>&#8203;(<a href="../model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a>&nbsp;tonic)</code></th>
 <td class="colLast">
 <div class="block">Sets the tonic of the scale in the ViewModel to one of the enumerated types.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#startLevel()">startLevel</a></span>()</code></th>
 <td class="colLast">
@@ -327,17 +405,35 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="getLevel()">
+<a id="getScale(edu.cnm.deepdive.scalescroller.model.entity.Note,edu.cnm.deepdive.scalescroller.model.entity.Mode)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getLevel</h4>
-<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a>&gt;&nbsp;getLevel()</pre>
-<div class="block">Returns LiveData of a level.</div>
+<h4>getScale</h4>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Scale.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Scale</a>&gt;&nbsp;getScale&#8203;(<a href="../model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a>&nbsp;tonic,
+                                <a href="../model/entity/Mode.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Mode</a>&nbsp;mode)</pre>
+<div class="block">Returns LiveData of a scale, given tonic and mode.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tonic</code> - The scale's tonic.</dd>
+<dd><code>mode</code> - The scale's mode.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>LiveData</code> of the <code>Scale</code>.</dd>
+</dl>
+</li>
+</ul>
+<a id="getLevelWon()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLevelWon</h4>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/MutableLiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">MutableLiveData</a>&lt;<a href="https://developer.android.com/reference/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang" class="externalLink">Boolean</a>&gt;&nbsp;getLevelWon()</pre>
+<div class="block">Returns LiveData of a Boolean indicating whether the player has won the level.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd><code>LiveData</code> of the current <a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model"><code>Level</code></a></dd>
+<dd><code>LiveData</code> of a <code>Boolean</code>.</dd>
 </dl>
 </li>
 </ul>
@@ -418,12 +514,24 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 <li class="blockList">
 <h4>setGameMode</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setGameMode&#8203;(<a href="../controller/GameFragment.GameMode.html" title="enum in edu.cnm.deepdive.scalescroller.controller">GameFragment.GameMode</a>&nbsp;gameMode)</pre>
-<div class="block">Sets the GameMode of the ViewModel to the enumerated types LEARN or CHALLENGE. If Challenge
- mode has been selected, the default speed is used to start, ignoring any user preferences set
- for Learn mode.</div>
+<div class="block">Sets the GameMode of the ViewModel to the enumerated types LEARN or CHALLENGE.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>gameMode</code> - A enumerated <a href="../controller/GameFragment.GameMode.html" title="enum in edu.cnm.deepdive.scalescroller.controller"><code>GameFragment.GameMode</code></a> type.</dd>
+</dl>
+</li>
+</ul>
+<a id="getTonic()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTonic</h4>
+<pre class="methodSignature">public&nbsp;<a href="../model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a>&nbsp;getTonic()</pre>
+<div class="block">Returns the tonic of the scale.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The tonic of the scale.</dd>
 </dl>
 </li>
 </ul>
@@ -441,6 +549,20 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 </dl>
 </li>
 </ul>
+<a id="getMode()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMode</h4>
+<pre class="methodSignature">public&nbsp;<a href="../model/entity/Mode.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Mode</a>&nbsp;getMode()</pre>
+<div class="block">Returns the mode of the scale.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The mode of the scale.</dd>
+</dl>
+</li>
+</ul>
 <a id="setMode(edu.cnm.deepdive.scalescroller.model.entity.Mode)">
 <!--   -->
 </a>
@@ -455,16 +577,126 @@ implements <a href="https://developer.android.com/reference/androidx/lifecycle/L
 </dl>
 </li>
 </ul>
+<a id="getLevel()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLevel</h4>
+<pre class="methodSignature">public&nbsp;<a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a>&nbsp;getLevel()</pre>
+<div class="block">Returns the <a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model"><code>Level</code></a> object.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The level.</dd>
+</dl>
+</li>
+</ul>
+<a id="setLevel(edu.cnm.deepdive.scalescroller.model.Level)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLevel</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setLevel&#8203;(<a href="../model/Level.html" title="class in edu.cnm.deepdive.scalescroller.model">Level</a>&nbsp;level)</pre>
+<div class="block">Sets the <code>Level</code> object.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>level</code> - The leve.</dd>
+</dl>
+</li>
+</ul>
 <a id="startLevel()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>startLevel</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;startLevel()</pre>
+<div class="block">Starts a single level.</div>
+</li>
+</ul>
+<a id="setPaused(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setPaused</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setPaused&#8203;(boolean&nbsp;paused)</pre>
+<div class="block">Sets a boolean value indicating whether the game is paused or not.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>paused</code> - A boolean that indicates whether the game is paused or not.</dd>
+</dl>
+</li>
+</ul>
+<a id="getNotesString()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getNotesString</h4>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;getNotesString()</pre>
+<div class="block">Returns a String representation of the correct notes of the scale.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A String of correctNotes.</dd>
+</dl>
+</li>
+</ul>
+<a id="getNotes()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getNotes</h4>
+<pre class="methodSignature">public&nbsp;<a href="../model/entity/Note.html" title="enum in edu.cnm.deepdive.scalescroller.model.entity">Note</a>[]&nbsp;getNotes()</pre>
+<div class="block">Returns an array of correct notes.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An array of correct notes.</dd>
+</dl>
+</li>
+</ul>
+<a id="save(edu.cnm.deepdive.scalescroller.model.entity.ChallengeAttempt)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>save</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;save&#8203;(<a href="../model/entity/ChallengeAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">ChallengeAttempt</a>&nbsp;challengeAttempt)</pre>
+<div class="block">Saves a challenge attempt to the database.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>challengeAttempt</code> - The attempt to be saved.</dd>
+</dl>
+</li>
+</ul>
+<a id="save(edu.cnm.deepdive.scalescroller.model.entity.LearnLevelAttempt)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>save</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;save&#8203;(<a href="../model/entity/LearnLevelAttempt.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">LearnLevelAttempt</a>&nbsp;learnLevelAttempt)</pre>
+<div class="block">Saves a learn attempt to the database.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>learnLevelAttempt</code> - The attempt to be saved.</dd>
+</dl>
+</li>
+</ul>
+<a id="getPlayer()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>startLevel</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;startLevel()</pre>
-<div class="block">Starts a single level. If the level is for Learn mode, uses the speed from SharedPreferences
- (set in the constructor). If the level is for Challenge mode, increments the speed upon
- completion of the level.</div>
+<h4>getPlayer</h4>
+<pre class="methodSignature">public&nbsp;<a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html?is-external=true" title="class or interface in androidx.lifecycle" class="externalLink">LiveData</a>&lt;<a href="../model/entity/Player.html" title="class in edu.cnm.deepdive.scalescroller.model.entity">Player</a>&gt;&nbsp;getPlayer()</pre>
+<div class="block">Returns LiveData of the current player.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>LiveData</code> of the current <a href="../model/entity/Player.html" title="class in edu.cnm.deepdive.scalescroller.model.entity"><code>Player</code></a>.</dd>
+</dl>
 </li>
 </ul>
 </li>
